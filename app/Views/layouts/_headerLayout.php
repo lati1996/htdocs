@@ -64,14 +64,28 @@
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="/cart">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="/signin">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    <div class="nav-icon position-relative text-decoration-none">
+                        <?php
+                        if (isset($_SESSION["user"])) {
+                        ?>
+                            <div class="dropdown">
+                                <button onclick="myFunction()" class="dropbtn"> <i class="fa fa-fw fa-user text-dark mr-3"></i><?php echo $_SESSION["user"]["Name"]; ?></button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <a href="#">Tài khoản</a>
+                                    <a href="/signin/signout">Đăng xuất</a>
+                                </div>
+                            </div>
+                        <?php
+                        } else {
+                            echo '<a class="text-decoration-none" href="/signin">Đăng nhập</a>';
+                        }
+                        ?>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
-                    </a>
+                    </div>
                 </div>
             </div>
 

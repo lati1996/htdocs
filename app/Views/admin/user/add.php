@@ -52,7 +52,8 @@
                             </div>
                             <hr>
                         </form>
-                        <hr>
+                        <p style="color:red;"><?php echo isset($error) ? $mess : null ?></p>
+                        <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
                     </div>
                 </div>
             </div>

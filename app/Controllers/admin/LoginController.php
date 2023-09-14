@@ -22,12 +22,10 @@ class LoginController extends Controller
         if (isset($_POST["btnLogin"])) {
             // đã gửi thông tin đăng nhập
             $user = $_POST["user"];
-            var_dump($user);
+            //var_dump($user);
             $username = $user["username"];
-            $password = $user["password"];
-
+            $password = sha1($user["password"]);
             $userDB = $this->modelDB->CheckLogin($username, $password);
-
             if ($userDB) {
                 $_SESSION["admin"] = $userDB;
                 Common::ToUrl("/admin/dashboard");

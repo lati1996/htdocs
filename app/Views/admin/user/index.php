@@ -76,7 +76,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                 <td>
                                     <?php echo $_item->Account; ?>
                                 </td>
-                                <td>
+                                <td style="width: 100px;">
                                     <?php echo $_item->Password; ?>
                                 </td>
                                 <td>

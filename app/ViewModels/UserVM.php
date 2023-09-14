@@ -71,4 +71,13 @@ class UserVM extends Model
     {
         return $this->UPDATE(UserVM::tableName, $item, $this->WhereEq("Id", $item["Id"]));
     }
+    function Login($acc, $pass)
+    {
+        $sql = "SELECT * FROM " . UserVM::tableName . " WHERE `Account` = '{$acc}' and `Password` = '{$pass}'";
+        $result = $this->GetByQuery($sql);
+        if ($result == null) {
+            return null;
+        }
+        return $result->fetch_assoc();
+    }
 }

@@ -25,6 +25,7 @@ class UserController extends Controller
     }
     public function add()
     {
+        $data = [];
         if (isset($_POST["btnAdd"])) {
             // đã gửi thông tin đăng nhập
             $user = $_POST["user"];
@@ -33,32 +34,42 @@ class UserController extends Controller
                 if ($user["Password"] == $user["RePassword"]) {
                     unset($user["RePassword"]);
                     //var_dump($user);
+                    $user["Password"] = sha1($user["Password"]);
                     $modeldb = new UserVM();
                     try {
                         $modeldb->Post($user);
+                        $data["mess"] = "Thêm thành công người dùng";
                     } catch (Exception $ex) {
-                        echo $ex->getMessage();
+                        $error =  $ex->getMessage();
+                        $data["error"] = $error;
                     }
                 }
             }
         }
-        $this->View();
+        $this->View($data);
     }
     public function edit()
     {
+        $data = [];
         if (isset($_POST["btnEdit"])) {
             // đã gửi thông tin đăng nhập
             $user = $_POST["user"];
             if (!empty($user)) {
                 if ($user["Password"] == $user["RePassword"]) {
                     unset($user["RePassword"]);
-                    $modeldb = new UserVM();
-                    $modeldb->Put($user);
-                    Common::ToUrl("/admin/user");
+                    $user["Password"] = sha1($user["Password"]);
+                    try {
+                        $modeldb = new UserVM();
+                        $modeldb->Put($user);
+                        $data["mess"] = "Cập nhật thành công thông tin người dùng";
+                    } catch (Exception $ex) {
+                        $error =  $ex->getMessage();
+                        $data["error"] = $error;
+                    }
                 }
             }
         }
-        $this->View();
+        $this->View($data);
     }
     public function delete()
     {
