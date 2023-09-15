@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th9 14, 2023 lúc 04:49 AM
+-- Thời gian đã tạo: Th9 15, 2023 lúc 06:04 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`Id`, `Name`, `Email`, `Account`, `Password`) VALUES
-(1, 'Minh Hoang', 'mhoang1996@gmail.com', 'mhoang', '1');
+(1, 'Minh Hoang', 'mhoang1996@gmail.com', 'mhoang', 'c6fe2a559417c636b2840542ad58ce6f9d815b15');
 
 -- --------------------------------------------------------
 
@@ -123,16 +123,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`Id`, `Name`, `Email`, `Phone`, `Account`, `Password`, `Address`, `Ward`, `District`, `Province`) VALUES
-(1, 'Minh Hoang', 'xxsxsxsxsx@fvfvfvfvfv', '0398936410', 'mhoang222', '1231232131231', '561 Nguyễn Trãi', 'Lái Thiêu', 'Thuận An', 'Bình Dương'),
-(2, 'My An', 'mhoang1996@gmail.com', '0398936410', 'mhoang', '1', NULL, NULL, NULL, NULL),
-(3, 'Minh Bao', 'mhoang1996@gmail.com', '0398936410', 'mhoang', '1', 'Lái Thiêu', NULL, NULL, NULL),
-(5, 'Bao', 'bao2021@gmail.com', '0398936410', 'bao2021', '222222', 'Lái Thiêu', NULL, NULL, NULL),
-(7, 'minh bảo', 'mbao@gmail.com', '0398936410', 'mbao', '123', 'Bình Dương', NULL, NULL, NULL),
-(9, 'minh bảo', 'mbao@gmail.com', '0398936410', 'mbao', '123', 'Bình Dương', NULL, NULL, NULL),
-(10, 'minh bảo', 'mbao@gmail.com', '0398936410', 'mbao', '123', 'Bình Dương', NULL, NULL, NULL),
-(13, 'My An', 'mhoang1996@gmail.com', '0398936410', 'mhoang', '1', NULL, NULL, NULL, NULL),
-(20, 'Minh bảo', 'mbao2021@gmail.com', '0292920292929', 'mbao2021', '123456', 'Lái Thiêu', NULL, NULL, NULL),
-(21, 'man', 'man@gmail.com', '2131231231231', 'man', '21312312', 'Lái thiêu', NULL, NULL, NULL);
+(2, 'Mỹ An', 'mhoang1996@gmail.com', '0398936410', 'mhoang', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Lái thiêu', NULL, NULL, NULL),
+(22, 'Nguyễn Minh Hoàng', 'mhoang1996@gmail.com', '0398936410', 'hoang', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Lái thiêu', NULL, NULL, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -188,7 +180,7 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
