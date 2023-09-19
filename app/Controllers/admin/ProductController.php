@@ -25,33 +25,36 @@ class ProductController extends Controller
     public function add()
     {
         $data = [];
-        $target_dir = "public/uploads/";
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
         if (isset($_POST["btnAdd"])) {
-            $product = $_POST["product"];
-            // đã gửi thông tin đăng nhập
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if ($check !== false) {
+            if (isset($_FILES["fileToUpload"]["name"])) {
+
+                $target_dir = "public/uploads/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
-            } else {
-                $uploadOk = 0;
+                var_dump($uploadOk);
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+                if (file_exists($target_file)) {
+                    $uploadOk = 0;
+                }
+                // Check file size
+                if ($_FILES["fileToUpload"]["size"] > 500000) {
+                    $uploadOk = 0;
+                }
+                if (
+                    $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"
+                ) {
+                    $uploadOk = 0;
+                }
             }
-            if (file_exists($target_file)) {
-                $uploadOk = 0;
-            }
-            // Check file size
-            if ($_FILES["fileToUpload"]["size"] > 500000) {
-                $uploadOk = 0;
-            }
-            if (
-                $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"
-            ) {
-                $uploadOk = 0;
-            }
-            // var_dump($product);
+            $product = $_POST["product"];
+
+            // đã gửi thông tin đăng nhập
             if (!empty($product)) {
                 if ($product["IdCate"] == "0") {
                     $data["mess"] = "Chọn danh mục sản phẩm";
@@ -68,7 +71,6 @@ class ProductController extends Controller
                             }
                             $modeldb->Post($product);
                             $data["mess"] = "Thêm sản phẩm thành công";
-                            var_dump($uploadOk);
                         }
                     } catch (Exception $ex) {
                         $error = $ex->getMessage();
@@ -86,14 +88,12 @@ class ProductController extends Controller
         $oldImg = $oldProd->Image;
         //echo $oldImg;
         $data = [];
-        $target_dir = "public/uploads/";
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 0;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        if (isset($_POST["btnEdit"])) {
-            $product = $_POST["product"];
-            //var_dump($_FILES["fileToUpload"]["name"]);
+        if (isset($_FILES["fileToUpload"]["name"])) {
+            $target_dir = "public/uploads/";
+            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             if (!empty($_FILES["fileToUpload"]["name"])) {
                 // đã gửi thông tin đăng nhập
                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -115,6 +115,11 @@ class ProductController extends Controller
                     $uploadOk = 0;
                 }
             }
+        }
+        if (isset($_POST["btnEdit"])) {
+            $product = $_POST["product"];
+            //var_dump($_FILES["fileToUpload"]["name"]);
+
             //var_dump($product);
             if (!empty($product)) {
                 if ($product["IdCate"] == "0") {
@@ -131,7 +136,7 @@ class ProductController extends Controller
                                     }
                                 }
                             } else {
-                                var_dump($product);
+                                //var_dump($product);
                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                                     $product["Image"] = basename($_FILES["fileToUpload"]["name"]);
                                 }

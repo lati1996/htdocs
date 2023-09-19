@@ -22,8 +22,8 @@ if (!empty($configs_dir)) {
     }
 }
 //echo $_SERVER['DOCUMENT_ROOT'];
-$folder = basename($_SERVER['DOCUMENT_ROOT']);
-$web_root = $web_root . $folder . $routes['folder-name'];
+// $folder = basename($_SERVER['DOCUMENT_ROOT']);
+//$web_root = $web_root . $folder . $routes['folder-name'];
 define('_WEB_ROOT', $web_root); //khai báo đường dẫn thư mục gốc
 if (!empty($config['database'])) {
     $db_config = array_filter($config['database']);

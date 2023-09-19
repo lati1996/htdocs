@@ -12,7 +12,7 @@ class App
     {
         global $routes;
         self::$app = $this;
-        $this->__routes = new Route();
+        self::$__routes = new Route();
         if (!empty($routes['default_controller'])) {
             self::$__controller = $routes['default_controller'];
         }
@@ -32,7 +32,7 @@ class App
     public function handleUrl()
     {
         $url = $this->getUrl();
-        $url = $this->__routes->handleRoute($url);
+        $url = self::$__routes->handleRoute($url);
         $urlArr = array_filter(explode('/', $url)); //đưa url vào mảng
         $urlArr = array_values($urlArr); //đánh số thứ tự
         $urlCheck = '';
