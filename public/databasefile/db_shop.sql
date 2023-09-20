@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th9 18, 2023 lúc 09:57 AM
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th9 20, 2023 lúc 06:19 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -41,6 +41,27 @@ CREATE TABLE `tbl_admin` (
 
 INSERT INTO `tbl_admin` (`Id`, `Name`, `Email`, `Account`, `Password`) VALUES
 (1, 'Minh Hoang', 'mhoang1996@gmail.com', 'mhoang', 'c6fe2a559417c636b2840542ad58ce6f9d815b15');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_cart`
+--
+
+CREATE TABLE `tbl_cart` (
+  `Id` int(11) NOT NULL,
+  `IdUser` int(11) DEFAULT NULL,
+  `IdProd` int(11) DEFAULT NULL,
+  `Quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`Id`, `IdUser`, `IdProd`, `Quantity`) VALUES
+(1, 2, 9, 1),
+(2, 2, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -137,6 +158,12 @@ ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Chỉ mục cho bảng `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Chỉ mục cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
@@ -163,6 +190,12 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`

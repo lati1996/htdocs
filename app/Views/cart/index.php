@@ -32,16 +32,17 @@
                     ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
-                                <td> <?php echo $_prod->ProductName; ?> </td>
                                 <td><img src="/public/uploads/<?php echo $_prod->Image; ?>" height="100"></td>
+                                <td> <?php echo $_prod->ProductName; ?> </td>
                                 <td><?php echo $_prod->Size; ?></td>
-                                <td style="width: 150px;">
+                                <td style="width: 160px;">
                                     <li class="list-inline-item text-right">
-                                        <input type="hidden" name="product-quanity" id="product-quanity" value="<?php echo $_item->Quantity; ?>">
+                                        <input type="hidden" name="product-quanity-<?php echo $_item->Id; ?>" id="product-quanity" value="<?php echo $_item->Quantity; ?>">
                                     </li>
-                                    <li class="list-inline-item"><button class="btn btn-success" id="btn-minus" onclick="minus()">-</button></li>
+                                    <li class="list-inline-item"><button class="btn btn-success" id="btn-minus">-</button></li>
                                     <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                    <li class="list-inline-item"><button class="btn btn-success" id="btn-plus" onclick="plus()">+</button></li>
+                                    <li class="list-inline-item"><button class="btn btn-success" id="btn-plus">+</button></li>
+                                    <div><button class="btn btn-success" onclick="confirmQuanity(<?php echo $_item->Id; ?>)" id="">0k</button></div>
                                 </td>
                                 <td><?php echo $_prod->toPrice(); ?></td>
                                 <td><?php echo Common::ViewMoney($_prod->Price * $_item->Quantity); ?></td>
@@ -54,5 +55,6 @@
                 </tbody>
             </table>
         </form>
+
     </div>
 </div>
