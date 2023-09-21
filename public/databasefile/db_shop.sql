@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 20, 2023 lúc 06:19 AM
+-- Thời gian đã tạo: Th9 21, 2023 lúc 11:48 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -52,16 +52,17 @@ CREATE TABLE `tbl_cart` (
   `Id` int(11) NOT NULL,
   `IdUser` int(11) DEFAULT NULL,
   `IdProd` int(11) DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL
+  `Quanity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_cart`
 --
 
-INSERT INTO `tbl_cart` (`Id`, `IdUser`, `IdProd`, `Quantity`) VALUES
-(1, 2, 9, 1),
-(2, 2, 18, 1);
+INSERT INTO `tbl_cart` (`Id`, `IdUser`, `IdProd`, `Quanity`) VALUES
+(20, 2, 9, 1),
+(21, 2, 18, 1),
+(22, 2, 19, 2);
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,7 @@ CREATE TABLE `tbl_product` (
   `Description` text DEFAULT NULL,
   `IdCate` int(11) DEFAULT NULL,
   `Image` text DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL,
+  `Quanity` int(11) DEFAULT NULL,
   `Size` text DEFAULT NULL,
   `ProdCode` text DEFAULT NULL,
   `Material` text DEFAULT NULL,
@@ -109,7 +110,7 @@ CREATE TABLE `tbl_product` (
 -- Đang đổ dữ liệu cho bảng `tbl_product`
 --
 
-INSERT INTO `tbl_product` (`Id`, `ProductName`, `Description`, `IdCate`, `Image`, `Quantity`, `Size`, `ProdCode`, `Material`, `Price`, `Rating`) VALUES
+INSERT INTO `tbl_product` (`Id`, `ProductName`, `Description`, `IdCate`, `Image`, `Quanity`, `Size`, `ProdCode`, `Material`, `Price`, `Rating`) VALUES
 (9, 'Set drap', 'Set drap bao gồm: 02 áo gối<br/>01 áo gối ôm<br/>01 drap trải nệm<br/>01 chăn đắp', 10, 'drap-giuong-cotton-2-696x1042.jpeg', 1, '160 x 200 x 20cm', 'setdrap', 'Tencent', 2400000, 4),
 (18, 'Set drap', 'Set drap bao gồm: 02 áo gối<br/>01 áo gối ôm<br/>01 drap trải nệm<br/>01 chăn đắp', 10, 'drap-giuong-cotton-3-696x928.jpeg', 1, '180 x 200 x 20cm', 'setdrap', 'Cotton Korea', 1800000, 4),
 (19, 'Set drap', 'Set drap bao gồm: 02 áo gối<br/>01 áo gối ôm<br/>01 drap trải nệm<br/>01 chăn đắp', 10, 'drap-giuong-cotton-4-696x928.jpeg', 1, '160 x 200 x 20cm', 'setdrap', 'Cotton TL', 1100000, 4),
@@ -144,7 +145,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`Id`, `Name`, `Email`, `Phone`, `Account`, `Password`, `Address`, `Ward`, `District`, `Province`) VALUES
-(2, 'Mỹ An', 'mhoang1996@gmail.com', '0398936410', 'mhoang', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Lái thiêu', NULL, NULL, NULL),
+(2, 'Mỹ An', 'mhoang1996@gmail.com', '0398936410', 'mhoang', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '561 Nguyễn Trãi, phường Lái thiêu, TP Thuận An, Tỉnh Bình Dương', NULL, NULL, NULL),
 (22, 'Nguyễn Minh Hoàng', 'mhoang1996@gmail.com', '0398936410', 'hoang', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Lái thiêu', NULL, NULL, NULL);
 
 --
@@ -195,7 +196,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`

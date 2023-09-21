@@ -2,6 +2,7 @@
 
 namespace app\ViewModels;
 
+use core\Common;
 use core\Model;
 
 class CartVM extends Model
@@ -9,7 +10,7 @@ class CartVM extends Model
     public $Id;
     public $IdUser;
     public $IdProd;
-    public $Quantity;
+    public $Quanity;
 
     const tableName = "tbl_cart";
     function __construct($cart = null)
@@ -22,7 +23,7 @@ class CartVM extends Model
         $this->Id = isset($cart["Id"]) ? $cart["Id"] : null;
         $this->IdUser = isset($cart["IdUser"]) ? $cart["IdUser"] : null;
         $this->IdProd = isset($cart["IdProd"]) ? $cart["IdProd"] : null;
-        $this->Quantity = isset($cart["Quantity"]) ? $cart["Quantity"] : null;
+        $this->Quanity = isset($cart["Quanity"]) ? $cart["Quanity"] : null;
     }
     function Post($item)
     {
@@ -43,9 +44,9 @@ class CartVM extends Model
         //echo $where;
         return $this->QueryPaging(CartVM::tableName, $where, $pageIndex, $pageNumber, $totalRows);
     }
-    function GetDataTableWhere($where)
+    function GetDataTableWhere($idUser)
     {
-        return $this->SELECTROWS(CartVM::tableName, $where);
+        return $this->SELECTROWS(CartVM::tableName, $this->WhereEq("IdUser", $idUser));
     }
     function Delete($id)
     {
@@ -58,5 +59,17 @@ class CartVM extends Model
     function Put($item)
     {
         return $this->UPDATE(CartVM::tableName, $item, $this->WhereEq("Id", $item["Id"]));
+    }
+    function TotalPrice()
+    {
+        $prod = new ProductVM($this->IdProd);
+        $price = $prod->Price;
+        $total = $this->Quanity * $price;
+        return $total;
+    }
+    function CheckProd($data)
+    {
+        $where = $this->WhereEq("IdUser", $data["IdUser"]) . $this->WhereAnd($this->WhereEq("IdProd", $data["IdProd"]));
+        return $this->SELECTROW(CartVM::tableName, $where);
     }
 }

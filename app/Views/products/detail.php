@@ -230,7 +230,10 @@ $model = new ProductVM($idProd);
                                         <ul class="list-unstyled">
                                             <!-- <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li> -->
                                             <li><a class="btn btn-success text-white mt-2" href="/products/detail/product=<?php echo $item->Id; ?>"><i class="far fa-eye"></i></a></li>
-                                            <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                                            <div class="popup" onclick="myFunctionPopup(<?php echo $item->Id; ?>)">
+                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $item->Id; ?>)"><i class="fas fa-cart-plus"></i></button></li>
+                                                <span class="popuptext" id="myPopup-<?php echo $item->Id; ?>">Đã thêm vào giỏ hàng</span>
+                                            </div>
                                         </ul>
                                     </div>
                                 </div>

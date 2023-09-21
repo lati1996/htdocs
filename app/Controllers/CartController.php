@@ -20,7 +20,6 @@ class CartController extends Controller
     }
     public function index()
     {
-
         $this->View();
     }
     public function add()
@@ -30,8 +29,49 @@ class CartController extends Controller
         $cartModel = new CartVM();
         $data["IdUser"] = $idUser;
         $data["IdProd"] = $idProd;
-        $data["Quantity"] = 1;
-        $cartModel->Post($data);
-        Common::ToUrl("/cart");
+        $check = $cartModel->CheckProd($data);
+        //var_dump($check);
+        if (empty($check)) {
+            $data["Quanity"] = 1;
+            $cartModel->Post($data);
+        } else {
+            $check["Quanity"] += 1;
+            $cartModel->Put($check);
+        }
+        Common::ToUrl($_SERVER["HTTP_REFERER"]);
+    }
+    public function plus()
+    {
+        $id = App::$__params[0];
+        $cartNow = new CartVM($id);
+        $cartNow->Quanity += 1;
+        $data["Id"] = $cartNow->Id;
+        $data["IdUser"] = $cartNow->IdUser;
+        $data["IdProd"] = $cartNow->IdProd;
+        $data["Quanity"] = $cartNow->Quanity;
+        $cartModel = new CartVM();
+        $cartModel->Put($data);
+        Common::ToUrl($_SERVER["HTTP_REFERER"]);
+    }
+    public function minus()
+    {
+        $id = App::$__params[0];
+        $cartNow = new CartVM($id);
+        $cartNow->Quanity -= 1;
+        $cartNow->Quanity = max(1, $cartNow->Quanity);
+        $data["Id"] = $cartNow->Id;
+        $data["IdUser"] = $cartNow->IdUser;
+        $data["IdProd"] = $cartNow->IdProd;
+        $data["Quanity"] = $cartNow->Quanity;
+        $cartModel = new CartVM();
+        $cartModel->Put($data);
+        Common::ToUrl($_SERVER["HTTP_REFERER"]);
+    }
+    public function delete()
+    {
+        $id = App::$__params[0];
+        $cartModel = new CartVM();
+        $cartModel->Delete($id);
+        Common::ToUrl($_SERVER["HTTP_REFERER"]);
     }
 }

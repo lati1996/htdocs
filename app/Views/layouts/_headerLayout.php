@@ -66,7 +66,21 @@
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="/cart">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">
+                            <?php
+
+                            use app\ViewModels\CartVM;
+
+                            $model = new CartVM();
+                            if (isset($_SESSION["user"])) {
+                                $dataList = $model->GetDataTableWhere($_SESSION["user"]["Id"]);
+                                if (!empty($dataList)) {
+                                    $number = count($dataList->fetch_all());
+                                    echo $number;
+                                }
+                            }
+                            ?>
+                        </span>
                     </a>
                     <div class="nav-icon position-relative text-decoration-none">
                         <?php

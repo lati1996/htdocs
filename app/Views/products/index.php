@@ -74,12 +74,14 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                         <img class="modal-content" id="img01">
                                         <div id="caption"></div>
                                     </div>
-
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">
                                             <!-- <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li> -->
                                             <li><a id="myImg-<?php echo $_item->Id; ?>" class="btn btn-success text-white mt-2"><i class="far fa-eye"></i></a></li>
-                                            <li><a class="btn btn-success text-white mt-2" href="/cart/add/<?php echo $_item->Id; ?>"><i class="fas fa-cart-plus"></i></a></li>
+                                            <div class="popup" onclick="myFunctionPopup(<?php echo $_item->Id; ?>)">
+                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>)"><i class="fas fa-cart-plus"></i></button></li>
+                                                <span class="popuptext" id="myPopup-<?php echo $_item->Id; ?>">Đã thêm vào giỏ hàng</span>
+                                            </div>
                                         </ul>
                                     </div>
                                     <script>

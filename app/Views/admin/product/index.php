@@ -99,7 +99,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                     ?>
                                 </td>
                                 <td>
-                                    <?php echo $_item->Quantity; ?>
+                                    <?php echo $_item->Quanity; ?>
                                 </td>
                                 <td>
                                     <?php echo $_item->Rating; ?>

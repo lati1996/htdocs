@@ -12,7 +12,7 @@ class ProductVM extends Model
     public $Description;
     public $IdCate;
     public $Image;
-    public $Quantity;
+    public $Quanity;
     public $Size;
     public $Price;
     public $ProdCode;
@@ -31,7 +31,7 @@ class ProductVM extends Model
         $this->Description = isset($product["Description"]) ? $product["Description"] : null;
         $this->IdCate = isset($product["IdCate"]) ? $product["IdCate"] : null;
         $this->Image = isset($product["Image"]) ? $product["Image"] : null;
-        $this->Quantity = isset($product["Quantity"]) ? $product["Quantity"] : null;
+        $this->Quanity = isset($product["Quanity"]) ? $product["Quanity"] : null;
         $this->Size = isset($product["Size"]) ? $product["Size"] : null;
         $this->Price = isset($product["Price"]) ? $product["Price"] : null;
         $this->ProdCode = isset($product["ProdCode"]) ? $product["ProdCode"] : null;

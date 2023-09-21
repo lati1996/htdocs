@@ -44,7 +44,7 @@ $data = $model->GetDataTable();
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-3">
-                                    <input type="number" class="form-control form-control-user" id="" placeholder="Số lượng" name="product[Quantity]" required>
+                                    <input type="number" class="form-control form-control-user" id="" placeholder="Số lượng" name="product[Quanity]" required>
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control form-control-user" id="" placeholder="Kích thước" name="product[Size]" required>

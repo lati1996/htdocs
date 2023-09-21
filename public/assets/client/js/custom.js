@@ -1,4 +1,16 @@
-function confirmQuanity(id) {
-    var number = document.getElementsByName("product-quanity-" + id)[0].value;
-    alert(number);
+function AddCart(id) {
+    $.ajax({
+        type: "get",
+        url: `/cart/add/${id}`,
+        dataType: "html",
+        success: function (response) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 3000);
+        }
+    });
+}
+function myFunctionPopup(id) {
+    var popup = document.getElementById("myPopup-" + id);
+    popup.classList.toggle("show");
 }

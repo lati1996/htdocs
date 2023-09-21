@@ -58,7 +58,7 @@ $modelP = new ProductVM(App::$__params[0]);
                             <div class="form-group row">
                                 <div class="col-sm-3">
                                     <label for="">Số lượng</label>
-                                    <input type="number" class="form-control form-control-user" value="<?php echo $modelP->Quantity; ?>" id="" placeholder="Số lượng" name="product[Quantity]" required>
+                                    <input type="number" class="form-control form-control-user" value="<?php echo $modelP->Quanity; ?>" id="" placeholder="Số lượng" name="product[Quanity]" required>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="">Kích thước</label>
