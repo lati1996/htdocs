@@ -8,11 +8,13 @@
             use core\Common;
 
             $model = new CartVM();
-            $dataList = $model->GetDataTableWhere($_SESSION["user"]["Id"]);
+            $dataList = $model->GetCart($_SESSION["user"]["Id"]);
             ?>
+            <h4 class="text-center">CHI TIẾT GIỎ HÀNG</h4>
             <table class="table table-bordered table-hover text-center">
+
                 <thead>
-                    <tr>
+                    <tr style="background-color: #68CF82">
                         <th>Thứ tự</th>
                         <th colspan="2">Sản phẩm</th>
                         <th>Quy cách</th>
@@ -32,7 +34,7 @@
                     ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
-                                <td><img src="/public/uploads/<?php echo $_prod->Image; ?>" height="100"></td>
+                                <td><a href="/products/detail/product=<?php echo $_prod->Id; ?>"><img class="rounded-0" src="/public/uploads/<?php echo $_prod->Image; ?>" height="100"></a></td>
                                 <td> <?php echo $_prod->ProductName; ?> </td>
                                 <td><?php echo $_prod->Size; ?></td>
                                 <td style="width: 170px;">
@@ -57,7 +59,7 @@
                     ?>
                 </tbody>
                 <tfoot>
-                    <tr>
+                    <tr style="background-color: #68CF82">
                         <th colspan="6">Tổng cộng đơn hàng</th>
                         <th>
                             <?php
@@ -68,10 +70,10 @@
                 </tfoot>
             </table>
         </div>
-        <div class="col-md-3 m-auto" style="background-color: #F5F5F5;border-radius:0.75rem;border-color:cornflowerblue; border-style: solid;">
+        <form method="post" action="" enctype="multipart/form-data" autocomplete="off" class="col-md-3 m-auto" style="background-color: #F5F5F5;border-radius:0.75rem;border-color:#F1F1F1; border-style: solid;">
             <div class="form-group row">
                 <div class="col-md-12" style="margin:20px;">
-                    <h4>THÔNG TIN THANH TOÁN</h4>
+                    <h4>THÔNG TIN ĐƠN HÀNG</h4>
                 </div>
             </div>
             <div class="form-group row">
@@ -94,26 +96,34 @@
             </div>
             <div class="form-group row">
                 <div class="col-md-12" style="margin:5px;">
-                    <label for="" style="font-size: 15px !important;">Địa chỉ:</label>
-                    <input type="text" class="form-control" value="<?php echo $_SESSION["user"]["Address"]; ?>" readonly>
+                    <label for="" style="font-size: 15px !important;">Địa chỉ: </label>
+                    <!-- <button id="EditAdress" style="border:0;background-color: #FFDC00;border-radius: 0.25rem;">Thay đổi</button> -->
+                    <!-- <p id="Address-View"><b>
+                        <?php echo $_SESSION["user"]["Address"]; ?></b></p> -->
+                    <input type="text" id="Address" class="form-control" name="payment[DeliveryAddress]" value="<?php echo $_SESSION["user"]["Address"]; ?>" style="margin-top:5px;">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12" style="margin:5px;">
+                    <label for="" style="font-size: 15px !important;">
+                        <h5><b>Tổng đơn hàng: <?php echo Common::ViewMoney($totalCart); ?></b></h5>
+                        <input type="number" value="<?php echo $totalCart; ?>" name="payment[TotalCart]" hidden>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-md-12" style="margin:5px;">
                     <label for="" style="font-size: 15px !important;">Phương thức thanh toán:</label>
-                    <select class="form-control">
+                    <select class="form-control" name="payment[MethodPayment]">
                         <option value="0">Thanh toán qua MOMO</option>
                         <option value="1">Thanh toán khi nhận hàng</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group row" style="margin-top: 20px;margin-bottom: 20px;">
-                <div class="col-md-6">
-                </div>
-                <div class="col-md-6">
-                    <a name="" id="" class="btn btn-primary" href="#" role="button"><b>Thanh toán</b></a>
+            <div class="form-group row text-center" style="margin-top: 20px;margin-bottom: 20px;">
+                <div class="col-md-12">
+                    <button name="btnConfirm" id="btnConfirm" class="btn btn-primary" type="submit"><b>Xác nhận</b></button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>

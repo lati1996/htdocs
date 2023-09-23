@@ -73,7 +73,7 @@
 
                             $model = new CartVM();
                             if (isset($_SESSION["user"])) {
-                                $dataList = $model->GetDataTableWhere($_SESSION["user"]["Id"]);
+                                $dataList = $model->GetCart($_SESSION["user"]["Id"]);
                                 if (!empty($dataList)) {
                                     $number = count($dataList->fetch_all());
                                     echo $number;

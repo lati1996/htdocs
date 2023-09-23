@@ -11,6 +11,7 @@ class CartVM extends Model
     public $IdUser;
     public $IdProd;
     public $Quanity;
+    public $Status;
 
     const tableName = "tbl_cart";
     function __construct($cart = null)
@@ -24,6 +25,7 @@ class CartVM extends Model
         $this->IdUser = isset($cart["IdUser"]) ? $cart["IdUser"] : null;
         $this->IdProd = isset($cart["IdProd"]) ? $cart["IdProd"] : null;
         $this->Quanity = isset($cart["Quanity"]) ? $cart["Quanity"] : null;
+        $this->Status = isset($cart["Status"]) ? $cart["Status"] : null;
     }
     function Post($item)
     {
@@ -47,6 +49,10 @@ class CartVM extends Model
     function GetDataTableWhere($idUser)
     {
         return $this->SELECTROWS(CartVM::tableName, $this->WhereEq("IdUser", $idUser));
+    }
+    function GetCart($idUser)
+    {
+        return $this->SELECTROWS(CartVM::tableName, $this->WhereEq("IdUser", $idUser) . $this->WhereAnd($this->WhereEq("Status", "0")));
     }
     function Delete($id)
     {

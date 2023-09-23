@@ -20,6 +20,25 @@ class CartController extends Controller
     }
     public function index()
     {
+        if (isset($_POST["btnConfirm"])) {
+            $_SESSION["payment"] = $_POST["payment"];
+            $model = new CartVM();
+            $listCart = $model->GetCart($_SESSION["user"]["Id"])->fetch_array();
+            $totalItem = 0;
+            while ($row = $listCart) {
+                $item = new CartVM($row);
+                $totalItem = $item->Quanity;
+            }
+            echo $totalItem;
+            //array_sum($listCart["Quanity"]);
+            var_dump($listCart);
+            $order["Id"] = "HT-" . Date("DH-ymdhis", time());
+            $order["TotalPrice"] = $_SESSION["payment"]["TotalCart"];
+            $order["DeliveryAddress"] = $_SESSION["payment"]["DeliveryAddress"];
+            $order["PaymentStatus"] = "0";
+
+            //Common::ToUrl("/cart/payment");
+        }
         $this->View();
     }
     public function add()
@@ -33,6 +52,7 @@ class CartController extends Controller
         //var_dump($check);
         if (empty($check)) {
             $data["Quanity"] = 1;
+            $data["Status"] = 0;
             $cartModel->Post($data);
         } else {
             $check["Quanity"] += 1;
@@ -73,5 +93,10 @@ class CartController extends Controller
         $cartModel = new CartVM();
         $cartModel->Delete($id);
         Common::ToUrl($_SERVER["HTTP_REFERER"]);
+    }
+    public function payment()
+    {
+        $this->setTitle("Thanh toán đơn hàng - hT Store");
+        $this->View();
     }
 }
