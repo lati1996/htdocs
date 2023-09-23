@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 21, 2023 lúc 11:48 AM
+-- Thời gian đã tạo: Th9 23, 2023 lúc 11:54 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -52,17 +52,22 @@ CREATE TABLE `tbl_cart` (
   `Id` int(11) NOT NULL,
   `IdUser` int(11) DEFAULT NULL,
   `IdProd` int(11) DEFAULT NULL,
-  `Quanity` int(11) DEFAULT NULL
+  `Quanity` int(11) DEFAULT NULL,
+  `Status` int(1) DEFAULT NULL,
+  `IdOrder` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_cart`
 --
 
-INSERT INTO `tbl_cart` (`Id`, `IdUser`, `IdProd`, `Quanity`) VALUES
-(20, 2, 9, 1),
-(21, 2, 18, 1),
-(22, 2, 19, 2);
+INSERT INTO `tbl_cart` (`Id`, `IdUser`, `IdProd`, `Quanity`, `Status`, `IdOrder`) VALUES
+(27, 2, 22, 1, 0, NULL),
+(28, 2, 18, 1, 0, NULL),
+(29, 2, 19, 1, 0, NULL),
+(30, 2, 20, 1, 0, NULL),
+(31, 2, 25, 1, 0, NULL),
+(32, 2, 23, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -85,6 +90,20 @@ INSERT INTO `tbl_category` (`Id`, `CategoryName`, `Description`) VALUES
 (8, 'Chăn Cotton', 'Chăn Cotton'),
 (9, 'Set Drap', 'Set Drap'),
 (10, 'Set Drap Mền', 'Set Drap Mền');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_order`
+--
+
+CREATE TABLE `tbl_order` (
+  `Id` int(11) NOT NULL,
+  `TotalItem` int(11) NOT NULL,
+  `TotalPrice` int(11) NOT NULL,
+  `PaymentStatus` int(11) NOT NULL,
+  `DeliveryAddress` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -171,6 +190,12 @@ ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Chỉ mục cho bảng `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Chỉ mục cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
@@ -196,7 +221,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`
