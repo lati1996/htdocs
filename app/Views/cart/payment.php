@@ -28,7 +28,9 @@ use core\Common;
                     <img src="\public\assets\client\img\momo.jpg" height="300">
                 </div>
                 <div class="col-md-12" style="margin:5px;margin-bottom:20px;">
-                    <button onclick="payment()" class="btn btn-primary">Đã thanh toán</button>
+                    <!-- <form method="post" action=""> -->
+                    <button onclick="payment()" name="btnThanhToan" type="submit" class="btn btn-primary">Đã thanh toán</button>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>

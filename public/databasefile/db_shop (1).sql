@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 23, 2023 lúc 11:54 AM
+-- Thời gian đã tạo: Th9 25, 2023 lúc 12:03 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -54,7 +54,7 @@ CREATE TABLE `tbl_cart` (
   `IdProd` int(11) DEFAULT NULL,
   `Quanity` int(11) DEFAULT NULL,
   `Status` int(1) DEFAULT NULL,
-  `IdOrder` int(11) DEFAULT NULL
+  `IdOrder` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -62,12 +62,14 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`Id`, `IdUser`, `IdProd`, `Quanity`, `Status`, `IdOrder`) VALUES
-(27, 2, 22, 1, 0, NULL),
-(28, 2, 18, 1, 0, NULL),
-(29, 2, 19, 1, 0, NULL),
-(30, 2, 20, 1, 0, NULL),
-(31, 2, 25, 1, 0, NULL),
-(32, 2, 23, 1, 0, NULL);
+(35, 2, 9, 6, 1, 'HT-Mon08-230925085601'),
+(36, 2, 18, 5, 1, 'HT-Mon08-230925085601'),
+(52, 2, 9, 2, 1, 'HT-Mon09-230925094026'),
+(53, 2, 19, 1, 1, 'HT-Mon09-230925094026'),
+(54, 2, 9, 1, 1, 'HT-Mon09-230925094644'),
+(55, 2, 9, 1, 1, 'HT-Mon09-230925094701'),
+(56, 2, 18, 1, 1, 'HT-Mon09-230925094701'),
+(57, 2, 19, 1, 1, 'HT-Mon09-230925094701');
 
 -- --------------------------------------------------------
 
@@ -98,12 +100,22 @@ INSERT INTO `tbl_category` (`Id`, `CategoryName`, `Description`) VALUES
 --
 
 CREATE TABLE `tbl_order` (
-  `Id` int(11) NOT NULL,
+  `Id` varchar(30) NOT NULL,
   `TotalItem` int(11) NOT NULL,
   `TotalPrice` int(11) NOT NULL,
   `PaymentStatus` int(11) NOT NULL,
   `DeliveryAddress` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`Id`, `TotalItem`, `TotalPrice`, `PaymentStatus`, `DeliveryAddress`) VALUES
+('HT-Mon08-230925085601', 2, 4200000, 0, '561 Nguyễn Trãi, phường Lái thiêu, TP Thuận An, Tỉnh Bình Dương'),
+('HT-Mon09-230925094026', 3, 5900000, 0, '561 Nguyễn Trãi, phường Lái thiêu, TP Thuận An, Tỉnh Bình Dương'),
+('HT-Mon09-230925094644', 1, 2400000, 0, '561 Nguyễn Trãi, phường Lái thiêu, TP Thuận An, Tỉnh Bình Dương'),
+('HT-Mon09-230925094701', 3, 5300000, 0, '561 Nguyễn Trãi, phường Lái thiêu, TP Thuận An, Tỉnh Bình Dương');
 
 -- --------------------------------------------------------
 
@@ -221,7 +233,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`

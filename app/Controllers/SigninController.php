@@ -34,6 +34,7 @@ class SigninController extends Controller
     public function signout()
     {
         unset($_SESSION["user"]);
+        unset($_SESSION["payment"]);
         Common::ToUrl("/signin");
     }
 }

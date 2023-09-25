@@ -4,6 +4,7 @@ namespace app\Controllers;
 
 use app\App;
 use app\ViewModels\CartVM;
+use app\ViewModels\OrderVM;
 use core\Common;
 use core\Controller;
 
@@ -21,23 +22,30 @@ class CartController extends Controller
     public function index()
     {
         if (isset($_POST["btnConfirm"])) {
-            $_SESSION["payment"] = $_POST["payment"];
             $model = new CartVM();
-            $listCart = $model->GetCart($_SESSION["user"]["Id"])->fetch_array();
-            $totalItem = 0;
-            while ($row = $listCart) {
-                $item = new CartVM($row);
-                $totalItem = $item->Quanity;
+            $listCart = $model->GetCart($_SESSION["user"]["Id"]);
+            if ($listCart) {
+                $_SESSION["payment"] = $_POST["payment"];
+                $totalItem = 0;
+                $idOr = "HT-" . Date("DH-ymdhis", time());
+                while ($row = $listCart->fetch_array()) {
+                    $item = new CartVM($row);
+                    $totalItem += $item->Quanity;
+                    $updateCart["Id"] = $item->Id;
+                    $updateCart["Status"] = "1";
+                    $updateCart["IdOrder"] = $idOr;
+                    $modelC = new CartVM();
+                    $modelC->Put($updateCart);
+                }
+                $order["Id"] = $idOr;
+                $order["TotalPrice"] = $_SESSION["payment"]["TotalCart"];
+                $order["DeliveryAddress"] = $_SESSION["payment"]["DeliveryAddress"];
+                $order["PaymentStatus"] = "0";
+                $order["TotalItem"] = $totalItem;
+                $modelOrder = new OrderVM();
+                $modelOrder->Post($order);
+                Common::ToUrl("/cart/payment");
             }
-            echo $totalItem;
-            //array_sum($listCart["Quanity"]);
-            var_dump($listCart);
-            $order["Id"] = "HT-" . Date("DH-ymdhis", time());
-            $order["TotalPrice"] = $_SESSION["payment"]["TotalCart"];
-            $order["DeliveryAddress"] = $_SESSION["payment"]["DeliveryAddress"];
-            $order["PaymentStatus"] = "0";
-
-            //Common::ToUrl("/cart/payment");
         }
         $this->View();
     }
@@ -48,17 +56,17 @@ class CartController extends Controller
         $cartModel = new CartVM();
         $data["IdUser"] = $idUser;
         $data["IdProd"] = $idProd;
-        $check = $cartModel->CheckProd($data);
+        $data["Status"] = '0';
+        $check = $cartModel->CheckCart($data);
         //var_dump($check);
         if (empty($check)) {
             $data["Quanity"] = 1;
-            $data["Status"] = 0;
             $cartModel->Post($data);
         } else {
             $check["Quanity"] += 1;
             $cartModel->Put($check);
         }
-        Common::ToUrl($_SERVER["HTTP_REFERER"]);
+        //Common::ToUrl($_SERVER["HTTP_REFERER"]);
     }
     public function plus()
     {

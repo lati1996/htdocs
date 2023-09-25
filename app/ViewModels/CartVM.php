@@ -12,6 +12,7 @@ class CartVM extends Model
     public $IdProd;
     public $Quanity;
     public $Status;
+    public $IdOrder;
 
     const tableName = "tbl_cart";
     function __construct($cart = null)
@@ -26,6 +27,7 @@ class CartVM extends Model
         $this->IdProd = isset($cart["IdProd"]) ? $cart["IdProd"] : null;
         $this->Quanity = isset($cart["Quanity"]) ? $cart["Quanity"] : null;
         $this->Status = isset($cart["Status"]) ? $cart["Status"] : null;
+        $this->IdOrder = isset($cart["IdOrder"]) ? $cart["IdOrder"] : null;
     }
     function Post($item)
     {
@@ -73,9 +75,9 @@ class CartVM extends Model
         $total = $this->Quanity * $price;
         return $total;
     }
-    function CheckProd($data)
+    function CheckCart($data)
     {
-        $where = $this->WhereEq("IdUser", $data["IdUser"]) . $this->WhereAnd($this->WhereEq("IdProd", $data["IdProd"]));
+        $where = $this->WhereEq("IdUser", $data["IdUser"]) . $this->WhereAnd($this->WhereEq("IdProd", $data["IdProd"])) . $this->WhereAnd($this->WhereEq("Status", $data["Status"]));
         return $this->SELECTROW(CartVM::tableName, $where);
     }
 }
