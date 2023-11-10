@@ -1,6 +1,6 @@
 <div class="container py-5">
     <div class="row py-5">
-        <div class="col-md-9 m-auto">
+        <div class="col-md-9">
             <?php
 
             use app\ViewModels\CartVM;

@@ -17,14 +17,12 @@
         </div>
     </nav>
     <!-- Close Top Nav -->
-
-
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="/home">
-                hT Store
+                <h1 class="h1 text-success"><b>hT</b> Store</h1>
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,6 +75,8 @@
                                 if (!empty($dataList)) {
                                     $number = count($dataList->fetch_all());
                                     echo $number;
+                                } else {
+                                    echo "0";
                                 }
                             }
                             ?>
@@ -89,7 +89,7 @@
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn"> <i class="fa fa-fw fa-user text-dark mr-3"></i><?php echo $_SESSION["user"]["Name"]; ?></button>
                                 <div id="myDropdown" class="dropdown-content">
-                                    <a href="#">Tài khoản</a>
+                                    <a href="/account">Tài khoản</a>
                                     <a href="/signin/signout">Đăng xuất</a>
                                 </div>
                             </div>
@@ -106,7 +106,6 @@
         </div>
     </nav>
     <!-- Close Header -->
-
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

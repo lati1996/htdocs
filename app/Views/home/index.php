@@ -132,7 +132,7 @@
                      <div class="col-12 col-md-4 mb-4">
                          <div class="card h-100">
                              <a href="/products/detail/product=<?php echo $item->Id; ?>">
-                                 <img src="/public/uploads/<?php echo $item->Image; ?>" class="card-img-top" height="560">
+                                 <img src="/public/uploads/<?php echo $item->Image; ?>" class="card-img-top" height="500">
                              </a>
                              <div class="card-body">
                                  <ul class="list-unstyled d-flex justify-content-between">
