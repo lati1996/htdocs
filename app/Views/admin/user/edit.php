@@ -70,7 +70,7 @@ $model = new UserVM(App::$__params[0]);
                             </div>
                             <hr>
                         </form>
-                        <p style="color:red;"><?php echo isset($error) ? $mess : null ?></p>
+                        <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
                         <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
                         <hr>
                     </div>

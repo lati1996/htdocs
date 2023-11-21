@@ -87,7 +87,6 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                     <script>
                                         // Get the modal
                                         var modal = document.getElementById("myModal");
-
                                         // Get the image and insert it inside the modal - use its "alt" text as a caption
                                         var img = document.getElementById("myImg-<?php echo $_item->Id; ?>");
                                         var modalImg = document.getElementById("img01");
@@ -97,7 +96,6 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                             modalImg.src = "/public/uploads/<?php echo $_item->Image; ?>";
                                             captionText.innerHTML = "<?php echo $_item->ProductName; ?>";
                                         }
-
                                         // Get the <span> element that closes the modal
                                         var span = document.getElementsByClassName("close")[0];
 

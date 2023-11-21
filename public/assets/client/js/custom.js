@@ -4,9 +4,14 @@ function AddCart(id) {
         url: `/cart/add/${id}`,
         dataType: "html",
         success: function (response) {
-            setTimeout(function () {
-                window.location.reload();
-            }, 3000);
+            if (response == "") {
+                setTimeout(function () {
+                    window.location.reload();
+                }, 3000);
+            }
+            else {
+                window.location.href = '/signin';
+            }
         }
     });
 }

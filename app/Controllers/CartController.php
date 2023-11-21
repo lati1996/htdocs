@@ -7,6 +7,7 @@ use app\ViewModels\CartVM;
 use app\ViewModels\OrderVM;
 use core\Common;
 use core\Controller;
+use Exception;
 
 class CartController extends Controller
 {
@@ -65,8 +66,8 @@ class CartController extends Controller
         } else {
             $check["Quanity"] += 1;
             $cartModel->Put($check);
+            //Common::ToUrl($_SERVER["HTTP_REFERER"]);
         }
-        //Common::ToUrl($_SERVER["HTTP_REFERER"]);
     }
     public function plus()
     {
