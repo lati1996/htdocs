@@ -6,6 +6,7 @@ use app\ViewModels\UserVM;
 use core\Common;
 use core\Controller;
 use Exception;
+use app\App;
 
 class SignupController extends Controller
 {
@@ -29,21 +30,33 @@ class SignupController extends Controller
                     $user["Password"] = sha1($user["Password"]);
                     $modeldb = new UserVM();
                     try {
-                        $modeldb->Post($user);
-                        $data["mess"] = "Đăng ký thành công";
+                        $checkPhone = count($modeldb->CheckInfo($user["Phone"])->fetch_all());
+                        $checkAcc = count($modeldb->CheckInfo($user["Account"])->fetch_all());
+                        if ($checkAcc == 0 && $checkPhone == 0) {
+                            $modeldb->Post($user);
+                            $data["mess"] = "Đăng ký thành công";
+                        } else {
+                            $data["error"] = "Vui lòng kiểm tra lại thông tin!";
+                        }
                     } catch (Exception $ex) {
                         $error =  $ex->getMessage();
-                        $data["error"] = $error;
+                        $data["error"] = "Vui lòng kiểm tra lại thông tin!";
                     }
+                } else {
+                    $data["error"] = "Mật khẩu không trùng khớp, vui lòng thử lại!";
                 }
             }
         }
         $this->View($data);
     }
-    public function signout()
+    public function checkinfo()
     {
-        unset($_SESSION["user"]);
-        unset($_SESSION["payment"]);
-        Common::ToUrl("/signin");
+        $modeldb = new UserVM();
+        $info = App::$__params[0];
+        //var_dump($info);
+        $result = count($modeldb->CheckInfo($info)->fetch_all());
+        if ($result != 0) {
+            echo "Đã có người sử dụng";
+        }
     }
 }

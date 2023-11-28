@@ -15,6 +15,37 @@ function AddCart(id) {
         }
     });
 }
+function CheckThisField(key) {
+    var info = document.getElementById(key).value;
+    $.ajax({
+        type: "get",
+        url: `/signup/checkinfo/${info}`,
+        dataType: "html",
+        success: function (response) {
+            if (response != "") {
+                document.getElementById(key).style.border = "1px solid #56ae6c";
+                document.getElementById(key).style.borderWidth = "0.15rem";
+                document.getElementById("w_" + key).style.display = "block";
+            }
+            else {
+                document.getElementById(key).style.border = "1px solid #e8e8e8";
+                document.getElementById("w_" + key).style.display = "none";
+            }
+        }
+    });
+}
+
+function CheckPassword() {
+    var pass = document.getElementById("password").value;
+    var repass = document.getElementById("repassword").value;
+    if (pass != repass) {
+        document.getElementById("w_pass").style.display = "block";
+    }
+    else {
+        document.getElementById("w_pass").style.display = "none";
+    }
+}
+
 function myFunctionPopup(id) {
     var popup = document.getElementById("myPopup-" + id);
     popup.classList.toggle("show");

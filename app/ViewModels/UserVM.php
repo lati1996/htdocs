@@ -80,4 +80,18 @@ class UserVM extends Model
         }
         return $result->fetch_assoc();
     }
+    function CheckInfo($info)
+    {
+
+        if (!empty($info)) {
+            $where = $this->WhereLike("Account", $info);
+            $where .= $this->WhereOr($this->WhereLike("Email", $info));
+            $where .= $this->WhereOr($this->WhereLike("Address", $info));
+            $where .= $this->WhereOr($this->WhereLike("Phone", $info));
+        } else {
+            $where = "1=1";
+        }
+        $sql = "SELECT * FROM `tbl_user` WHERE " . $where;
+        return $this->GetByQuery($sql);
+    }
 }

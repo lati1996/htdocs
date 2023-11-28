@@ -78,6 +78,8 @@
                                 } else {
                                     echo "0";
                                 }
+                            } else {
+                                echo "+";
                             }
                             ?>
                         </span>
