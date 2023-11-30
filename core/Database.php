@@ -15,6 +15,7 @@ class Database
         global $db_config;
         try {
             self::$DbConnect = new mysqli($db_config['host'], $db_config['user'], isset($db_config['pass']) ? $db_config['pass'] : '', $db_config['db']);
+            mysqli_set_charset(self::$DbConnect, 'UTF8');
             //var_dump(self::$DbConnect);
         } catch (Exception $exception) {
             $mess = $exception->getMessage();

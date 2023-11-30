@@ -104,8 +104,6 @@
          <?php
             }
             ?>
-
-
      </div>
  </section>
  <!-- End Categories of The Month -->

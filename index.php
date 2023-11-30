@@ -29,7 +29,7 @@ if (!empty($config['database'])) {
     $db_config = array_filter($config['database']);
 }
 $db = new Database();
-
+var_dump($db);
 $app = new App();
 $contl = app::$__controller;
 $module = app::$__module;

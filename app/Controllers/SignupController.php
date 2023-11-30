@@ -29,17 +29,17 @@ class SignupController extends Controller
                     //var_dump($user);
                     $user["Password"] = sha1($user["Password"]);
                     $modeldb = new UserVM();
-                    try {
-                        $checkPhone = count($modeldb->CheckInfo($user["Phone"])->fetch_all());
-                        $checkAcc = count($modeldb->CheckInfo($user["Account"])->fetch_all());
-                        if ($checkAcc == 0 && $checkPhone == 0) {
+                    $checkPhone = count($modeldb->CheckInfo($user["Phone"])->fetch_all());
+                    $checkAcc = count($modeldb->CheckInfo($user["Account"])->fetch_all());
+                    if ($checkAcc == 0 && $checkPhone == 0) {
+                        try {
                             $modeldb->Post($user);
                             $data["mess"] = "Đăng ký thành công";
-                        } else {
-                            $data["error"] = "Vui lòng kiểm tra lại thông tin!";
+                        } catch (Exception $ex) {
+                            $error =  $ex->getMessage();
+                            $data["error"] = "Xảy ra lỗi....";
                         }
-                    } catch (Exception $ex) {
-                        $error =  $ex->getMessage();
+                    } else {
                         $data["error"] = "Vui lòng kiểm tra lại thông tin!";
                     }
                 } else {
