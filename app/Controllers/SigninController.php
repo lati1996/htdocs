@@ -16,6 +16,7 @@ class SigninController extends Controller
     }
     public function index()
     {
+        $data = [];
         if (isset($_POST["btnSignin"])) {
             $user = $_POST["user"];
             //var_dump($user);
@@ -27,9 +28,11 @@ class SigninController extends Controller
                 $_SESSION["user"] = $result;
                 Common::ToUrl("/home");
                 exit();
+            } else {
+                $data["error"] = "Tài khoản hoặc mật khẩu không đúng";
             }
         }
-        $this->View();
+        $this->View($data);
     }
     public function signout()
     {

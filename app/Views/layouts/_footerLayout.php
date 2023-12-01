@@ -10,18 +10,18 @@
             <div class="col-lg-9 m-auto tempaltemo-carousel">
                 <div class="row d-flex flex-row">
                     <!--Controls-->
-                    <div class="col-1 align-self-center">
+                    <!-- <div class="col-1 align-self-center">
                         <a class="h1" href="#multi-item-example" role="button" data-bs-slide="prev">
                             <i class="text-light fas fa-chevron-left"></i>
                         </a>
-                    </div>
+                    </div> -->
                     <!--End Controls-->
                     <!--Carousel Wrapper-->
-                    <div class="col">
+                    <!-- <div class="col">
                         <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="multi-item-example" data-bs-ride="carousel">
-                            <!--Slides-->
+
                             <div class="carousel-inner product-links-wap" role="listbox">
-                                <!--First slide-->
+ 
                                 <div class="carousel-item">
                                     <div class="row">
                                         <div class="col-3 p-md-5">
@@ -38,9 +38,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--End First slide-->
 
-                                <!--Second slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
                                         <div class="col-3 p-md-5">
@@ -57,9 +55,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--End Second slide-->
 
-                                <!--Third slide-->
                                 <div class="carousel-item">
                                     <div class="row">
                                         <div class="col-3 p-md-5">
@@ -76,21 +72,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--End Third slide-->
 
                             </div>
-                            <!--End Slides-->
                         </div>
-                    </div>
-                    <!--End Carousel Wrapper-->
-
-                    <!--Controls-->
-                    <div class="col-1 align-self-center">
+                    </div> -->
+                    <!-- <div class="col-1 align-self-center">
                         <a class="h1" href="#multi-item-example" role="button" data-bs-slide="next">
                             <i class="text-light fas fa-chevron-right"></i>
                         </a>
-                    </div>
-                    <!--End Controls-->
+                    </div> -->
+
                 </div>
             </div>
         </div>
@@ -198,27 +189,7 @@
 <script src="/public/assets/client/js/templatemo.js"></script>
 <script src="/public/assets/client/js/custom.js"></script>
 <script src="/public/assets/client/js/slick.min.js"></script>
-<script>
-    /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
     $('#carousel-related-product').slick({
         infinite: true,
@@ -249,47 +220,34 @@ toggle between hiding and showing the dropdown content */
             }
         ]
     });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-<script>
-    var citis = document.getElementById("city");
-    var districts = document.getElementById("district");
-    var wards = document.getElementById("ward");
-    var Parameter = {
-        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-        method: "GET",
-        responseType: "application/json",
-    };
-    var promise = axios(Parameter);
-    promise.then(function(result) {
-        renderCity(result.data);
-    });
+    $(document).ready(function() {
+        $.ajax({
+            type: "get",
+            url: `/address/getfulladdress`,
+            dataType: "html",
+            success: function(response) {
+                $("#Address").val(response);
+            }
+        });
+    })
 
-    function renderCity(data) {
-        for (const x of data) {
-            citis.options[citis.options.length] = new Option(x.Name, x.Id);
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
         }
-        citis.onchange = function() {
-            district.length = 1;
-            ward.length = 1;
-            if (this.value != "") {
-                const result = data.filter(n => n.Id === this.value);
-
-                for (const k of result[0].Districts) {
-                    district.options[district.options.length] = new Option(k.Name, k.Id);
-                }
-            }
-        };
-        district.onchange = function() {
-            ward.length = 1;
-            const dataCity = data.filter((n) => n.Id === citis.value);
-            if (this.value != "") {
-                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
-
-                for (const w of dataWards) {
-                    wards.options[wards.options.length] = new Option(w.Name, w.Id);
-                }
-            }
-        };
     }
 </script>

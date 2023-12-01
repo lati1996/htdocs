@@ -121,7 +121,7 @@
                     <input type="text" class="form-control mt-1" id="address" name="user[Address]" placeholder="Số nhà, tên đường, tên cơ quan..." required>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="form-group col-md-2 mb-2">
                 </div>
                 <div class="form-group col-md-2 mb-2">
@@ -143,6 +143,25 @@
                     <select id="ward" name="user[Ward]" class="form-control">
                         <option>Chọn phường xã</option>
                     </select>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="form-group col-md-2 mb-2">
+                </div>
+                <div class="form-group col-md-2 mb-2">
+                </div>
+                <div class="col-2 form-group">
+                    <label for="">Tỉnh</label>
+                    <select id="tinhThanh" name="user[Province]" class="form-control"> </select>
+                </div>
+                <div class="col-2 form-group">
+                    <label for="">Huyện</label>
+                    <select id="quanHuyen" name="user[District]" class="form-control"> </select>
+
+                </div>
+                <div class="col-2 form-group">
+                    <label for="">Xã</label>
+                    <select id="phuongXa" name="user[Ward]" class="form-control"> </select>
                 </div>
             </div>
             <div class="row">

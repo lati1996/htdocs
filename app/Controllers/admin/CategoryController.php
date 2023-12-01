@@ -24,6 +24,7 @@ class CategoryController extends Controller
     }
     public function add()
     {
+        $data = [];
         if (isset($_POST["btnAdd"])) {
             // đã gửi thông tin đăng nhập
             $category = $_POST["category"];
@@ -32,15 +33,18 @@ class CategoryController extends Controller
                 $modeldb = new CategoryVM();
                 try {
                     $modeldb->Post($category);
+                    $data["mess"] = "Thêm danh mục thành công";
                 } catch (Exception $ex) {
-                    echo $ex->getMessage();
+                    $e = $ex->getMessage();
+                    $data["error"] = "Không thành công, liện hệ Hoàng" . $e;
                 }
             }
         }
-        $this->View();
+        $this->View($data);
     }
     public function edit()
     {
+        $data = [];
         if (isset($_POST["btnEdit"])) {
             // đã gửi thông tin đăng nhập
             $category = $_POST["category"];
@@ -50,7 +54,7 @@ class CategoryController extends Controller
                 Common::ToUrl("/admin/category");
             }
         }
-        $this->View();
+        $this->View($data);
     }
     public function delete()
     {

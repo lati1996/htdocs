@@ -97,11 +97,9 @@
             <div class="form-group row">
                 <div class="col-md-12" style="margin:5px;">
                     <label for="" style="font-size: 15px !important;">Địa chỉ: </label>
-                    <!-- <button id="EditAdress" style="border:0;background-color: #FFDC00;border-radius: 0.25rem;">Thay đổi</button> -->
-                    <!-- <p id="Address-View"><b>
-                        <?php echo $_SESSION["user"]["Address"]; ?></b></p> -->
-                    <input type="text" id="Address" class="form-control" name="payment[DeliveryAddress]" value="<?php echo $_SESSION["user"]["Address"]; ?>" style="margin-top:5px;">
+                    <textarea rows="2" id="Address" class="form-control" name="payment[DeliveryAddress]" value="" style="margin-top:5px; resize:none;" readonly></textarea>
                 </div>
+
             </div>
             <div class="form-group row">
                 <div class="col-md-12" style="margin:5px;">

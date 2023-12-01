@@ -34,11 +34,13 @@
                             </div>
                             <hr>
                         </form>
-                        <hr>
+                        <div class="text-center">
+                            <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
+                            <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

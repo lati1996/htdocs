@@ -85,12 +85,15 @@ $modelP = new ProductVM(App::$__params[0]);
                                     <input type="text" class="form-control form-control-user" value="<?php echo $modelP->Description; ?>" name="product[Description]" required>
                                     <br />
                                     <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <div class="col-sm-3 mb-3 mb-sm-0">
+
+                                        </div>
+                                        <div class="col-sm-3 mb-3 mb-sm-0">
                                             <button name="btnEdit" type="submit" class="btn btn-primary btn-user btn-block">
                                                 Xác nhận
                                             </button>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-3">
                                             <a href="/admin/product/" class="btn btn-google btn-user btn-block">
                                                 <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
                                             </a>

@@ -45,9 +45,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Liên hệ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/manage">Dashboard</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">

@@ -71,7 +71,7 @@ $(function () {
     // lấy danh sách tỉnh
     $.ajax({
         type: "get",
-        url: "/app/TinhThanh.php",
+        url: "/address/filladdress",
         dataType: "html",
         success: function (response) {
             $("#tinhThanh").html(response);
@@ -87,7 +87,7 @@ $(function () {
         var maTinh = $(this).val();
         $.ajax({
             type: "get",
-            url: `/app/TinhThanh.php?maTinh=${maTinh}`,
+            url: `/address/filladdress/?maTinh=${maTinh}`,
             dataType: "html",
             success: function (response) {
                 $("#quanHuyen").html(response);
@@ -102,7 +102,7 @@ $(function () {
         var maHuyen = $(this).val();
         $.ajax({
             type: "get",
-            url: `/app/TinhThanh.php?maTinh=${maTinh}&maHuyen=${maHuyen}`,
+            url: `/address/filladdress/?maTinh=${maTinh}&maHuyen=${maHuyen}`,
             dataType: "html",
             success: function (response) {
                 $("#phuongXa").html(response);

@@ -17,6 +17,14 @@
                     <input type="password" class="form-control mt-1" id="name" name="user[Password]" placeholder="Mật khẩu" required>
                 </div>
             </div>
+            <div class="row">
+                <div class="form-group col-md-4 mb-3">
+                </div>
+                <div class="form-group col-md-4 mb-3">
+                    <p class="" style="color:red;"><?php echo isset($error) ? $error : null ?></p>
+                    <p class="" style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
+                </div>
+            </div>
             <div class=" row">
                 <div class="form-group col-md-5 mb-3">
                 </div>
