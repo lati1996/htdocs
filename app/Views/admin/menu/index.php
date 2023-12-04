@@ -1,10 +1,11 @@
 <!-- Page Heading -->
 <?php
 
-use app\ViewModels\CategoryVM;
+use app\ViewModels\MenuVM;
+use app\ViewModels\MenuItemVM;
 use core\Common;
 
-$model = new CategoryVM();
+$model = new MenuItemVM();
 $totalRow = 0;
 //trang hien tai
 $indexPage = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
@@ -16,10 +17,10 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách Danh mục</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách Menu</h6>
     </div>
     <div class="card-body">
-        <form method="get" action="/admin/client/index/" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form method="get" action="/admin/menu/index/" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
                 <input name="keyword" type="text" class="form-control bg-light border-0 small" placeholder="Tìm..." value="<?php echo isset($keyword) ? $keyword : ""; ?>" aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
@@ -35,16 +36,22 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tên danh mục</th>
-                        <th>Mô tả</th>
+                        <th>Tên Menu</th>
+                        <th>Nhóm Menu</th>
+                        <th>Link</th>
+                        <th>Icon</th>
+                        <th>Thứ tự</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Tên danh mục</th>
-                        <th>Mô tả</th>
+                        <th>Tên Menu</th>
+                        <th>Nhóm Menu</th>
+                        <th>Link</th>
+                        <th>Icon</th>
+                        <th>Thứ tự</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
                 </tfoot>
@@ -52,21 +59,33 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                     <?php
                     if (!empty($data)) {
                         while ($row = $data->fetch_array()) {
-                            $_item = new CategoryVM($row);
+                            $_item = new MenuItemVM($row);
                     ?>
                             <tr>
                                 <td>
                                     <?php echo $_item->Id; ?>
                                 </td>
                                 <td>
-                                    <?php echo $_item->CategoryName; ?><br />
+                                    <?php echo $_item->Name; ?>
                                 </td>
                                 <td>
-                                    <?php echo $_item->Description; ?>
+                                    <?php
+                                    $group = new MenuVM($_item->IdGroup);
+                                    echo $group->MenuGroupName;
+                                    ?>
                                 </td>
                                 <td>
-                                    <a href="/admin/category/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
-                                    <a onclick="return confirm('Xoá Danh mục sản phẩm này?')" href="/admin/category/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
+                                    <?php echo $_item->Link; ?>
+                                </td>
+                                <td>
+                                    <?php echo $_item->Icon; ?>
+                                </td>
+                                <td>
+                                    <?php echo $_item->OrderNum; ?>
+                                </td>
+                                <td>
+                                    <a href="/admin/menu/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
+                                    <a onclick="return confirm('Xoá Danh mục sản phẩm này?')" href="/admin/menu/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
 
                                 </td>
                             </tr>
@@ -74,7 +93,6 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                         }
                     }
                     ?>
-
                 </tbody>
             </table>
             <?php
@@ -82,7 +100,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
             $trangHienTai = intval($_GET["page"]);
             $trangHienTai = max(1, $trangHienTai);
             $soTrang = ceil($totalRow / $pageNumber);
-            Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/category/index/?page=[i]&number={$pageNumber}");
+            Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/menu/index/?page=[i]&number={$pageNumber}");
             ?>
         </div>
     </div>

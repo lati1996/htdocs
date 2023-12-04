@@ -16,8 +16,8 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
 ?>
 <div class="container py-5">
     <div class="row">
-        <div class="col-lg-3">
-            <h1 class="h2 pb-4">Danh mục Sản phẩm</h1>
+        <div class="col-lg-2">
+            <h1 class="h3 pb-4 text-success">DANH MỤC</h1>
             <ul class="list-unstyled templatemo-accordion">
                 <div class="pb-3">
                     <?php
@@ -25,9 +25,9 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                         while ($row = $dataCate->fetch_array()) {
                             $item = new CategoryVM($row);
                     ?>
-                            <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="/products/category/tag=<?php echo $item->Id; ?>">
+                            <a class="collapsed d-flex justify-content-between h4 text-decoration-none" href="/products/category/tag=<?php echo $item->Id; ?>">
                                 <?php echo $item->CategoryName; ?>
-                                <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                                <i class="pull-right fas fa-caret-right mt-1"></i>
                             </a>
                             <br />
                     <?php
@@ -39,12 +39,12 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                 </div>
             </ul>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-10">
             <div class="row">
                 <div class="col-md-6">
                     <ul class="list-inline shop-top-menu pb-3 pt-1">
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="/products">Tất cả</a>
+                            <a class="h3 text-dark text-decoration-none mr-3" href="/products">Tất cả sản phẩm</a>
                         </li>
                     </ul>
                 </div>
