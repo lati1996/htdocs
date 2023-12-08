@@ -22,7 +22,7 @@ $data = $model->GetDataTable();
                                     <input type="text" class="form-control form-control-user" id="" placeholder="Tên Menu" name="item[Name]" required>
                                 </div>
                                 <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="item[IdGroup]" required>
+                                    <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="item[IdGroup]" onchange="GetOrderNum()" id="slGroup" required>
                                         <option value="0" selected>Chọn nhóm Menu</option>
                                         <?php
 
@@ -48,7 +48,7 @@ $data = $model->GetDataTable();
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <input type="number" class="form-control form-control-user" id="" placeholder="Thứ tự" name="item[OrderNum]" required>
+                                    <input type="number" class="form-control form-control-user" id="num" placeholder="Thứ tự" name="item[OrderNum]" required>
                                 </div>
                                 <div class="col-sm-6 mb-6 mb-sm-0">
 

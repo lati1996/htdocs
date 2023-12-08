@@ -102,4 +102,10 @@ class ProductVM extends Model
     {
         return $this->UPDATE(ProductVM::tableName, $item, $this->WhereEq("Id", $item["Id"]));
     }
+    function GetIdbyImg($img)
+    {
+        $item = $this->GetByQuery("SELECT * FROM `tbl_Product` WHERE `Image` = '" . $img . "'")->fetch_array();
+        $data = new ProductVM($item);
+        return $data->Id;
+    }
 }

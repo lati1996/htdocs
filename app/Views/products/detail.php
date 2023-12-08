@@ -2,10 +2,12 @@
 
 use app\App;
 use app\ViewModels\ProductVM;
+use app\ViewModels\ImageVM;
 
 $idProd = App::$__params[0];
 $idProd = str_replace("product=", "", $idProd);
 $model = new ProductVM($idProd);
+$modelmg = new ImageVM();
 ?>
 <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -43,71 +45,127 @@ $model = new ProductVM($idProd);
                     <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
                         <!--Start Slides-->
                         <div class="carousel-inner product-links-wap" role="listbox">
-
                             <!--First slide-->
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_01.jpg" alt="Product Image 1">
+                                            <img class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="">
                                         </a>
                                     </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_02.jpg" alt="Product Image 2">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_03.jpg" alt="Product Image 3">
-                                        </a>
-                                    </div>
+                                    <?php
+                                    $dataimg1 = $modelmg->GetImageShow1($model->Id);
+                                    if ($dataimg1) {
+                                        while ($rowimg = $dataimg1->fetch_array()) {
+                                            $itemimg = new ImageVM($rowimg);
+                                    ?>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                </a>
+                                            </div>
+                                    <?php
+
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <!--/.First slide-->
-
                             <!--Second slide-->
                             <div class="carousel-item">
                                 <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_04.jpg" alt="Product Image 4">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_05.jpg" alt="Product Image 5">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_06.jpg" alt="Product Image 6">
-                                        </a>
-                                    </div>
+                                    <?php
+                                    $dataimg2 = $modelmg->GetImageShow2($model->Id);
+                                    if ($dataimg2) {
+                                        while ($rowimg = $dataimg2->fetch_array()) {
+                                            $itemimg = new ImageVM($rowimg);
+                                    ?>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                </a>
+                                            </div>
+                                    <?php
+
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <!--/.Second slide-->
-
                             <!--Third slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_07.jpg" alt="Product Image 7">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_08.jpg" alt="Product Image 8">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="/public/assets/client/img/product_single_09.jpg" alt="Product Image 9">
-                                        </a>
+                            <?php
+                            $dataimg3 = $modelmg->GetImageShow3($model->Id);
+                            if ($dataimg3) {
+                            ?>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <?php
+                                        while ($rowimg = $dataimg3->fetch_array()) {
+                                            $itemimg = new ImageVM($rowimg);
+                                        ?>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                </a>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
-                            </div>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            $dataimg4 = $modelmg->GetImageShow4($model->Id);
+                            if ($dataimg4) {
+                            ?>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <?php
+                                        while ($rowimg = $dataimg4->fetch_array()) {
+                                            $itemimg = new ImageVM($rowimg);
+                                        ?>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                </a>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            $dataimg5 = $modelmg->GetImageShow5($model->Id);
+                            if ($dataimg5) {
+                            ?>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <?php
+                                        while ($rowimg = $dataimg5->fetch_array()) {
+                                            $itemimg = new ImageVM($rowimg);
+                                        ?>
+                                            <div class="col-4">
+                                                <a href="#">
+                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                </a>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            ?>
                             <!--/.Third slide-->
                         </div>
                         <!--End Slides-->
@@ -188,12 +246,15 @@ $model = new ProductVM($idProd);
                                 </div>
                             </div>
                             <div class="row pb-3">
-                                <div class="col d-grid">
+                                <div class="col-sm-2"></div>
+
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-lg" name="submit" value="addtocard" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;"><i class='fas fa-cart-plus'></i>Thêm vào giỏ hàng</button>
+                                </div>
+                                <div class="col-sm-4">
                                     <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua ngay</button>
                                 </div>
-                                <div class="col d-grid">
-                                    <button type="submit" class="btn btn-warning btn-lg" name="submit" value="addtocard">Thêm vào giỏ hàng</button>
-                                </div>
+
                             </div>
                         </form>
 

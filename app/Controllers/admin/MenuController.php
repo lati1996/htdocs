@@ -72,4 +72,12 @@ class MenuController extends Controller
             echo $ex->getMessage();
         }
     }
+    public function GetOrderNum()
+    {
+        $id = App::$__params[0];
+        $modeldb = new MenuItemVM();
+        $num = $modeldb->GetDataTable("`OrderNum` = (SELECT MAX(`OrderNum`) FROM `tbl_menuitem`) AND `IdGroup` = " . $id)->fetch_array();
+        $result = new MenuItemVM($num);
+        echo $result->OrderNum + 1;
+    }
 }

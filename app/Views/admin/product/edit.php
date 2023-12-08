@@ -3,6 +3,7 @@
 use app\App;
 use app\ViewModels\CategoryVM;
 use app\ViewModels\ProductVM;
+use app\ViewModels\ImageVM;
 
 $model = new CategoryVM();
 $data = $model->GetDataTable();
@@ -74,36 +75,63 @@ $modelP = new ProductVM(App::$__params[0]);
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-4 mb-3 mb-sm-0">
-                                    <label for="">Hình ảnh</label><br />
-                                    <input type="file" class=" btn btn-light btn-icon-split" name="fileToUpload" id="fileToUpload">
-                                    <img src="/public/uploads/<?php echo $modelP->Image; ?>" height="300"><br />
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <label for="">Mô tả</label><br />
+                                    <textarea rows="4" style="resize: none;" class="form-control" id="" placeholder="Mô tả" name="product[Description]" required><?php echo $modelP->Description; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-6 mb-sm-0 text-center">
+                                    <label for="">Ảnh chính (Tối đa 01 ảnh)</label><br />
+                                    <input type="file" class="btn btn-light btn-icon-split" name="fileToUpload" id="fileToUpload" multiple>
+                                    <img src="/public/uploads/<?php echo $modelP->Image; ?>" width="500" style="border-radius:5px;"><br />
                                     <?php echo $modelP->Image; ?><br />
                                 </div>
-                                <div class="col-sm-8">
-                                    <label for="">Mô tả</label><br />
-                                    <input type="text" class="form-control form-control-user" value="<?php echo $modelP->Description; ?>" name="product[Description]" required>
-                                    <br />
-                                    <div class="form-group row">
-                                        <div class="col-sm-3 mb-3 mb-sm-0">
+                                <div class="col-sm-6 text-center">
+                                    <label for="">Ảnh phụ (Tối đa 14 ảnh)</label><br />
+                                    <input type="file" class="form-control-user" name="fileToUploadBonus[]" id="fileToUploadBonus" multiple>
+                                    <table>
+                                        <?php
+                                        $img = new ImageVM();
+                                        $dataImage = $img->GetDataTable();
+                                        if ($dataImage) {
+                                            while ($rowi = $dataImage->fetch_array()) {
+                                                $itemimg = new ImageVM($rowi);
+                                                if ($itemimg->IdProd == $modelP->Id) {
+                                        ?>
+                                                    <tr>
+                                                        <td> <img src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" width="250px" style="border-radius:5px;"></td>
+                                                        <td class="text-center" style="width: 150px;">
+                                                            <a onclick="return confirm('Xoá ảnh này?')" href="/admin/product/deleteImg/<?php echo $itemimg->Id ?>" class="btn btn-danger"><i class='fas fa-trash'></i></a>
+                                                        </td>
+                                                    </tr>
+                                        <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </table>
 
-                                        </div>
-                                        <div class="col-sm-3 mb-3 mb-sm-0">
-                                            <button name="btnEdit" type="submit" class="btn btn-primary btn-user btn-block">
-                                                Xác nhận
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <a href="/admin/product/" class="btn btn-google btn-user btn-block">
-                                                <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="text-center" style="color:red;"><?php echo isset($error) ? $mess : null ?></p>
-                                        <p class="text-center" style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
-                                    </div>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+
+                                </div>
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <button name="btnEdit" type="submit" class="btn btn-primary btn-user btn-block">
+                                        Xác nhận
+                                    </button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <a href="/admin/product/" class="btn btn-google btn-user btn-block">
+                                        <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <p style="color:red;"><?php echo isset($error) ? $mess : null ?></p>
+                                <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
                             </div>
                         </form>
                     </div>

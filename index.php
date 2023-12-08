@@ -30,6 +30,7 @@ if (!empty($config['database'])) {
 }
 $db = new Database();
 //var_dump($db);
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 $app = new App();
 $contl = app::$__controller;
 $module = app::$__module;

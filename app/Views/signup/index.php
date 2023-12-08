@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group col-md-4 mb-3">
                     <!-- <label for="inputemail">Tài khoản/Email</label> -->
-                    <input type="text" class="form-control mt-1" id="name" name="user[Name]" placeholder="" required>
+                    <input type="text" class="form-control mt-1" id="name" name="user[Name]" placeholder="" autofocus required>
                 </div>
             </div>
             <div class="row">

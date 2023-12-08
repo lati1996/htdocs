@@ -83,7 +83,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                 <td>
                                     <?php echo $_item->OrderNum; ?>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a href="/admin/menu/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
                                     <a onclick="return confirm('Xoá Danh mục sản phẩm này?')" href="/admin/menu/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
 

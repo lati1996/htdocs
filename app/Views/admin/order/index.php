@@ -1,10 +1,10 @@
 <!-- Page Heading -->
 <?php
 
-use app\ViewModels\CategoryVM;
+use app\ViewModels\OrderVM;
 use core\Common;
 
-$model = new CategoryVM();
+$model = new OrderVM();
 $totalRow = 0;
 //trang hien tai
 $indexPage = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
@@ -16,10 +16,10 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách Danh mục</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách Đơn hàng</h6>
     </div>
     <div class="card-body">
-        <form method="get" action="/admin/client/index/" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form method="get" action="/admin/order/index/" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
                 <input name="keyword" type="text" class="form-control bg-light border-0 small" placeholder="Tìm..." value="<?php echo isset($keyword) ? $keyword : ""; ?>" aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
@@ -34,17 +34,23 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Tên danh mục</th>
-                        <th>Mô tả</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Tổng hàng (món)</th>
+                        <th>Ngày tạo đơn</th>
+                        <th>Phương thức thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th>Tổng giá</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
-                        <th>Tên danh mục</th>
-                        <th>Mô tả</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Tổng hàng (món)</th>
+                        <th>Ngày tạo đơn</th>
+                        <th>Phương thức thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th>Tổng giá</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
                 </tfoot>
@@ -52,21 +58,38 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                     <?php
                     if (!empty($data)) {
                         while ($row = $data->fetch_array()) {
-                            $_item = new CategoryVM($row);
+                            $_item = new OrderVM($row);
                     ?>
                             <tr>
                                 <td>
                                     <?php echo $_item->Id; ?>
                                 </td>
                                 <td>
-                                    <?php echo $_item->CategoryName; ?><br />
+                                    <?php echo $_item->TotalItem; ?>
                                 </td>
                                 <td>
-                                    <?php echo $_item->Description; ?>
+                                    <?php echo $_item->DateCreate; ?>
+                                </td>
+                                <td>
+                                    <?php if ($_item->PaymentMethod == 0) {
+                                        echo "COD";
+                                    } else {
+                                        echo "Momo";
+                                    } ?>
+                                </td>
+                                <td>
+                                    <?php if ($_item->PaymentStatus == 0) {
+                                        echo "Chưa thanh toán";
+                                    } else {
+                                        echo "Đã thanh toán";
+                                    } ?>
+                                </td>
+                                <td>
+                                    <?php echo Common::ViewMoney($_item->TotalPrice); ?>
                                 </td>
                                 <td class="text-center">
-                                    <a href="/admin/category/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
-                                    <a onclick="return confirm('Xoá Danh mục sản phẩm này?')" href="/admin/category/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
+                                    <a href="/admin/order/detail/<?php echo $_item->Id ?>" class="btn btn-primary">Chi tiết</a>
+                                    <a onclick="return confirm('Huỷ đơn hàng này?')" href="/admin/order/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Huỷ</a>
 
                                 </td>
                             </tr>
@@ -82,7 +105,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
             $trangHienTai = intval($_GET["page"]);
             $trangHienTai = max(1, $trangHienTai);
             $soTrang = ceil($totalRow / $pageNumber);
-            Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/category/index/?page=[i]&number={$pageNumber}");
+            Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/order/index/?page=[i]&number={$pageNumber}");
             ?>
         </div>
     </div>

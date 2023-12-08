@@ -57,12 +57,19 @@ $data = $model->GetDataTable();
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                <div class="col-sm-12">
+                                    <textarea rows="4" style="resize: none;" class="form-control" id="" placeholder="Mô tả" name="product[Description]" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                    <label for="">Ảnh sản phẩm:</label>
                                     <input type="file" class="form-control-user" name="fileToUpload" id="fileToUpload" required>
                                     <!-- <input type="text" class="form-control form-control-user" id="" placeholder="Hình ảnh" name="product[Image]" required> -->
                                 </div>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control form-control-user" id="" placeholder="Mô tả" name="product[Description]" required>
+                                <div class="col-sm-6">
+                                    <label for="">Ảnh phụ:</label>
+                                    <input type="file" class="form-control-user" name="fileToUploadBonus[]" id="fileToUploadBonus" multiple>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -81,9 +88,10 @@ $data = $model->GetDataTable();
                                 </div>
                             </div>
                         </form>
-                        <p style="color:red;"><?php echo isset($error) ? $mess : null ?></p>
-                        <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
-                        <hr>
+                        <div class="form-group text-center">
+                            <p style="color:red;"><?php echo isset($error) ? $mess : null ?></p>
+                            <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
+                        </div>
                     </div>
                 </div>
             </div>

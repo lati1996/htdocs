@@ -25,7 +25,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
         <h6 class="m-0 font-weight-bold text-primary">Danh sách Sản phẩm</h6>
     </div>
     <div class="card-body">
-        <form method="get" action="/admin/client/index/" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form method="get" action="/admin/product/index/" class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
                 <input name="keyword" type="text" class="form-control bg-light border-0 small" placeholder="Tìm..." value="<?php echo isset($keyword) ? $keyword : ""; ?>" aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
@@ -36,6 +36,13 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
             </div>
         </form>
         <hr>
+        <?php
+        $_GET["page"] = isset($_GET["page"]) ? $_GET["page"] : "1";
+        $trangHienTai = intval($_GET["page"]);
+        $trangHienTai = max(1, $trangHienTai);
+        $soTrang = ceil($totalRow / $pageNumber);
+        Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/product/index/?page=[i]&number={$pageNumber}");
+        ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -108,8 +115,8 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                     <?php echo $_item->toPrice(); ?>
                                 </td>
                                 <td style="width:200px;">
-                                    <img src="/public/uploads/<?php echo $_item->Image; ?>" style="width:100%;"><br />
-                                <td>
+                                    <img src="/public/uploads/<?php echo $_item->Image; ?>" style="width:100%;border-radius:5px;"><br />
+                                <td class="text-center">
                                     <a href="/admin/product/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
                                     <a onclick="return confirm('Xoá người dùng này?')" href="/admin/product/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
 

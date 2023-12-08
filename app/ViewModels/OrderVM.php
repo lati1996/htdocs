@@ -12,6 +12,8 @@ class OrderVM extends Model
     public $TotalPrice;
     public $PaymentStatus;
     public $DeliveryAddress;
+    public $DateCreate;
+    public $PaymentMethod;
 
     const tableName = "tbl_order";
     function __construct($item = null)
@@ -26,6 +28,8 @@ class OrderVM extends Model
         $this->TotalPrice = isset($item["TotalPrice"]) ? $item["TotalPrice"] : null;
         $this->PaymentStatus = isset($item["PaymentStatus"]) ? $item["PaymentStatus"] : null;
         $this->DeliveryAddress = isset($item["DeliveryAddress"]) ? $item["DeliveryAddress"] : null;
+        $this->DateCreate = isset($item["DateCreate"]) ? $item["DateCreate"] : null;
+        $this->PaymentMethod = isset($item["PaymentMethod"]) ? $item["PaymentMethod"] : null;
     }
     function Post($item)
     {

@@ -44,7 +44,7 @@
                                     <li class="list-inline-item"><a href="/cart/minus/<?php echo $_item->Id; ?>" class="btn btn-success">-</a></li>
                                     <li class="list-inline-item"><span class="badge bg-secondary" id="var-value"><?php echo $_item->Quanity; ?></span></li>
                                     <li class="list-inline-item"><a href="/cart/plus/<?php echo $_item->Id; ?>" class="btn btn-success">+</a></li>
-                                    <a class="btn" href="/cart/delete/<?php echo $_item->Id; ?>" style="height: 35px; margin-top: 5px;"><img src="\public\assets\client\img\trash.svg"></a>
+                                    <a class="btn" href="/cart/delete/<?php echo $_item->Id; ?>" style="height: 35px; margin-top: 5px;"><i class='fas fa-trash'></i></a>
                                 </td>
                                 <td><?php echo $_prod->toPrice(); ?></td>
                                 <td><?php echo Common::ViewMoney($_item->TotalPrice()); ?></td>
@@ -102,26 +102,31 @@
 
             </div>
             <div class="form-group row">
-                <div class="col-md-12" style="margin:5px;">
+                <div class="col-md-12 text-center" style="margin:5px;">
                     <label for="" style="font-size: 15px !important;">
                         <h5><b>Tổng đơn hàng: <?php echo Common::ViewMoney($totalCart); ?></b></h5>
                         <input type="number" value="<?php echo $totalCart; ?>" name="payment[TotalCart]" hidden>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-12" style="margin:5px;">
+                <div class="col-md-12 text-center" style="margin:5px;">
                     <label for="" style="font-size: 15px !important;">Phương thức thanh toán:</label>
-                    <select class="form-control" name="payment[MethodPayment]">
+                    <select class="form-control text-center" name="payment[PaymentMethod]">
                         <option value="0">Thanh toán qua MOMO</option>
                         <option value="1">Thanh toán khi nhận hàng</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group row text-center" style="margin-top: 20px;margin-bottom: 20px;">
-                <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-md-12 text-center" style="margin:5px;">
                     <button name="btnConfirm" id="btnConfirm" class="btn btn-primary" type="submit"><b>Xác nhận</b></button>
                 </div>
             </div>
         </form>
+        <div class="form-group row">
+            <div class="col-md-12 text-center" style="margin:5px;">
+                <a href="/account" id="" class="btn btn-warning"><b>Thay đổi thông tin cá nhân</b></a>
+            </div>
+        </div>
     </div>
 </div>

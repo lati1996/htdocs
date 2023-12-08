@@ -13,7 +13,7 @@ $baseController = new Controller();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="/public/assets/client/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/public/assets/client/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/public/assets/client/img/favicon-32x32.png">
 
     <link rel="stylesheet" href="/public/assets/client/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/assets/client/css/templatemo.css">

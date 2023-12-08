@@ -82,7 +82,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                 <td>
                                     <?php echo $_item->Address; ?>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a href="/admin/user/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
                                     <a onclick="return confirm('Xoá người dùng này?')" href="/admin/user/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
 

@@ -43,6 +43,8 @@ class CartController extends Controller
                 $order["DeliveryAddress"] = $_SESSION["payment"]["DeliveryAddress"];
                 $order["PaymentStatus"] = "0";
                 $order["TotalItem"] = $totalItem;
+                $order["DateCreate"] = Date("Y-m-d H:i:s");
+                $order["PaymentMethod"] = $_SESSION["payment"]["PaymentMethod"];
                 $modelOrder = new OrderVM();
                 $modelOrder->Post($order);
                 Common::ToUrl("/cart/payment");

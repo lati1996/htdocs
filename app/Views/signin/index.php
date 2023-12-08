@@ -6,7 +6,7 @@
                 </div>
                 <div class="form-group col-md-4 mb-3">
                     <!-- <label for="inputemail">Tài khoản/Email</label> -->
-                    <input type="text" class="form-control mt-1" id="email" name="user[Email]" placeholder="Tài khoản" required>
+                    <input type="text" class="form-control mt-1" id="email" name="user[Email]" placeholder="Tài khoản" autofocus required>
                 </div>
             </div>
             <div class="row">

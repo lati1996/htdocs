@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         parent::__construct();
         $this->setLayout("app/Views/layouts/_Layout.php");
-        $this->setTitle("hT Store - Chăn drap gối nệm");
+        $this->setTitle("Store - Drap gối nệm");
     }
     public function index()
     {
