@@ -1,7 +1,7 @@
-function AddCart(id) {
+function AddCart(id, qua) {
     $.ajax({
         type: "get",
-        url: `/cart/add/${id}`,
+        url: `/cart/add/?proid=${id}&qua=${qua}`,
         dataType: "html",
         success: function (response) {
             if (response == "") {
@@ -112,4 +112,3 @@ $(function () {
         });
     });
 });
-

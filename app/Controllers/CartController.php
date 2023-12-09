@@ -54,21 +54,23 @@ class CartController extends Controller
     }
     public function add()
     {
-        $idProd = App::$__params[0];
-        $idUser = $_SESSION["user"]["Id"];
-        $cartModel = new CartVM();
-        $data["IdUser"] = $idUser;
-        $data["IdProd"] = $idProd;
-        $data["Status"] = '0';
-        $check = $cartModel->CheckCart($data);
-        //var_dump($check);
-        if (empty($check)) {
-            $data["Quanity"] = 1;
-            $cartModel->Post($data);
-        } else {
-            $check["Quanity"] += 1;
-            $cartModel->Put($check);
-            //Common::ToUrl($_SERVER["HTTP_REFERER"]);
+        if (isset($_GET["proid"]) && isset($_GET["qua"])) {
+            $idProd = $_GET["proid"];
+            $idUser = $_SESSION["user"]["Id"];
+            $cartModel = new CartVM();
+            $data["IdUser"] = $idUser;
+            $data["IdProd"] = $idProd;
+            $data["Status"] = '0';
+            $check = $cartModel->CheckCart($data);
+            //var_dump($check);
+            if (empty($check)) {
+                $data["Quanity"] = $_GET["qua"];
+                $cartModel->Post($data);
+            } else {
+                $check["Quanity"] += $_GET["qua"];
+                $cartModel->Put($check);
+                //Common::ToUrl($_SERVER["HTTP_REFERER"]);
+            }
         }
     }
     public function plus()

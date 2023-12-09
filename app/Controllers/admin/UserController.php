@@ -77,7 +77,7 @@ class UserController extends Controller
         $modeldb = new UserVM();
         try {
             $modeldb->Delete($id);
-            Common::ToUrl("/admin/user");
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }

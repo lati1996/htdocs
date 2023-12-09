@@ -56,6 +56,9 @@
 <!-- Page level custom scripts -->
 <script src="/public/assets/admin/js/demo/chart-area-demo.js"></script>
 <script src="/public/assets/admin/js/demo/chart-pie-demo.js"></script>
+<script>
+    CKEDITOR.replace('editor1');
+</script>
 </body>
 
 </html>

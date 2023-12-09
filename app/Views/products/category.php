@@ -84,7 +84,7 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                                             <!-- <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li> -->
                                             <li><a class="btn btn-success text-white mt-2" id="myImg-<?php echo $_item->Id; ?>"><i class="far fa-eye"></i></a></li>
                                             <div class="popup" onclick="myFunctionPopup(<?php echo $_item->Id; ?>)">
-                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>)"><i class="fas fa-cart-plus"></i></button></li>
+                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button></li>
                                                 <span class="popuptext" id="myPopup-<?php echo $_item->Id; ?>">Đã thêm vào giỏ hàng</span>
                                             </div>
                                         </ul>

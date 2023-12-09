@@ -20,13 +20,16 @@ $data = $modelP->GetDataTable();
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Sửa Menu</h1>
                         </div>
-                        <form class="user" method="post" action="">
+                        <form class="user" method="post" action="" enctype="multipart/form-data" autocomplete="off">
                             <div class="form-group row">
                                 <input value="<?php echo $model->Id; ?>" name="item[Id]" hidden>
-                                <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="" placeholder="Họ tên" name="item[Name]" value="<?php echo $model->Name; ?>" required>
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <textarea class="form-control form-control-user" id="editor1" placeholder="Mô tả" name="item[Name]" required><?php echo $model->Name; ?></textarea>
                                 </div>
-                                <div class="col-sm-6 mb-6 mb-sm-0">
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-4 mb-sm-0">
                                     <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="item[IdGroup]" onchange="GetOrderNum()" id="slGroup" required>
                                         <option value="0" selected>Chọn nhóm Menu</option>
                                         <?php
@@ -43,18 +46,21 @@ $data = $modelP->GetDataTable();
                                         ?>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="" placeholder="Link" name="item[Link]" value="<?php echo $model->Link; ?>" required>
+                                <div class="col-sm-4 mb-4 mb-sm-0">
+                                    <input type="number" class="form-control form-control-user" id="num" placeholder="Thứ tự" name="item[OrderNum]" value="<?php echo $model->OrderNum; ?>" required>
                                 </div>
-                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                <div class="col-sm-4 mb-4 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="" placeholder="Icon" name="item[Icon]" value="<?php echo $model->Icon; ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <input type="number" class="form-control form-control-user" id="num" placeholder="Thứ tự" name="item[OrderNum]" value="<?php echo $model->OrderNum; ?>" required>
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="" placeholder="Link" name="item[Link]" value="<?php echo $model->Link; ?>" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <input type="file" class="form-control-user" name="fileToUpload" id="fileToUpload">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -73,6 +79,10 @@ $data = $modelP->GetDataTable();
                             </div>
                             <hr>
                         </form>
+                        <div class="text-center">
+                            <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
+                            <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
+                        </div>
                     </div>
                 </div>
             </div>

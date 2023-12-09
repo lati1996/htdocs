@@ -14,14 +14,16 @@ $data = $model->GetDataTable();
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Thêm Menu</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Thêm Menu Item</h1>
                         </div>
-                        <form class="user" method="post" action="">
+                        <form class="user" method="post" action="" enctype="multipart/form-data" autocomplete="off">
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="" placeholder="Tên Menu" name="item[Name]" required>
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <textarea id="editor1" type="text" class="form-control form-control-user" placeholder="Mô tả" name="item[Name]" required></textarea>
                                 </div>
-                                <div class="col-sm-6 mb-6 mb-sm-0">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-4 mb-sm-0">
                                     <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="item[IdGroup]" onchange="GetOrderNum()" id="slGroup" required>
                                         <option value="0" selected>Chọn nhóm Menu</option>
                                         <?php
@@ -37,21 +39,21 @@ $data = $model->GetDataTable();
                                         ?>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="" placeholder="Link" name="item[Link]" required>
+                                <div class="col-sm-4 mb-4 mb-sm-0">
+                                    <input type="number" class="form-control form-control-user" id="num" placeholder="Thứ tự" name="item[OrderNum]" required>
                                 </div>
-                                <div class="col-sm-6 mb-6 mb-sm-0">
+                                <div class="col-sm-4 mb-4 mb-sm-0">
                                     <input type="text" class="form-control form-control-user" id="" placeholder="Icon" name="item[Icon]">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-6 mb-sm-0">
-                                    <input type="number" class="form-control form-control-user" id="num" placeholder="Thứ tự" name="item[OrderNum]" required>
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="" placeholder="Link" name="item[Link]" required>
                                 </div>
-                                <div class="col-sm-6 mb-6 mb-sm-0">
-
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <input type="file" class="form-control-user" name="fileToUpload" id="fileToUpload" required>
                                 </div>
                             </div>
                             <div class="form-group row">

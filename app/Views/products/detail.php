@@ -230,7 +230,7 @@ $modelmg = new ImageVM();
                             <li>Excepteur sint</li>
                         </ul> -->
 
-                        <form action="" method="GET">
+                        <form action="" method="POST">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-auto">
@@ -240,24 +240,27 @@ $modelmg = new ImageVM();
                                             <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                                         </li>
                                         <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                                        <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                                        <li class="list-inline-item"><span class="badge bg-secondary" name="item[Quanity]" id="var-value">1</span></li>
                                         <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="row pb-3">
                                 <div class="col-sm-2"></div>
-
                                 <div class="col-sm-4">
-                                    <button type="submit" class="btn btn-lg" name="submit" value="addtocard" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;"><i class='fas fa-cart-plus'></i>Thêm vào giỏ hàng</button>
+                                    <input id="number" name=item[Quanity] hidden value="1">
+                                    <input id="id-prod" name=item[Id] value="<?php echo $model->Id; ?>" hidden>
+                                    <button class="btn btn-lg" name="btnAddCart" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;"><i class='fas fa-cart-plus'></i>Thêm vào giỏ hàng</button>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua ngay</button>
+                                    <button class="btn btn-success btn-lg" name="btnBuy">Mua ngay</button>
                                 </div>
-
+                            </div>
+                            <div class="form-group text-center">
+                                <p style="color:#64647d;"><?php echo isset($error) ? $error : null ?></p>
+                                <p style="color:#64647d;"><?php echo isset($mess) ? $mess : null ?></p>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -292,7 +295,7 @@ $modelmg = new ImageVM();
                                             <!-- <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li> -->
                                             <li><a class="btn btn-success text-white mt-2" href="/products/detail/product=<?php echo $item->Id; ?>"><i class="far fa-eye"></i></a></li>
                                             <div class="popup" onclick="myFunctionPopup(<?php echo $item->Id; ?>)">
-                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $item->Id; ?>)"><i class="fas fa-cart-plus"></i></button></li>
+                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button></li>
                                                 <span class="popuptext" id="myPopup-<?php echo $item->Id; ?>">Đã thêm vào giỏ hàng</span>
                                             </div>
                                         </ul>

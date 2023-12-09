@@ -2,6 +2,9 @@
  <?php
 
     use app\ViewModels\ProductVM;
+    use app\ViewModels\MenuItemVM;
+
+    $menuitem = new MenuItemVM();
     ?>
  <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
      <ol class="carousel-indicators">
@@ -15,17 +18,14 @@
                  <div class="row p-5">
                      <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
                          <div class="text-align-left align-self-center">
-                             <h1 class="h1 text-success"><b>hT</b> Store</h1>
-                             <h3 class="h2">Thoải mái cuộc sống đến từ giấc ngủ</h3>
-                             <p>
-                                 hT Store là nơi chuyên cung cấp các mặc hàng Ga gối nệm
-                                 Với chất liệu và mẫu mã cao cấp, theo trend thị trường.
-                                 Mang đến sự thoải mái, thoáng mái khi sử dụng.
-                             </p>
+                             <?php
+                                $dataitem = $menuitem->GetDataTable("`IdGroup` = 5 AND `OrderNum` = 1")->fetch_assoc();
+                                echo $dataitem["Name"];
+                                ?>
                          </div>
                      </div>
                      <div class="col-lg-6 mb-0 d-flex align-items-center">
-                         <img src="/public/uploads/carousel1.png" alt="" height="600">
+                         <img src="/public/uploads/carousel/<?php echo $dataitem["Icon"]; ?>" alt="" height="600">
                      </div>
                  </div>
              </div>
@@ -34,16 +34,14 @@
              <div class="container">
                  <div class="row p-5">
                      <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                         <img src="/public/uploads/carousel2.png" alt="" height="600">
+                         <?php
+                            $dataitem1 = $menuitem->GetDataTable("`IdGroup` = 5 AND `OrderNum` = 2")->fetch_assoc();
+                            ?>
+                         <img src="/public/uploads/carousel/<?php echo $dataitem1["Icon"]; ?>" alt="" height="600">
                      </div>
                      <div class="col-lg-6 mb-0 d-flex align-items-center">
                          <div class="text-align-left">
-                             <h1 class="h1">Màu sắc đa dạng phù hợp mọi lứa tuổi</h1>
-                             <h3 class="h2">Mẫu mà được cập nhật hàng ngày</h3>
-                             <p>
-                                 Đến với
-                             <h1 class="h1 text-success"><b>hT</b> Store</h1> bạn sẽ được chọn lựa thoải mái về kiểu dáng, màu sắc, kích thước, chất liệu
-                             </p>
+                             <?php echo $dataitem1["Name"]; ?>
                          </div>
                      </div>
                  </div>
@@ -53,16 +51,14 @@
              <div class="container">
                  <div class="row p-5">
                      <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                         <img class="" src="/public/assets/client/img/banner_img_03.jpg" alt="" height="600">
+                         <?php
+                            $dataitem3 = $menuitem->GetDataTable("`IdGroup` = 5 AND `OrderNum` = 3")->fetch_assoc();
+                            ?>
+                         <img src="/public/uploads/carousel/<?php echo $dataitem3["Icon"]; ?>" alt="" height="600">
                      </div>
                      <div class="col-lg-6 mb-0 d-flex align-items-center">
                          <div class="text-align-left">
-                             <h1 class="h1">Chất liệu cao cấp</h1>
-                             <h3 class="h2">hT Store cam kết chất lượng 100% </h3>
-                             <p>
-                                 Được hình thành bởi những chất liệu tốt nhất ngành may mặc, sản phẩm Dra, gối của
-                             <h1 class="h1 text-success"><b>hT</b> Store</h1> đảm bảo về chất lượng sản phẩm cũng như sức khoẻ, thân thiện với người dùng
-                             </p>
+                             <?php echo $dataitem3["Name"]; ?>
                          </div>
                      </div>
                  </div>
@@ -99,7 +95,7 @@
              <div class="col-12 col-md-4 p-5 mt-3">
                  <a href="/products/detail/product=<?php echo $item->Id; ?>"><img src="/public/uploads/<?php echo $item->Image ?>" class="rounded-circle border" height="340" width="340"></a>
                  <h5 class="text-center mt-3 mb-3"></h5>
-                 <p class="text-center"><a href="/products/detail/product=<?php echo $item->Id; ?>" class="btn btn-success"><i class='fas fa-cart-plus' style='font-size:20px'></i> Thêm</a></p>
+                 <p class="text-center"><button onclick="AddCart(<?php echo $item->Id; ?>,1)" class="btn btn-success"><i class='fas fa-cart-plus' style='font-size:20px'></i> Thêm</button></p>
              </div>
          <?php
             }

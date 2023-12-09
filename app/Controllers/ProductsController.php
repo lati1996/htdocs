@@ -2,7 +2,9 @@
 
 namespace app\Controllers;
 
+use core\Common;
 use core\Controller;
+use app\ViewModels\CartVM;
 
 class ProductsController extends Controller
 {
@@ -22,6 +24,49 @@ class ProductsController extends Controller
     }
     public function detail()
     {
-        $this->View();
+        $data = [];
+        if (isset($_POST["btnAddCart"])) {
+            $item = $_POST["item"];
+            $idProd = $item["Id"];
+            $idUser = $_SESSION["user"]["Id"];
+            $cartModel = new CartVM();
+            $data["IdUser"] = $idUser;
+            $data["IdProd"] = $idProd;
+            $data["Status"] = '0';
+            $check = $cartModel->CheckCart($data);
+            if (empty($check)) {
+                $data["Quanity"] =  $item["Quanity"];
+                $cartModel->Post($data);
+                unset($_POST["item"]);
+                $data["mess"] = "Đã thêm vào giỏ hàng";
+            } else {
+                $check["Quanity"] += $item["Quanity"];
+                $cartModel->Put($check);
+                unset($_POST["item"]);
+                $data["mess"] = "Đã thêm vào giỏ hàng";
+            }
+        }
+        if (isset($_POST["btnBuy"])) {
+            $item = $_POST["item"];
+            $idProd = $item["Id"];
+            $idUser = $_SESSION["user"]["Id"];
+            $cartModel = new CartVM();
+            $data["IdUser"] = $idUser;
+            $data["IdProd"] = $idProd;
+            $data["Status"] = '0';
+            $check = $cartModel->CheckCart($data);
+            if (empty($check)) {
+                $data["Quanity"] =  $item["Quanity"];
+                $cartModel->Post($data);
+                unset($_POST["item"]);
+                Common::ToUrl("/Cart");
+            } else {
+                $check["Quanity"] += $item["Quanity"];
+                $cartModel->Put($check);
+                unset($_POST["item"]);
+                Common::ToUrl("/Cart");
+            }
+        }
+        $this->View($data);
     }
 }

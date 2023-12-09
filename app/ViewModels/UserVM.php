@@ -82,7 +82,6 @@ class UserVM extends Model
     }
     function CheckInfo($info)
     {
-
         if (!empty($info)) {
             $where = $this->WhereLike("Account", $info);
             $where .= $this->WhereOr($this->WhereLike("Email", $info));

@@ -31,14 +31,41 @@ class MenuController extends Controller
     {
         $data = [];
         if (isset($_POST["btnAdd"])) {
+            if (isset($_FILES["fileToUpload"]["name"])) {
+                $target_dir = "public/uploads/carousel/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $uploadOk = 1;
+                //var_dump($uploadOk);
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check != false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+                if ($_FILES["fileToUpload"]["size"] > 5000000) {
+                    $uploadOk = 0;
+                }
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                    $uploadOk = 0;
+                }
+            }
             // đã gửi thông tin đăng nhập
             $item = $_POST["item"];
             //var_dump($user);
             if (!empty($item)) {
                 $modeldb = new MenuItemVM();
                 try {
+                    if ($uploadOk != 0) {
+                        if (is_dir("public/uploads/carousel/") == false) {
+                            mkdir("public/uploads/carousel/", 0777);
+                        }
+                        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                            $item["Icon"] = basename($_FILES["fileToUpload"]["name"]);
+                        }
+                    }
                     $modeldb->Post($item);
-                    $data["mess"] = "Thêm  thành công";
+                    $data["mess"] = "Thêm thành công";
                 } catch (Exception $ex) {
                     $e = $ex->getMessage();
                     $data["error"] = "Không thành công, liện hệ Hoàng" . $e;
@@ -49,14 +76,60 @@ class MenuController extends Controller
     }
     public function edit()
     {
+        $oldProd = new MenuItemVM(App::$__params[0]);
+        $oldImg = $oldProd->Icon;
         $data = [];
+        $uploadOk = 0;
+        $target_dir = "public/uploads/carousel/";
+        $target_file = "";
+        if (isset($_FILES["fileToUpload"]["name"])) {
+            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            if (!empty($_FILES["fileToUpload"]["name"])) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if ($check != false) {
+                    $uploadOk = 1;
+                }
+                if ($_FILES["fileToUpload"]["size"] > 5000000) {
+                    $uploadOk = 0;
+                }
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                    $uploadOk = 0;
+                }
+            }
+        }
         if (isset($_POST["btnEdit"])) {
-            // đã gửi thông tin đăng nhập
             $item = $_POST["item"];
             if (!empty($item)) {
                 $modeldb = new MenuItemVM();
-                $modeldb->Put($item);
-                Common::ToUrl("/admin/menu");
+                try {
+                    if ($uploadOk != 0) {
+                        if ($oldImg != "") {
+                            if (file_exists("public/uploads/carousel/" . $oldImg)) {
+                                if (unlink("public/uploads/carousel/" . $oldImg)) {
+                                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                                        $item["Icon"] = basename($_FILES["fileToUpload"]["name"]);
+                                    }
+                                }
+                            } else {
+                                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                                    $item["Icon"] = basename($_FILES["fileToUpload"]["name"]);
+                                }
+                            }
+                        } else {
+
+                            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                                $item["Icon"] = basename($_FILES["fileToUpload"]["name"]);
+                            }
+                        }
+                    }
+                    $modeldb->Put($item);
+                    //var_dump($uploadOk);
+                    //var_dump($item);
+                    $data["mess"] = "Cập nhật thành công";
+                } catch (Exception $e) {
+                    $data["error"] = "Cập nhật thất bại" . $e;
+                }
             }
         }
         $this->View($data);
@@ -67,7 +140,7 @@ class MenuController extends Controller
         $modeldb = new MenuItemVM();
         try {
             $modeldb->Delete($id);
-            Common::ToUrl("/admin/menu");
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
@@ -76,8 +149,8 @@ class MenuController extends Controller
     {
         $id = App::$__params[0];
         $modeldb = new MenuItemVM();
-        $num = $modeldb->GetDataTable("`OrderNum` = (SELECT MAX(`OrderNum`) FROM `tbl_menuitem`) AND `IdGroup` = " . $id)->fetch_array();
-        $result = new MenuItemVM($num);
-        echo $result->OrderNum + 1;
+        $num = $modeldb->GetByQuery("SELECT MAX(`OrderNum`) FROM `tbl_menuitem` WHERE `IdGroup` = " . $id)->fetch_assoc();
+        $order = $num["MAX(`OrderNum`)"];
+        echo $order + 1;
     }
 }

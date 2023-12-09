@@ -41,6 +41,7 @@ $(document).ready(function () {
     val++;
     $("#var-value").html(val);
     $("#product-quanity").val(val);
+    $("#number").val(val);
     return false;
   });
   $('.btn-size').click(function () {

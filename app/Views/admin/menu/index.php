@@ -31,6 +31,13 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
             </div>
         </form>
         <hr>
+        <?php
+        $_GET["page"] = isset($_GET["page"]) ? $_GET["page"] : "1";
+        $trangHienTai = intval($_GET["page"]);
+        $trangHienTai = max(1, $trangHienTai);
+        $soTrang = ceil($totalRow / $pageNumber);
+        Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/menu/index/?page=[i]&number={$pageNumber}");
+        ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>

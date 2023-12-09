@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $modeldb = new CategoryVM();
         try {
             $modeldb->Delete($id);
-            Common::ToUrl("/admin/category");
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }

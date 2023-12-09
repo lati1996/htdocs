@@ -204,7 +204,7 @@ class ProductController extends Controller
             unlink("public/uploads/" . $data->Image);
             $modeldb->Delete($id);
             $modelImg->DeleteByIdProd($id);
-            Common::ToUrl("/admin/product");
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }

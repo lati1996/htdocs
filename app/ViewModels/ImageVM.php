@@ -32,7 +32,7 @@ class ImageVM extends Model
         $keyword = $params["keyword"] ?? "";
         if (!empty($keyword)) {
             $where = $this->WhereLike("Id", $keyword);
-            $where .= $this->WhereOr($this->WhereLike("MenuGroupName", $keyword));
+            $where .= $this->WhereOr($this->WhereLike("Image", $keyword));
         } else {
             $where = "1";
         }

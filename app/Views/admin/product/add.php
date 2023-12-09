@@ -58,7 +58,7 @@ $data = $model->GetDataTable();
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <textarea rows="4" style="resize: none;" class="form-control" id="" placeholder="Mô tả" name="product[Description]" required></textarea>
+                                    <textarea rows="4" style="resize: none;" class="form-control" id="editor1" placeholder="Mô tả" name="product[Description]" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -89,7 +89,7 @@ $data = $model->GetDataTable();
                             </div>
                         </form>
                         <div class="form-group text-center">
-                            <p style="color:red;"><?php echo isset($error) ? $mess : null ?></p>
+                            <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
                             <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
                         </div>
                     </div>

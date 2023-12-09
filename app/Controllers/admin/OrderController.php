@@ -31,5 +31,13 @@ class OrderController extends Controller
     }
     public function delete()
     {
+        $idor = App::$__params[0];
+        $modeldb = new OrderVM();
+        try {
+            $modeldb->Delete($idor);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 }
