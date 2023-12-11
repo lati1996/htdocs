@@ -231,3 +231,38 @@ body {
 .font-weight-bold {
     font-weight: 700 !important;
 }
+
+.load {
+    width: 100%;
+    height: 50%;
+    background: #fff;
+    position: absolute;
+    z-index: 10000000;
+    display: block;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.loadHome {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+    z-index: 10000000;
+    display: block;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.load img {
+    margin-top: 100px;
+    margin-left: 28%;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+}
+
+#loadproduct {
+    /* overflow: hidden; */
+    display: none;
+}

@@ -65,7 +65,6 @@ $modelmg = new ImageVM();
                                                 </a>
                                             </div>
                                     <?php
-
                                         }
                                     }
                                     ?>
@@ -73,28 +72,28 @@ $modelmg = new ImageVM();
                             </div>
                             <!--/.First slide-->
                             <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <?php
-                                    $dataimg2 = $modelmg->GetImageShow2($model->Id);
-                                    if ($dataimg2) {
+                            <?php
+                            $dataimg2 = $modelmg->GetImageShow2($model->Id);
+                            if ($dataimg2) { ?>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <?php
                                         while ($rowimg = $dataimg2->fetch_array()) {
                                             $itemimg = new ImageVM($rowimg);
-                                    ?>
+                                        ?>
                                             <div class="col-4">
                                                 <a href="#">
                                                     <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
-                                    <?php
-
+                                        <?php
                                         }
-                                    }
-                                    ?>
+                                        ?>
+                                    </div>
                                 </div>
-                            </div>
-                            <!--/.Second slide-->
-                            <!--Third slide-->
+                            <?php
+                            }
+                            ?>
                             <?php
                             $dataimg3 = $modelmg->GetImageShow3($model->Id);
                             if ($dataimg3) {
@@ -118,7 +117,6 @@ $modelmg = new ImageVM();
                             <?php
                             }
                             ?>
-
                             <?php
                             $dataimg4 = $modelmg->GetImageShow4($model->Id);
                             if ($dataimg4) {

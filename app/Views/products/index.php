@@ -17,7 +17,7 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-2">
-            <h1 class="h3 pb-4 text-success">DANH MỤC</h1>
+            <h1 class="h3 pb-4 text-success">Sản phẩm</h1>
             <ul class="list-unstyled templatemo-accordion">
                 <div class="pb-3">
                     <?php
@@ -25,7 +25,7 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                         while ($row = $dataCate->fetch_array()) {
                             $item = new CategoryVM($row);
                     ?>
-                            <a class="collapsed d-flex justify-content-between h4 text-decoration-none" href="/products/category/tag=<?php echo $item->Id; ?>">
+                            <a class="collapsed d-flex justify-content-between text-decoration-none" href="/products/category/tag=<?php echo $item->Id; ?>">
                                 <?php echo $item->CategoryName; ?>
                                 <i class="pull-right fas fa-caret-right mt-1"></i>
                             </a>
@@ -50,15 +50,23 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                 </div>
                 <div class="col-md-6 pb-4">
                     <div class="d-flex">
-                        <select class="form-control">
-                            <option>Sắp xếp...</option>
-                            <option>A - Z</option>
-                            <option>Danh mục</option>
-                        </select>
+                        <form method="get" action="/products/index/" class="form-control" style="border:none;">
+                            <div class="input-group">
+                                <input name="keyword" class="form-control" type="text" placeholder="Tìm..." value="<?php echo isset($keyword) ? $keyword : ""; ?>" aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="">
+                                    <button class="btn btn-success btn-lg" type=" submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="load">
+                <img src="/public/assets/client/img/loader.gif">
+            </div>
+            <div class="row" id="loadproduct">
                 <?php
                 if (!empty($listProd)) {
                     while ($row = $listProd->fetch_array()) {

@@ -112,3 +112,15 @@ $(function () {
         });
     });
 });
+
+$(window).on('load', function (event) {
+    var content = document.getElementById('loadproduct');
+    $('body').removeClass('load');
+    $('.load').delay(1000).fadeOut('400');
+    $('body').removeClass('loadHome');
+    $('.loadHome').delay(500).fadeOut('fast');
+    setTimeout(function () {
+        content.style.display = "flex";
+    }, 900);
+
+});

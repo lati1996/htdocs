@@ -71,11 +71,11 @@ class ProductVM extends Model
         $keyword = $params["keyword"] ?? "";
         $where = $this->WhereEq("IdCate", $idCate);
         if (!empty($keyword)) {
-            $where .= $this->WhereOr($this->WhereLike("Id", $keyword));
-            $where .= $this->WhereOr($this->WhereLike("ProductName", $keyword));
-            $where .= $this->WhereOr($this->WhereLike("Description", $keyword));
-            $where .= $this->WhereOr($this->WhereLike("IdCate", $keyword));
-            $where .= $this->WhereOr($this->WhereLike("Image", $keyword));
+            //$where .= $this->WhereOr($this->WhereLike("Id", $keyword));
+            $where .= $this->WhereAnd($this->WhereLike("ProductName", $keyword));
+            //$where .= $this->WhereOr($this->WhereLike("Description", $keyword));
+            //$where .= $this->WhereOr($this->WhereLike("IdCate", $keyword));
+            //$where .= $this->WhereOr($this->WhereLike("Image", $keyword));
         }
         //echo $where;
         return $this->QueryPaging(ProductVM::tableName, $where, $pageIndex, $pageNumber, $totalRows);

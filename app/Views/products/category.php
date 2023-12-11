@@ -8,8 +8,8 @@ use core\Common;
 $modelCate = new CategoryVM();
 $dataCate = $modelCate->GetDataTable();
 
-$idCate = App::$__params[0];
-$idCate = str_replace("tag=", "", $idCate);
+$par = App::$__params[0];
+$idCate = str_replace("tag=", "", $par);
 
 $modelProd = new ProductVM();
 $totalRow = 0;
@@ -21,7 +21,7 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-2">
-            <h1 class="h3 pb-4 text-success">DANH MỤC</h1>
+            <h1 class="h3 pb-4 text-success">Sản phẩm</h1>
             <ul class="list-unstyled templatemo-accordion">
                 <div class="pb-3">
                     <?php
@@ -29,11 +29,12 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                         while ($row = $dataCate->fetch_array()) {
                             $item = new CategoryVM($row);
                             $textgreen = $item->Id == $idCate ? "text-success" : "";
-                            $icon = $item->Id == $idCate ? "fas fa-caret-square-right" : "fas fa-caret-right";
+                            $h4 = $item->Id == $idCate ? "h4" : "";
+                            //$icon = $item->Id == $idCate ? "fas fa-caret-square-right" : "fas fa-caret-right";
                     ?>
-                            <a class="collapsed d-flex justify-content-between h4 text-decoration-none <?php echo $textgreen; ?>" href="/products/category/tag=<?php echo $item->Id; ?>">
+                            <a class="collapsed d-flex justify-content-between text-decoration-none <?php echo $textgreen; ?> <?php echo $h4; ?>" href="/products/category/tag=<?php echo $item->Id; ?>">
                                 <?php echo $item->CategoryName; ?>
-                                <i class="pull-right <?php echo $icon; ?>" mt-1"></i>
+                                <i class="pull-right fas fa-caret-right mt-1" mt-1"></i>
                             </a>
                             <br />
                     <?php
@@ -50,21 +51,29 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                 <div class="col-md-6">
                     <ul class="list-inline shop-top-menu pb-3 pt-1">
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="/products">Tất cả</a>
+                            <a class="h3 text-dark text-decoration-none mr-3" href="/products">Tất cả sản phẩm</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-6 pb-4">
                     <div class="d-flex">
-                        <select class="form-control">
-                            <option>Sắp xếp...</option>
-                            <option>A - Z</option>
-                            <option>Danh mục</option>
-                        </select>
+                        <form method="get" action="/products/category/<?php echo $par; ?>" class="form-control" style="border:none;">
+                            <div class="input-group">
+                                <input name="keyword" class="form-control" type="text" placeholder="Tìm..." value="<?php echo isset($keyword) ? $keyword : ""; ?>" aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="">
+                                    <button class="btn btn-success btn-lg" type=" submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="load">
+                <img src="/public/assets/client/img/loader.gif">
+            </div>
+            <div class="row" id="loadproduct">
                 <?php
                 if (!empty($listProd)) {
                     while ($row = $listProd->fetch_array()) {

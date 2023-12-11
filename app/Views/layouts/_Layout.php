@@ -28,6 +28,7 @@ $baseController = new Controller();
 </head>
 
 <body>
+
     <?php
     $baseController->render('layouts/_headerLayout');
 

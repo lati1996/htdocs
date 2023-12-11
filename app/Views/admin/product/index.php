@@ -119,7 +119,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                 <td class="text-center">
                                     <a href="/admin/product/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
                                     <a onclick="return confirm('Xoá người dùng này?')" href="/admin/product/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
-
+                                    <a href="/products/detail/product=<?php echo $_item->Id ?>" class="btn" style="color: #fff; background-color:#efbf45;border-color:#efbf45;">Link</a>
                                 </td>
                             </tr>
                     <?php
