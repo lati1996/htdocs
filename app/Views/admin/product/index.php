@@ -8,7 +8,7 @@ use core\Common;
 $model = new ProductVM();
 $totalRow = 0;
 $indexPage = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
-$pageNumber = isset($_GET["number"]) ? intval($_GET["number"]) : 10;
+$pageNumber = isset($_GET["number"]) ? intval($_GET["number"]) : 50;
 $keyword = isset($_GET["keyword"]) ? $_GET["keyword"] : "";
 $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $totalRow);
 ?>

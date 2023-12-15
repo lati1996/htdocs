@@ -27,7 +27,7 @@ class ProductController extends Controller
     {
         $data = [];
         if (isset($_POST["btnAdd"])) {
-            if (isset($_FILES["fileToUpload"]["name"])) {
+            if (!empty($_FILES["fileToUpload"]["name"])) {
                 $target_dir = "public/uploads/";
                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
@@ -112,7 +112,7 @@ class ProductController extends Controller
         $uploadOk = 0;
         $target_dir = "public/uploads/";
         $target_file = "";
-        if (isset($_FILES["fileToUpload"]["name"])) {
+        if (!empty($_FILES["fileToUpload"]["name"])) {
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             if (!empty($_FILES["fileToUpload"]["name"])) {

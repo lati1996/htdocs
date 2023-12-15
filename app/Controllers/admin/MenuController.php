@@ -30,15 +30,15 @@ class MenuController extends Controller
     public function add()
     {
         $data = [];
+        $uploadOk = 0;
         if (isset($_POST["btnAdd"])) {
-            if (isset($_FILES["fileToUpload"]["name"])) {
+            if (!empty($_FILES["fileToUpload"]["name"])) {
                 $target_dir = "public/uploads/carousel/";
                 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
-                //var_dump($uploadOk);
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                if ($check != false) {
+
+                if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) != false) {
                     $uploadOk = 1;
                 } else {
                     $uploadOk = 0;
@@ -46,7 +46,7 @@ class MenuController extends Controller
                 if ($_FILES["fileToUpload"]["size"] > 5000000) {
                     $uploadOk = 0;
                 }
-                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "svg") {
                     $uploadOk = 0;
                 }
             }
@@ -82,9 +82,10 @@ class MenuController extends Controller
         $uploadOk = 0;
         $target_dir = "public/uploads/carousel/";
         $target_file = "";
-        if (isset($_FILES["fileToUpload"]["name"])) {
+        if (!empty($_FILES["fileToUpload"]["name"])) {
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            $uploadOk = 1;
             if (!empty($_FILES["fileToUpload"]["name"])) {
                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
                 if ($check != false) {
@@ -93,11 +94,13 @@ class MenuController extends Controller
                 if ($_FILES["fileToUpload"]["size"] > 5000000) {
                     $uploadOk = 0;
                 }
-                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "svg") {
                     $uploadOk = 0;
                 }
             }
         }
+        // var_dump($_FILES["fileToUpload"]["name"]);
+        // var_dump($uploadOk);
         if (isset($_POST["btnEdit"])) {
             $item = $_POST["item"];
             if (!empty($item)) {

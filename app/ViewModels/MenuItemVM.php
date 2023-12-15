@@ -53,6 +53,14 @@ class MenuItemVM extends Model
     {
         return $this->SELECTROWS(MenuItemVM::tableName, isset($where) ? $where : "1");
     }
+    function GetDataTableByIdGroupAndNum($idgroup, $num)
+    {
+        return $this->SELECTROW(MenuItemVM::tableName, "`IdGroup` = " . $idgroup . " AND `OrderNum` = " . $num);
+    }
+    function GetDataTableByIdGroup($idgroup)
+    {
+        return $this->SELECTROWS(MenuItemVM::tableName, "`IdGroup` = " . $idgroup);
+    }
     function Delete($id)
     {
         return $this->DELETEDB(MenuItemVM::tableName, $this->WhereEq("Id", $id));

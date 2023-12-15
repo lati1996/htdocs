@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 11, 2023 lúc 11:00 AM
+-- Thời gian đã tạo: Th12 12, 2023 lúc 07:55 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -112,7 +112,9 @@ INSERT INTO `tbl_groupmenu` (`Id`, `MenuGroupName`) VALUES
 (2, 'TopInfo'),
 (3, 'BottomInfo'),
 (4, 'IconInfoTop'),
-(5, 'Carousel');
+(5, 'Carousel'),
+(6, 'AboutPage'),
+(7, 'ContactPage');
 
 -- --------------------------------------------------------
 
@@ -167,17 +169,24 @@ INSERT INTO `tbl_menuitem` (`Id`, `Name`, `IdGroup`, `Link`, `OrderNum`, `Icon`)
 (2, 'Sản phẩm', 1, '/Products', 2, ''),
 (3, 'Giới thiệu', 1, '/About', 3, ''),
 (4, 'Liên hệ', 1, '/Contact', 4, ''),
-(5, 'mhoang1996@gmail.com', 2, '#', 1, 'fa fa-phone mx-2'),
-(6, '039 8 936 410', 2, '#', 2, 'fa fa-envelope mx-2'),
+(5, '039 8 936 410\r\n', 2, '#', 1, 'fa fa-phone fa-fw'),
+(6, 'mhoang1996@gmail.com\r\n', 2, '#', 2, 'fas fa-envelope fa-fw'),
 (7, 'Admin', 1, '/Manage', 5, ''),
-(8, ' 561B Nguyễn Trãi, Phường Lái Thiêu , Thành phố Thuân An, Tỉnh Bình Dương', 2, '#', 3, 'fas fa-map-marker-alt fa-fw'),
+(8, '561B Nguyễn Tr&atilde;i, Phường L&aacute;i Thi&ecirc;u , Th&agrave;nh phố Thu&acirc;n An, Tỉnh B&igrave;nh Dương\r\n', 2, '#', 3, 'fas fa-map-marker-alt fa-fw'),
 (9, 'Facebook', 4, 'https://www.facebook.com/nguyenminh.hoang.18659', 1, 'fab fa-facebook-f fa-sm fa-fw me-2'),
 (10, 'Ins', 4, '#', 2, 'fab fa-instagram fa-sm fa-fw me-2'),
 (11, 'Tw', 4, '#', 3, 'fab fa-twitter fa-sm fa-fw me-2'),
 (12, 'Linkedin', 4, '#', 4, 'fab fa-linkedin fa-sm fa-fw'),
 (16, ' <h1 class=\"h1 text-success\"><b>hT</b> Store</h1>\r\n                             <h3 class=\"h2\">Thoải mái cuộc sống đến từ giấc ngủ</h3>\r\n                             <p>\r\n                                 hT Store là nơi chuyên cung cấp các mặc hàng Ga gối nệm\r\n                                 Với chất liệu và mẫu mã cao cấp, theo trend thị trường.\r\n                                 Mang đến sự thoải mái, thoáng mái khi sử dụng.\r\n                             </p>', 5, '#', 1, 'carousel1.png'),
 (17, ' <h1 class=\"h1\">Màu sắc đa dạng phù hợp mọi lứa tuổi</h1>\r\n                             <h3 class=\"h2\">Mẫu mà được cập nhật hàng ngày</h3>\r\n                             <p>\r\n                                 Đến với\r\n                             <h1 class=\"h1 text-success\"><b>hT</b> Store</h1> bạn sẽ được chọn lựa thoải mái về kiểu dáng, màu sắc, kích thước, chất liệu\r\n                             </p>', 5, '#', 2, 'carousel2.png'),
-(18, ' <h1 class=\"h1\">Chất liệu cao cấp</h1>\r\n                             <h3 class=\"h2\">hT Store cam kết chất lượng 100% </h3>\r\n                             <p>\r\n                                 Được hình thành bởi những chất liệu tốt nhất ngành may mặc, sản phẩm Dra, gối của\r\n                             <h1 class=\"h1 text-success\"><b>hT</b> Store</h1> đảm bảo về chất lượng sản phẩm cũng như sức khoẻ, thân thiện với người dùng\r\n                             </p>', 5, '#', 3, '333648256_858874405202349_8096384277268839749_n.jpg');
+(18, ' <h1 class=\"h1\">Chất liệu cao cấp</h1>\r\n                             <h3 class=\"h2\">hT Store cam kết chất lượng 100% </h3>\r\n                             <p>\r\n                                 Được hình thành bởi những chất liệu tốt nhất ngành may mặc, sản phẩm Dra, gối của\r\n                             <h1 class=\"h1 text-success\"><b>hT</b> Store</h1> đảm bảo về chất lượng sản phẩm cũng như sức khoẻ, thân thiện với người dùng\r\n                             </p>', 5, '#', 3, '333648256_858874405202349_8096384277268839749_n.jpg'),
+(19, '<h1>About Us</h1>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>\r\n', 6, '#', 1, 'about-hero.svg'),
+(20, '<h1 class=\"h1\">Contact Us</h1>\r\n        <p>\r\n            Proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n            Lorem ipsum dolor sit amet.\r\n        </p>', 7, '#', 1, ''),
+(22, '   <h1 class=\"h1\">Our Services</h1>\r\n            <p>\r\n                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n                Lorem ipsum dolor sit amet.\r\n            </p>', 6, '#', 2, ''),
+(23, '<p>Delivery Services</p>\r\n', 6, '#', 3, 'fa fa-truck fa-lg'),
+(24, '<p>Shipping &amp; Return</p>\r\n', 6, '#', 4, 'fas fa-exchange-alt'),
+(25, '<p>Promotion</p>\r\n', 6, '#', 5, 'fa fa-percent'),
+(26, '<p>24 Hours Service</p>\r\n', 6, '#', 6, 'fa fa-user');
 
 -- --------------------------------------------------------
 
@@ -220,7 +229,7 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`Id`, `ProductName`, `Description`, `IdCate`, `Image`, `Quanity`, `Size`, `ProdCode`, `Material`, `Price`, `Rating`) VALUES
-(39, 'Nệm', '<p>Nệm cao su non</p>\r\n', 11, 'z4929747576865_94fc674b9886b589be5c9a601bc189a2.jpg', 10, '160 x 200 x 10cm', 'nem01', 'Cao su non', 1500000, 4),
+(39, 'Nệm cao su non', '<p>Nệm cao su non, bề mặt lỗ tho&aacute;ng kh&iacute;..........dcdcdc</p>\r\n', 11, 'z4929747576865_94fc674b9886b589be5c9a601bc189a2.jpg', 10, '160 x 200 x 10cm', 'nem01', 'Cao su non', 1500000, 4),
 (40, 'Nệm cao su Vạn Thành', '<p>Nệm cao su thi&ecirc;n nhi&ecirc;n thương hiện Vạn Th&agrave;nh</p>\r\n', 11, 'z4929747603647_1f2a1811040a6c5fff2f5e23c3f42b4d.jpg', 10, '180 x 200 x 10cm', 'nemvanthanh01', '100% cao su thiên nhiên', 10000000, 5),
 (41, 'Rèm chống nắng 99%', '<p>R&egrave;m chống nắng, k&iacute;ch thước theo y&ecirc;u cầu, đ&atilde; bao gồm thanh treo.</p>\r\n', 12, 'z4929747566687_c9f98edee75a221caacf8996e749c124.jpg', 10, 'Theo yêu cầu', 'remchongnang', 'Vải gấm trán cao su', 600000, 5),
 (42, 'Rèm sáo cuộn (Roller)', '<p>R&egrave;m s&aacute;o cuộn, th&iacute;ch thước theo y&ecirc;u cầu.</p>\r\n', 15, 'z4929747432973_003260ea47d6d64f79865e7b7e76dc8f.jpg', 10, 'Theo yêu cầu', 'remroller', 'Sợi cao su nhân tạo, sợi vải', 450000, 5),
@@ -331,7 +340,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT cho bảng `tbl_groupmenu`
 --
 ALTER TABLE `tbl_groupmenu`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_img`
@@ -343,7 +352,7 @@ ALTER TABLE `tbl_img`
 -- AUTO_INCREMENT cho bảng `tbl_menuitem`
 --
 ALTER TABLE `tbl_menuitem`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`

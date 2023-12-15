@@ -118,7 +118,7 @@ $(window).on('load', function (event) {
     $('body').removeClass('load');
     $('.load').delay(1000).fadeOut('400');
     $('body').removeClass('loadHome');
-    $('.loadHome').delay(500).fadeOut('fast');
+    $('.loadHome').delay(500).fadeOut('400');
     setTimeout(function () {
         content.style.display = "flex";
     }, 900);

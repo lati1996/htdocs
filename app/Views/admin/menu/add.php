@@ -53,7 +53,7 @@ $data = $model->GetDataTable();
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-12 mb-sm-0">
-                                    <input type="file" class="form-control-user" name="fileToUpload" id="fileToUpload" required>
+                                    <input type="file" class="form-control-user" name="fileToUpload" id="fileToUpload">
                                 </div>
                             </div>
                             <div class="form-group row">

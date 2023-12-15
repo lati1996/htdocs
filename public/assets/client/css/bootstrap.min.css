@@ -5142,10 +5142,10 @@ fieldset:disabled .btn {
 .badge {
     display: inline-block;
     padding: .35em .65em;
-    font-size: .75em;
+    font-size: 1em;
     font-weight: 700;
     line-height: 1;
-    color: #fff;
+    color: #000;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
@@ -8039,7 +8039,7 @@ fieldset:disabled .btn {
 }
 
 .bg-secondary {
-    background-color: #6c757d !important
+    background-color: #f3f1eb !important
 }
 
 .bg-success {

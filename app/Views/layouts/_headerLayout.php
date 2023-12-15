@@ -15,7 +15,7 @@
                                 $item = new MenuItemVM($row);
                         ?>
                              <i class="<?php echo $item->Icon ?>"></i>
-                             <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com"><?php echo $item->Name ?></a>
+                             <a class="navbar-sm-brand text-light text-decoration-none" href=""><?php echo $item->Name ?></a>
                      <?php
                             }
                         }

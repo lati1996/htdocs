@@ -124,7 +124,7 @@ $modelP = new ProductVM(App::$__params[0]);
                                     </button>
                                 </div>
                                 <div class="col-sm-3">
-                                    <a href="/admin/product/" class="btn btn-google btn-user btn-block">
+                                    <a href="/admin/product" class="btn btn-google btn-user btn-block">
                                         <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
                                     </a>
                                 </div>

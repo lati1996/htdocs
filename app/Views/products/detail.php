@@ -24,6 +24,8 @@ $modelmg = new ImageVM();
         </form>
     </div>
 </div>
+<div class="loadHome">
+</div>
 <!-- Open Content -->
 <section class="bg-light">
     <div class="container pb-5">

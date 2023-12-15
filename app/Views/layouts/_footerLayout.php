@@ -3,7 +3,7 @@
     <div class="container my-4">
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-                <h2 class="h2">Sản phẩm chất lượng từ các thương hiệu</h2>
+                <h2 class="h2">Sản phẩm chất lượng từ nhiều thương hiệu</h2>
                 <p>
                 </p>
             </div>
@@ -95,49 +95,50 @@
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-success border-bottom pb-3 border-light logo">hT Store</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li>
-                        <i class="fas fa-map-marker-alt fa-fw"></i>
-                        561B Nguyễn Trãi - Phường Lái Thiêu - Thành phố Thuân An - Tỉnh Bình Dương
-                    </li>
-                    <li>
-                        <i class="fa fa-phone fa-fw"></i>
-                        <a class="text-decoration-none" href="tel:010-020-0340">0918.769.104</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-phone fa-fw"></i>
-                        <a class="text-decoration-none" href="tel:010-020-0340">0398.936.410</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-envelope fa-fw"></i>
-                        <a class="text-decoration-none" href="mailto:info@company.com">mhoang1996@gmail.com</a>
-                    </li>
+                    <?php
+
+                    use app\ViewModels\MenuItemVM;
+
+                    $model = new MenuItemVM();
+                    $datainfo = $model->GetDataTable(" `IdGroup` = 2 ORDER BY `OrderNum` DESC");
+                    if (!empty($datainfo)) {
+                        while ($row = $datainfo->fetch_array()) {
+                            $item = new MenuItemVM($row);
+                    ?>
+                            <li>
+                                <i class="<?php echo $item->Icon; ?>"></i>
+                                <a class="text-decoration-none" href="#"><?php echo $item->Name; ?></a>
+                            </li>
+                    <?php
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
 
-            <div class="col-md-4 pt-5">
-                <h2 class="h2 text-light border-bottom pb-3 border-light">SẢN PHẨM</h2>
+            <div class="col-md-5 pt-5">
+                <!-- <h2 class="h2 text-light border-bottom pb-3 border-light">SẢN PHẨM</h2>
                 <ul class="list-unstyled text-light footer-link-list">
                     <li><a class="text-decoration-none" href="#">Màn cửa</a></li>
                     <li><a class="text-decoration-none" href="#">Drap</a></li>
                     <li><a class="text-decoration-none" href="#">Nệm</a></li>
                     <li><a class="text-decoration-none" href="#">Gia công theo yêu cầu</a></li>
-                </ul>
+                </ul> -->
             </div>
 
-            <div class="col-md-4 pt-5">
+            <div class="col-md-3 pt-5">
                 <h2 class="h2 text-light border-bottom pb-3 border-light">THÔNG TIN</h2>
                 <ul class="list-unstyled text-light footer-link-list">
                     <li><a class="text-decoration-none" href="/home">Trang chủ</a></li>
                     <li><a class="text-decoration-none" href="/about">Giới thiệu</a></li>
-                    <li><a class="text-decoration-none" href="/location">Địa chỉ Shop</a></li>
-                    <li><a class="text-decoration-none" href="/inbox">FAQs</a></li>
+                    <li><a class="text-decoration-none" href="/location">Địa chỉ</a></li>
                     <li><a class="text-decoration-none" href="/contact">Liên hệ</a></li>
                 </ul>
             </div>
 
         </div>
 
-        <div class="row text-light mb-4">
+        <!-- <div class="row text-light mb-4">
             <div class="col-12 mb-3">
                 <div class="w-100 my-3 border-top border-light"></div>
             </div>
@@ -164,7 +165,7 @@
                     <div class="input-group-text btn-success text-light">Subscribe</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="w-100 bg-black py-3">
