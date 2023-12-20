@@ -32,8 +32,32 @@ $modelmg = new ImageVM();
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail">
+                    <a id="myImg"><img class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail"></a>
                 </div>
+                <div id="myModal" class="modalDetail">
+                    <span class="closeDetail"><i class="fa fa-window-close" style="font-size:36px"></i></span>
+                    <img class="modal-content" id="img01">
+                </div>
+                <script>
+                    // Get the modal
+                    var modal = document.getElementById("myModal");
+                    // Get the image and insert it inside the modal - use its "alt" text as a caption
+                    var img = document.getElementById("myImg");
+                    var modalImg = document.getElementById("img01");
+                    var captionText = document.getElementById("caption");
+                    img.onclick = function() {
+                        modal.style.display = "block";
+                        modalImg.src = $('#product-detail').attr('src');
+                        captionText.innerHTML = "<?php echo $model->ProductName; ?>";
+                    }
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("closeDetail")[0];
+
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+                </script>
                 <div class="row">
                     <!--Start Controls-->
                     <div class="col-1 align-self-center">
@@ -250,7 +274,9 @@ $modelmg = new ImageVM();
                                 <div class="col-sm-4">
                                     <input id="number" name=item[Quanity] hidden value="1">
                                     <input id="id-prod" name=item[Id] value="<?php echo $model->Id; ?>" hidden>
-                                    <button class="btn btn-lg" name="btnAddCart" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;"><i class='fas fa-cart-plus'></i>Thêm vào giỏ hàng</button>
+                                    <button class="btn btn-lg" name="btnAddCart" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;">
+                                        <i class='fas fa-cart-plus'></i> Thêm vào giỏ hàng
+                                    </button>
                                 </div>
                                 <div class="col-sm-4">
                                     <button class="btn btn-success btn-lg" name="btnBuy">Mua ngay</button>

@@ -5142,7 +5142,7 @@ fieldset:disabled .btn {
 .badge {
     display: inline-block;
     padding: .35em .65em;
-    font-size: 1em;
+    font-size: .75em;
     font-weight: 700;
     line-height: 1;
     color: #000;

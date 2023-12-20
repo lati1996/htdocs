@@ -57,7 +57,7 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                 </div>
                 <div class="col-md-6 pb-4">
                     <div class="d-flex">
-                        <form method="get" action="/products/category/<?php echo $par; ?>" class="form-control" style="border:none;">
+                        <form method="get" action="/products/category/<?php echo $par; ?>" class="form-control" style="border:none;" autocomplete="off">
                             <div class="input-group">
                                 <input name="keyword" class="form-control" type="text" placeholder="Tìm..." value="<?php echo isset($keyword) ? $keyword : ""; ?>" aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="">
@@ -84,9 +84,8 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                                 <div class="card rounded-0">
                                     <img class="card-img rounded-0" src="/public/uploads/<?php echo $_item->Image; ?>" height="380">
                                     <div id="myModal" class="modal">
-                                        <span class="close">&times;</span>
+                                        <span class="close"><i class="fa fa-window-close" style="font-size:36px"></i></span>
                                         <img class="modal-content" id="img01">
-                                        <div id="caption"></div>
                                     </div>
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">

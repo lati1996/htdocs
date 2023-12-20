@@ -33,7 +33,30 @@ body {
     /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
     /* Fallback color */
-    background-color: rgba(50, 50, 50, 0.9);
+    background-color: rgba(50, 50, 50, 0.5);
+    /* Black w/ opacity */
+}
+
+.modalDetail {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(255, 255, 255, 0.5);
     /* Black w/ opacity */
 }
 
@@ -42,7 +65,7 @@ body {
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 800px;
 }
 
 /* Caption of Modal Image */
@@ -52,7 +75,7 @@ body {
     width: 80%;
     max-width: 700px;
     text-align: center;
-    color: #ccc;
+    color: #fff;
     padding: 10px 0;
     height: 150px;
 }
@@ -89,10 +112,9 @@ body {
 /* The Close Button */
 .close {
     position: absolute;
-    top: 15px;
-    right: 35px;
+    top: 60px;
+    left: 75%;
     color: #f1f1f1;
-    font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
 }
@@ -103,6 +125,25 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+.closeDetail {
+    position: absolute;
+    top: 60px;
+    left: 75%;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+.closeDetail:hover,
+.closeDetail:focus {
+    color: #9c9c9c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px) {

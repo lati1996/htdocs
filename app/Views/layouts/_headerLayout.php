@@ -96,7 +96,7 @@
                                         $number = count($dataList->fetch_all());
                                         echo $number;
                                     } else {
-                                        echo "0";
+                                        echo "+";
                                     }
                                 } else {
                                     echo "+";

@@ -50,11 +50,11 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                 </div>
                 <div class="col-md-6 pb-4">
                     <div class="d-flex">
-                        <form method="get" action="/products/index/" class="form-control" style="border:none;">
+                        <form method="get" action="/products/index/" class="form-control" style="border:none;" autocomplete="off">
                             <div class="input-group">
                                 <input name="keyword" class="form-control" type="text" placeholder="Tìm..." value="<?php echo isset($keyword) ? $keyword : ""; ?>" aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="">
-                                    <button class="btn btn-success btn-lg" type=" submit">
+                                    <button class="btn btn-success btn-lg" type="submit" style="position: inherit;">
                                         <i class="fas fa-search fa-sm"></i>
                                     </button>
                                 </div>
@@ -78,9 +78,8 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                     <img class="card-img rounded-0" src="/public/uploads/<?php echo $_item->Image; ?>" height="380">
 
                                     <div id="myModal" class="modal">
-                                        <span class="close">&times;</span>
+                                        <span class="close"><i class="fa fa-window-close" style="font-size:36px"></i></span>
                                         <img class="modal-content" id="img01">
-                                        <div id="caption"></div>
                                     </div>
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">

@@ -26,24 +26,28 @@ class ProductsController extends Controller
     {
         $data = [];
         if (isset($_POST["btnAddCart"])) {
-            $item = $_POST["item"];
-            $idProd = $item["Id"];
-            $idUser = $_SESSION["user"]["Id"];
-            $cartModel = new CartVM();
-            $data["IdUser"] = $idUser;
-            $data["IdProd"] = $idProd;
-            $data["Status"] = '0';
-            $check = $cartModel->CheckCart($data);
-            if (empty($check)) {
-                $data["Quanity"] =  $item["Quanity"];
-                $cartModel->Post($data);
-                unset($_POST["item"]);
-                $data["mess"] = "Đã thêm vào giỏ hàng";
+            if (isset($_SESSION["user"])) {
+                $item = $_POST["item"];
+                $idProd = $item["Id"];
+                $idUser = $_SESSION["user"]["Id"];
+                $cartModel = new CartVM();
+                $data["IdUser"] = $idUser;
+                $data["IdProd"] = $idProd;
+                $data["Status"] = '0';
+                $check = $cartModel->CheckCart($data);
+                if (empty($check)) {
+                    $data["Quanity"] =  $item["Quanity"];
+                    $cartModel->Post($data);
+                    unset($_POST["item"]);
+                    $data["mess"] = "Đã thêm vào giỏ hàng";
+                } else {
+                    $check["Quanity"] += $item["Quanity"];
+                    $cartModel->Put($check);
+                    unset($_POST["item"]);
+                    $data["mess"] = "Đã thêm vào giỏ hàng";
+                }
             } else {
-                $check["Quanity"] += $item["Quanity"];
-                $cartModel->Put($check);
-                unset($_POST["item"]);
-                $data["mess"] = "Đã thêm vào giỏ hàng";
+                Common::ToUrl("/signin");
             }
         }
         if (isset($_POST["btnBuy"])) {

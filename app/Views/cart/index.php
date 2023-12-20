@@ -59,7 +59,7 @@
                     ?>
                 </tbody>
                 <tfoot>
-                    <tr style="background-color: #68CF82">
+                    <tr style="background-color:#F5F5F5">
                         <th colspan="6">Tổng cộng đơn hàng</th>
                         <th>
                             <?php
@@ -125,7 +125,7 @@
         </form>
         <div class="form-group row">
             <div class="col-md-12 text-center" style="margin:5px;">
-                <a href="/account" id="" class="btn" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;"><b>Thay đổi thông tin cá nhân</b></a>
+                <a href="/account" id="" class="btn" style="color: #000;background-color: #F5F5F5;border-color: #F5F5F5;font-size:1rem;"><b>Thay đổi thông tin cá nhân</b></a>
             </div>
         </div>
     </div>
