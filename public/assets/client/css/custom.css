@@ -66,6 +66,7 @@ body {
     display: block;
     width: 80%;
     max-width: 800px;
+    border-radius: 0.9rem;
 }
 
 /* Caption of Modal Image */
@@ -130,10 +131,9 @@ body {
     position: absolute;
     top: 60px;
     left: 75%;
-    font-size: 40px;
+    font-size: 24px;
     font-weight: bold;
     transition: 0.3s;
-    font-size: 20px;
 }
 
 .closeDetail:hover,

@@ -35,7 +35,7 @@ $modelmg = new ImageVM();
                     <a id="myImg"><img class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail"></a>
                 </div>
                 <div id="myModal" class="modalDetail">
-                    <span class="closeDetail"><i class="fa fa-window-close" style="font-size:36px"></i></span>
+                    <span class="closeDetail"><i class="fa fa-window-close"></i></span>
                     <img class="modal-content" id="img01">
                 </div>
                 <script>

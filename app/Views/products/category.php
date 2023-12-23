@@ -84,15 +84,12 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                                 <div class="card rounded-0">
                                     <img class="card-img rounded-0" src="/public/uploads/<?php echo $_item->Image; ?>" height="380">
                                     <div id="myModal" class="modal">
-                                        <span class="close"><i class="fa fa-window-close" style="font-size:36px"></i></span>
+                                        <span class="close"><i class="fa fa-window-close"></i></span>
                                         <img class="modal-content" id="img01">
                                     </div>
-                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <div id="myImg-<?php echo $_item->Id; ?>" class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">
-                                            <!-- <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li> -->
-                                            <li><a class="btn btn-success text-white mt-2" id="myImg-<?php echo $_item->Id; ?>"><i class="far fa-eye"></i></a></li>
                                             <div class="popup" onclick="myFunctionPopup(<?php echo $_item->Id; ?>)">
-                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button></li>
                                                 <span class="popuptext" id="myPopup-<?php echo $_item->Id; ?>">Đã thêm vào giỏ hàng</span>
                                             </div>
                                         </ul>
@@ -105,11 +102,9 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                                     // Get the image and insert it inside the modal - use its "alt" text as a caption
                                     var img = document.getElementById("myImg-<?php echo $_item->Id; ?>");
                                     var modalImg = document.getElementById("img01");
-                                    var captionText = document.getElementById("caption");
                                     img.onclick = function() {
                                         modal.style.display = "block";
                                         modalImg.src = "/public/uploads/<?php echo $_item->Image; ?>";
-                                        captionText.innerHTML = "<?php echo $_item->ProductName; ?>";
                                     }
 
                                     // Get the <span> element that closes the modal
@@ -146,6 +141,11 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                                         </li>
                                     </ul>
                                     <p class="text-center mb-0"><?php echo $_item->toPrice(); ?></p>
+                                    <div class="row">
+                                        <div class="form-group col-md-6 mb-6">
+                                            <button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

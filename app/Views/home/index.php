@@ -98,8 +98,12 @@
             ?>
              <div class="col-12 col-md-4 p-5 mt-3">
                  <a href="/products/detail/product=<?php echo $item->Id; ?>"><img src="/public/uploads/<?php echo $item->Image ?>" class="rounded-circle border" height="340" width="340"></a>
-                 <h5 class="text-center mt-3 mb-3"></h5>
-                 <p class="text-center"><button onclick="AddCart(<?php echo $item->Id; ?>,1)" class="btn btn-success"><i class='fas fa-cart-plus' style='font-size:20px'></i> Thêm</button></p>
+                 <ul class="list-unstyled text-center">
+                     <div class="popup" onclick="myFunctionPopup(<?php echo $item->Id; ?>)">
+                         <span class="popuptext" id="myPopup-<?php echo $item->Id; ?>">Đã thêm vào giỏ hàng</span>
+                     </div>
+                 </ul>
+                 <p class="text-center"><button onclick="AddCart(<?php echo $item->Id; ?>,1)" class="btn btn-success"><i class='fas fa-cart-plus' style='font-size:20px'></i></button></p>
              </div>
          <?php
             }

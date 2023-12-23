@@ -76,17 +76,13 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                             <div class="card mb-4 product-wap rounded-0">
                                 <div class="card rounded-0">
                                     <img class="card-img rounded-0" src="/public/uploads/<?php echo $_item->Image; ?>" height="380">
-
-                                    <div id="myModal" class="modal">
-                                        <span class="close"><i class="fa fa-window-close" style="font-size:36px"></i></span>
+                                    <div id="myModal" class="modalDetail">
+                                        <span class="closeDetail"><i class="fa fa-window-close"></i></span>
                                         <img class="modal-content" id="img01">
                                     </div>
-                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <div id="myImg-<?php echo $_item->Id; ?>" class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">
-                                            <!-- <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li> -->
-                                            <li><a id="myImg-<?php echo $_item->Id; ?>" class="btn btn-success text-white mt-2"><i class="far fa-eye"></i></a></li>
                                             <div class="popup" onclick="myFunctionPopup(<?php echo $_item->Id; ?>)">
-                                                <li><button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button></li>
                                                 <span class="popuptext" id="myPopup-<?php echo $_item->Id; ?>">Đã thêm vào giỏ hàng</span>
                                             </div>
                                         </ul>
@@ -97,14 +93,12 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                         // Get the image and insert it inside the modal - use its "alt" text as a caption
                                         var img = document.getElementById("myImg-<?php echo $_item->Id; ?>");
                                         var modalImg = document.getElementById("img01");
-                                        var captionText = document.getElementById("caption");
                                         img.onclick = function() {
                                             modal.style.display = "block";
                                             modalImg.src = "/public/uploads/<?php echo $_item->Image; ?>";
-                                            captionText.innerHTML = "<?php echo $_item->ProductName; ?>";
                                         }
                                         // Get the <span> element that closes the modal
-                                        var span = document.getElementsByClassName("close")[0];
+                                        var span = document.getElementsByClassName("closeDetail")[0];
 
                                         // When the user clicks on <span> (x), close the modal
                                         span.onclick = function() {
@@ -113,7 +107,7 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                     </script>
                                 </div>
                                 <div class="card-body">
-                                    <p class="text-center mb-0"> <a href="/products/detail/product=<?php echo $_item->Id; ?>" class="h3 text-decoration-none"><?php echo $_item->ProductName; ?></a></p>
+                                    <p class="text-center mb-0"> <a href="/products/detail/product=<?php echo $_item->Id; ?>" class="h3 text-decoration-none title"><?php echo $_item->ProductName; ?></a></p>
                                     <p class="text-center mb-0">Kích thước: <?php echo $_item->Size; ?></p>
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                         <li class="pt-2">
@@ -138,6 +132,11 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                         </li>
                                     </ul>
                                     <p class="text-center mb-0"><?php echo $_item->toPrice(); ?></p>
+                                    <div class="row">
+                                        <div class="form-group col-md-6 mb-6">
+                                            <button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

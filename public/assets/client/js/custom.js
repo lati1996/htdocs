@@ -7,7 +7,8 @@ function AddCart(id, qua) {
             if (response == "") {
                 setTimeout(function () {
                     window.location.reload();
-                }, 3000);
+                }, 5000);
+                myFunctionPopup(id);
             }
             else {
                 window.location.href = '/signin';
