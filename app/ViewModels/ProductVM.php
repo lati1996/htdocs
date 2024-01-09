@@ -18,6 +18,7 @@ class ProductVM extends Model
     public $ProdCode;
     public $Material;
     public $Rating;
+    public $Unit;
     const tableName = "tbl_product";
     function __construct($product = null)
     {
@@ -37,6 +38,7 @@ class ProductVM extends Model
         $this->ProdCode = isset($product["ProdCode"]) ? $product["ProdCode"] : null;
         $this->Material = isset($product["Material"]) ? $product["Material"] : null;
         $this->Rating = isset($product["Rating"]) ? $product["Rating"] : null;
+        $this->Unit = isset($product["Unit"]) ? $product["Unit"] : null;
     }
     function Post($item)
     {

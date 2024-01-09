@@ -231,9 +231,15 @@ $modelmg = new ImageVM();
                                 <p class="text-muted"><strong><?php echo $model->Material; ?></strong></p>
                             </li>
                         </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Đơn vị:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong><?php echo $model->Unit; ?></strong></p>
+                            </li>
+                        </ul>
 
-                        <h6>Mô tả:</h6>
-                        <p><?php echo $model->Description; ?></p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Kích thước:</h6>
@@ -242,7 +248,8 @@ $modelmg = new ImageVM();
                                 <p class="text-muted"><strong><?php echo $model->Size; ?></strong></p>
                             </li>
                         </ul>
-
+                        <h6>Mô tả:</h6>
+                        <p><?php echo $model->Description; ?></p>
                         <!-- <h6>Specification:</h6>
                         <ul class="list-unstyled pb-3">
                             <li>Lorem ipsum dolor sit</li>
@@ -270,11 +277,11 @@ $modelmg = new ImageVM();
                                 </div>
                             </div>
                             <div class="row pb-3">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-5">
                                     <input id="number" name=item[Quanity] hidden value="1">
                                     <input id="id-prod" name=item[Id] value="<?php echo $model->Id; ?>" hidden>
-                                    <button class="btn btn-lg" name="btnAddCart" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;">
+                                    <button class="btn btn-lg" name="btnAddCart" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1.25rem;">
                                         <i class='fas fa-cart-plus'></i> Thêm vào giỏ hàng
                                     </button>
                                 </div>

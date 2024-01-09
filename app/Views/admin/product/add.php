@@ -25,7 +25,7 @@ $data = $model->GetDataTable();
                                 </div>
                                 <div class="col-sm-3">
                                     <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="product[IdCate]" required>
-                                        <option value="0" selected>Chọn Danh mục sản phẩm</option>
+                                        <option value="">Chọn Danh mục sản phẩm</option>
                                         <?php
                                         if (!empty($data)) {
                                             while ($row = $data->fetch_array()) {
@@ -43,8 +43,17 @@ $data = $model->GetDataTable();
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <input type="number" class="form-control form-control-user" id="" placeholder="Số lượng" name="product[Quanity]" required>
+                                </div>
+                                <div class="col-sm-2">
+                                    <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="product[Unit]" required>
+                                        <option value="">Đơn vị</option>
+                                        <option value="Bộ">Bộ</option>
+                                        <option value="Cái">Cái</option>
+                                        <option value="Mét vuông">Mét vuông</option>
+                                        <option value="Mét">Mét</option>
+                                    </select>
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control form-control-user" id="" placeholder="Kích thước" name="product[Size]" required>
@@ -52,7 +61,7 @@ $data = $model->GetDataTable();
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control form-control-user" id="" placeholder="Chất liệu" name="product[Material]" required>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <input type="text" class="form-control form-control-user" id="" placeholder="Giá sản phẩm" name="product[Price]" required>
                                 </div>
                             </div>

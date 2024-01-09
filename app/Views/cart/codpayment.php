@@ -20,17 +20,19 @@ use core\Common;
             </div>
             <div class="form-group row text-center">
                 <div class="col-md-12" style="margin:5px;">
-                    <img src="\public\assets\client\img\momo.jpg" height="300">
+                    <label for="" style="font-size: 15px !important;">
+                        <h5><i>Thanh toán khi nhận hàng bạn nhé!</i></h5>
+                    </label>
                 </div>
                 <div class="col-md-12" style="margin:5px;margin-bottom:20px;">
                     <!-- <form method="post" action=""> -->
-                    <button onclick="payment()" name="btnThanhToan" type="submit" class="btn btn-primary">Tiếp tục</button>
+                    <button onclick="payment()" name="btnThanhToan" type="submit" class="btn btn-primary">Đã xong</button>
                     <!-- </form> -->
                 </div>
             </div>
         </div>
     </div>
     <div id="thankPanel" class="row py-5 text-center" style="display:none">
-        <h3>Cảm ơn bạn đã mua sản phẩm của chúng tôi, hy vọng bạn hài lòng và tiếp tục ủng hộ hT Store</h3>
+        <h3>Cảm ơn bạn đã mua sản phẩm của chúng tôi, vui lòng chú ý điện thoại, chúng tôi sẽ liên hệ với bạn trong thời gian sớm</h3>
     </div>
 </div>

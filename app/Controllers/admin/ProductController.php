@@ -55,11 +55,12 @@ class ProductController extends Controller
                 // Loop through each file
             }
             $product = $_POST["product"];
+            //var_dump($product);
             // đã gửi thông tin đăng nhập
             if (!empty($product)) {
-                if ($product["IdCate"] == "0") {
-                    $data["mess"] = "Chọn danh mục sản phẩm";
-                    $this->View($data);
+                if ($product["IdCate"] == "" || $product["Unit"] == "") {
+                    $data["error"] = "Vui lòng điền đầy đủ thông tin";
+                    //$this->View($data);
                 } else {
                     $modeldb = new ProductVM();
                     try {
@@ -142,9 +143,9 @@ class ProductController extends Controller
             //var_dump($_FILES["fileToUpload"]["name"]);
             //var_dump($product);
             if (!empty($product)) {
-                if ($product["IdCate"] == "0") {
-                    $data["mess"] = "Chọn danh mục sản phẩm";
-                    $this->View($data);
+                if ($product["IdCate"] == "" || $product["Unit"] == "") {
+                    $data["erorr"] = "Vui lòng điền đầy đủ thông tin";
+                    //$this->View($data);
                 } else {
                     $modeldb = new ProductVM();
                     try {

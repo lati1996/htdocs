@@ -16,6 +16,18 @@ function AddCart(id, qua) {
         }
     });
 }
+function Buynow(id, qua) {
+    $.ajax({
+        type: "get",
+        url: `/cart/add/?proid=${id}&qua=${qua}`,
+        dataType: "html",
+        success: function (response) {
+            if (response == "") {
+                window.location.href = '/cart';
+            }
+        }
+    });
+}
 function CheckThisField(key) {
     var info = document.getElementById(key).value;
     $.ajax({

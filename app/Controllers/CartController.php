@@ -47,7 +47,10 @@ class CartController extends Controller
                 $order["PaymentMethod"] = $_SESSION["payment"]["PaymentMethod"];
                 $modelOrder = new OrderVM();
                 $modelOrder->Post($order);
-                Common::ToUrl("/cart/payment");
+                if ($order["PaymentMethod"] == "0")
+                    Common::ToUrl("/cart/payment");
+                else
+                    Common::ToUrl("/cart/codpayment");
             }
         }
         $this->View();
@@ -108,6 +111,11 @@ class CartController extends Controller
         Common::ToUrl($_SERVER["HTTP_REFERER"]);
     }
     public function payment()
+    {
+        $this->setTitle("Thanh toán đơn hàng - hT Store");
+        $this->View();
+    }
+    public function codpayment()
     {
         $this->setTitle("Thanh toán đơn hàng - hT Store");
         $this->View();

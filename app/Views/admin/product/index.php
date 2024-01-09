@@ -52,6 +52,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                         <th>Mã sản phẩm</th>
                         <th>Mô tả</th>
                         <th>Kích thước</th>
+                        <th>Đơn vị</th>
                         <th>Chất liệu</th>
                         <th>Danh mục</th>
                         <th>Số lượng</th>
@@ -68,6 +69,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                         <th>Mã sản phẩm</th>
                         <th>Mô tả</th>
                         <th>Kích thước</th>
+                        <th>Đơn vị</th>
                         <th>Chất liệu</th>
                         <th>Danh mục</th>
                         <th>Số lượng</th>
@@ -97,6 +99,9 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                     <?php echo $_item->Size; ?>
                                 </td>
                                 <td>
+                                    <?php echo $_item->Unit; ?>
+                                </td>
+                                <td>
                                     <?php echo $_item->Material; ?>
                                 </td>
                                 <td>
@@ -118,7 +123,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                     <img src="/public/uploads/<?php echo $_item->Image; ?>" style="width:100%;border-radius:5px;"><br />
                                 <td class="text-center">
                                     <a href="/admin/product/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
-                                    <a onclick="return confirm('Xoá người dùng này?')" href="/admin/product/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
+                                    <a onclick="return confirm('Xoá mặt hàng này?')" href="/admin/product/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>
                                     <a href="/products/detail/product=<?php echo $_item->Id ?>" class="btn" style="color: #fff; background-color:#efbf45;border-color:#efbf45;">Link</a>
                                 </td>
                             </tr>

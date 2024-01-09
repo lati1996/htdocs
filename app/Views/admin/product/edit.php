@@ -57,9 +57,23 @@ $modelP = new ProductVM(App::$__params[0]);
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="">Số lượng</label>
                                     <input type="number" class="form-control form-control-user" value="<?php echo $modelP->Quanity; ?>" id="" placeholder="Số lượng" name="product[Quanity]" required>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="">Đơn vị</label>
+                                    <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="product[Unit]" required>
+                                        <?php
+                                        $unit = array("Bộ", "Cái", "Mét vuông", "Mét");
+                                        foreach ($unit as $itemunit) {
+                                        ?>
+                                            <option value="<?php echo $itemunit; ?>" <?php if ($modelP->Unit == $itemunit)
+                                                                                            echo "selected"; ?>><?php echo $itemunit; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="">Kích thước</label>
@@ -69,7 +83,7 @@ $modelP = new ProductVM(App::$__params[0]);
                                     <label for="">Chất liệu</label>
                                     <input type="text" class="form-control form-control-user" value="<?php echo $modelP->Material; ?>" id="" placeholder="Chất liệu" name="product[Material]" required>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="">Giá tiền</label>
                                     <input type="text" class="form-control form-control-user" id="" value="<?php echo $modelP->Price; ?>" placeholder="Giá sản phẩm" name="product[Price]" required>
                                 </div>

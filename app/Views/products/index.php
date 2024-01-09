@@ -136,6 +136,9 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                         <div class="form-group col-md-6 mb-6">
                                             <button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button>
                                         </div>
+                                        <div class="form-group col-md-6 mb-6" style="text-align: right;">
+                                            <button class="btn btn-success text-white mt-2" style="font-size: 1rem;" onclick="Buynow(<?php echo $_item->Id; ?>,1)">Mua Ngay</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
