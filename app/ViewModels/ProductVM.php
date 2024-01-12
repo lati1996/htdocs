@@ -66,7 +66,7 @@ class ProductVM extends Model
             $where = "1";
         }
         //echo $where;
-        return $this->QueryPaging(ProductVM::tableName, $where, $pageIndex, $pageNumber, $totalRows);
+        return $this->QueryPaging(ProductVM::tableName, $where . " ORDER BY `Id` DESC", $pageIndex, $pageNumber, $totalRows);
     }
     function GetPagingByCategory($params, $pageIndex, $pageNumber, &$totalRows, $idCate)
     {
@@ -80,7 +80,7 @@ class ProductVM extends Model
             //$where .= $this->WhereOr($this->WhereLike("Image", $keyword));
         }
         //echo $where;
-        return $this->QueryPaging(ProductVM::tableName, $where, $pageIndex, $pageNumber, $totalRows);
+        return $this->QueryPaging(ProductVM::tableName, $where . " ORDER BY `Id` DESC", $pageIndex, $pageNumber, $totalRows);
     }
     function GetListProdByCategory($idCate)
     {

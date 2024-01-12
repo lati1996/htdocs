@@ -25,6 +25,9 @@ function Buynow(id, qua) {
             if (response == "") {
                 window.location.href = '/cart';
             }
+            else {
+                window.location.href = '/signin';
+            }
         }
     });
 }
