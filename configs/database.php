@@ -1,7 +1,7 @@
 <?php
 $config['database'] = [
     'host' => 'localhost',
-    'user' => 'root',
-    'pass' => '',
-    'db' => 'db_shop'
+    'user' => 'htstoreb_phpmyadmin',
+    'pass' => 'mhoang3011fsmofx',
+    'db' => 'htstoreb_db_shop'
 ];
