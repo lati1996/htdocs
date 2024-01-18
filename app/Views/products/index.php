@@ -75,7 +75,7 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                         <div class="col-md-4">
                             <div class="card mb-4 product-wap rounded-0">
                                 <div class="card rounded-0">
-                                    <img class="card-img rounded-0" src="/public/uploads/<?php echo $_item->Image; ?>" height="380">
+                                    <img class="card-img rounded-0" src="/public/uploads/<?php echo $_item->Image; ?>" height="300">
                                     <div id="myModal" class="modalDetail">
                                         <span class="closeDetail"><i class="fa fa-window-close"></i></span>
                                         <img class="modal-content" id="img01">
@@ -107,7 +107,7 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                     </script>
                                 </div>
                                 <div class="card-body">
-                                    <p class="text-center mb-0"> <a href="/products/detail/product=<?php echo $_item->Id; ?>" class="h3 text-decoration-none title"><?php echo $_item->ProductName; ?></a></p>
+                                    <p id="ProdName" class="text-center mb-0"> <a href="/products/detail/product=<?php echo $_item->Id; ?>" class="h3 text-decoration-none title"><?php echo $_item->ProductName; ?></a></p>
                                     <p class="text-center mb-0">Kích thước: <?php echo $_item->Size; ?></p>
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                         <li class="pt-2">
@@ -131,7 +131,7 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                                             ?>
                                         </li>
                                     </ul>
-                                    <p class="text-center mb-0"><?php echo $_item->toPrice(); ?></p>
+                                    <p class="text-center mb-0"><?php echo $_item->toPrice(); ?> / <?php echo $_item->Unit; ?></p>
                                     <div class="row">
                                         <div class="form-group col-md-6 mb-6">
                                             <button class="btn btn-success text-white mt-2" onclick="AddCart(<?php echo $_item->Id; ?>,1)"><i class="fas fa-cart-plus"></i></button>

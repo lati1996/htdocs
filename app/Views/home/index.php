@@ -92,7 +92,7 @@
      <div class="row">
          <?php
             $model = new ProductVM();
-            $modelList = $model->GetTopProd(3);
+            $modelList = $model->GetTopProd('ORDER BY `Id` DESC');
             while ($row = $modelList->fetch_array()) {
                 $item = new ProductVM($row);
             ?>
@@ -103,7 +103,7 @@
                          <span class="popuptext" id="myPopup-<?php echo $item->Id; ?>">Đã thêm vào giỏ hàng</span>
                      </div>
                  </ul>
-                 <p class="text-center"><button onclick="AddCart(<?php echo $item->Id; ?>,1)" class="btn btn-success"><i class='fas fa-cart-plus' style='font-size:20px'></i></button></p>
+                 <p class="text-center"><button onclick="AddCart(<?php echo $item->Id; ?>,1)" class="btn btn-success"><i class='fas fa-cart-plus' style='font-size:18px'></i></button></p>
              </div>
          <?php
             }
@@ -120,13 +120,13 @@
              <div class="col-lg-6 m-auto">
                  <h1 class="h1">Sản phẩm mới</h1>
                  <p>
-                     HT Shop cập nhật thêm mẫu vải đẹp, màu sắc mới, hình ảnh theo trend thị trường...
+                     HT Store cập nhật thêm mẫu vải đẹp, màu sắc mới, hình ảnh theo trend thị trường...
                  </p>
              </div>
          </div>
          <div class="row">
              <?php
-                $modelListNew = $model->GetTopProd("3,3");
+                $modelListNew = $model->GetTopProd("");
                 if (!empty($modelListNew)) {
                     while ($row = $modelListNew->fetch_array()) {
                         $item = new ProductVM($row);
@@ -134,7 +134,7 @@
                      <div class="col-12 col-md-4 mb-4">
                          <div class="card h-100">
                              <a href="/products/detail/product=<?php echo $item->Id; ?>">
-                                 <img src="/public/uploads/<?php echo $item->Image; ?>" class="card-img-top" height="500">
+                                 <img src="/public/uploads/<?php echo $item->Image; ?>" class="card-img-top" height="370">
                              </a>
                              <div class="card-body">
                                  <ul class="list-unstyled d-flex justify-content-between">
@@ -151,7 +151,7 @@
                                      </li>
                                      <li class="text-muted text-right"><?php echo $item->toPrice(); ?></li>
                                  </ul>
-                                 <p class="text-center"><a href="/products/detail/product=<?php echo $item->Id; ?>" class="h3 text-decoration-none text-dark"><?php echo $item->ProductName; ?></a></p>
+                                 <p id="ProdName" class="text-center"><a href="/products/detail/product=<?php echo $item->Id; ?>" class="h3 text-decoration-none"><?php echo $item->ProductName; ?></a></p>
                                  <p class="text-center">
                                      Chất liệu: <?php echo $item->Material; ?>
                                  </p>

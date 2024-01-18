@@ -50,6 +50,7 @@ $data = $model->GetDataTable();
                                     <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="product[Unit]" required>
                                         <option value="">Đơn vị</option>
                                         <option value="Bộ">Bộ</option>
+                                        <option value="Tấm">Tấm</option>
                                         <option value="Cái">Cái</option>
                                         <option value="Mét vuông">Mét vuông</option>
                                         <option value="Mét">Mét</option>

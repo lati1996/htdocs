@@ -46,7 +46,7 @@ class ProductVM extends Model
     }
     function GetTopProd($number)
     {
-        $sql = "SELECT * FROM " . ProductVM::tableName . " WHERE 1 LIMIT " . $number;
+        $sql = "SELECT * FROM " . ProductVM::tableName . " WHERE 1 " . $number . " LIMIT 3";
         return $this->GetByQuery($sql);
     }
     function toPrice()
@@ -106,7 +106,7 @@ class ProductVM extends Model
     }
     function GetIdbyImg($img)
     {
-        $item = $this->GetByQuery("SELECT * FROM `tbl_Product` WHERE `Image` = '" . $img . "'")->fetch_array();
+        $item = $this->GetByQuery("SELECT * FROM `tbl_product` WHERE `Image` = '" . $img . "'")->fetch_array();
         $data = new ProductVM($item);
         return $data->Id;
     }

@@ -39,7 +39,7 @@ class ProductController extends Controller
                 } else {
                     $uploadOk = 0;
                 }
-                if ($_FILES["fileToUpload"]["size"] > 5000000) {
+                if ($_FILES["fileToUpload"]["size"] > 10000000) {
                     $uploadOk = 0;
                 }
                 if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
@@ -122,7 +122,7 @@ class ProductController extends Controller
                 if ($check != false) {
                     $uploadOk = 1;
                 }
-                if ($_FILES["fileToUpload"]["size"] > 5000000) {
+                if ($_FILES["fileToUpload"]["size"] > 10000000) {
                     $uploadOk = 0;
                 }
                 if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {

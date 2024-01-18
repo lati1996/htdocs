@@ -65,7 +65,7 @@ $modelP = new ProductVM(App::$__params[0]);
                                     <label for="">Đơn vị</label>
                                     <select class="form-control" style="border-radius: 10rem;font-size: .8rem; height: 48px;" name="product[Unit]" required>
                                         <?php
-                                        $unit = array("Bộ", "Cái", "Mét vuông", "Mét");
+                                        $unit = array("Bộ", "Tấm", "Cái", "Mét vuông", "Mét");
                                         foreach ($unit as $itemunit) {
                                         ?>
                                             <option value="<?php echo $itemunit; ?>" <?php if ($modelP->Unit == $itemunit)

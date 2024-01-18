@@ -30,9 +30,9 @@ $modelmg = new ImageVM();
 <section class="bg-light">
     <div class="container pb-5">
         <div class="row">
-            <div class="col-lg-5 mt-5">
+            <div class="col-lg-6 mt-5">
                 <div class="card mb-3">
-                    <a id="myImg"><img class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail"></a>
+                    <a id="myImg"><img class="card-img img-fluid" style="max-height:350px;" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail"></a>
                 </div>
                 <div id="myModal" class="modalDetail">
                     <span class="closeDetail"><i class="fa fa-window-close"></i></span>
@@ -76,7 +76,7 @@ $modelmg = new ImageVM();
                                 <div class="row">
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="">
+                                            <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="">
                                         </a>
                                     </div>
                                     <?php
@@ -87,7 +87,7 @@ $modelmg = new ImageVM();
                                     ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                     <?php
@@ -109,7 +109,7 @@ $modelmg = new ImageVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -132,7 +132,7 @@ $modelmg = new ImageVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -155,7 +155,7 @@ $modelmg = new ImageVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -179,7 +179,7 @@ $modelmg = new ImageVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -206,7 +206,7 @@ $modelmg = new ImageVM();
                 </div>
             </div>
             <!-- col end -->
-            <div class="col-lg-7 mt-5">
+            <div class="col-lg-6 mt-5">
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h2"><?php echo $model->ProductName; ?></h1>
@@ -322,7 +322,7 @@ $modelmg = new ImageVM();
                         <div class="p-2 pb-3">
                             <div class="product-wap card rounded-0">
                                 <div class="card rounded-0">
-                                    <img class="card-img rounded-0" src="/public/uploads/<?php echo $item->Image; ?>" height="380">
+                                    <img class="card-img rounded-0" src="/public/uploads/<?php echo $item->Image; ?>" height="300">
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">
                                             <!-- <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li> -->
