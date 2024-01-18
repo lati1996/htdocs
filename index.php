@@ -52,3 +52,4 @@ if (file_exists("app/Controllers/" . $contl . ".php") || file_exists("app/Contro
         echo "Action failed";
     }
 }
+//test
