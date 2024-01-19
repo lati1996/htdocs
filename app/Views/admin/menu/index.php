@@ -46,7 +46,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                         <th>Tên Menu</th>
                         <th>Nhóm Menu</th>
                         <th>Link</th>
-                        <th>Icon</th>
+                        <th>Icon/Hình ảnh</th>
                         <th>Thứ tự</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
@@ -57,7 +57,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                         <th>Tên Menu</th>
                         <th>Nhóm Menu</th>
                         <th>Link</th>
-                        <th>Icon</th>
+                        <th>Icon/Hình ảnh</th>
                         <th>Thứ tự</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
@@ -85,7 +85,23 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                     <?php echo $_item->Link; ?>
                                 </td>
                                 <td>
-                                    <?php echo $_item->Icon; ?>
+                                    <?php
+                                    $arrfind = array("png", "jpg", "svg");
+                                    $result = false;
+                                    foreach ($arrfind as $item) {
+                                        if (strpos($_item->Icon, $item)) {
+                                            $result = true;
+                                            break;
+                                        }
+                                    }
+                                    if ($result) {
+                                    ?>
+                                        <img src="/public/uploads/carousel/<?php echo $_item->Icon; ?>" style="width:300px;border-radius:5px;">
+                                    <?php
+                                    } else
+                                        echo $_item->Icon;
+                                    ?>
+
                                 </td>
                                 <td>
                                     <?php echo $_item->OrderNum; ?>
