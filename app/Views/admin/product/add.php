@@ -13,7 +13,7 @@ $data = $model->GetDataTable();
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Thêm Sản phẩm</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Thêm mới Sản phẩm</h1>
                         </div>
                         <form class="user" method="post" action="" enctype="multipart/form-data" autocomplete="off">
                             <div class="form-group row">
@@ -68,7 +68,27 @@ $data = $model->GetDataTable();
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <textarea rows="4" style="resize: none;" class="form-control" id="editor1" placeholder="Mô tả" name="product[Description]" required></textarea>
+                                    <textarea rows="5" style="resize: none;" class="form-control" id="editor1" placeholder="Mô tả" name="product[Description]" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                </div>
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <button name="btnAdd" type="submit" class="btn btn-primary btn-user btn-block">
+                                        Xác nhận
+                                    </button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <a href="/admin/product" class="btn btn-google btn-user btn-block">
+                                        <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group row text-center">
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
+                                    <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -82,26 +102,7 @@ $data = $model->GetDataTable();
                                     <input type="file" class="form-control-user" name="fileToUploadBonus[]" id="fileToUploadBonus" multiple>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-
-                                </div>
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button name="btnAdd" type="submit" class="btn btn-primary btn-user btn-block">
-                                        Xác nhận
-                                    </button>
-                                </div>
-                                <div class="col-sm-3">
-                                    <a href="/admin/product" class="btn btn-google btn-user btn-block">
-                                        <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
-                                    </a>
-                                </div>
-                            </div>
                         </form>
-                        <div class="form-group text-center">
-                            <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
-                            <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
-                        </div>
                     </div>
                 </div>
             </div>

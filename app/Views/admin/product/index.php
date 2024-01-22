@@ -92,7 +92,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                 <td>
                                     <?php echo $_item->ProdCode; ?>
                                 </td>
-                                <td>
+                                <td style="max-width:400px;">
                                     <?php echo $_item->Description; ?>
                                 </td>
                                 <td>

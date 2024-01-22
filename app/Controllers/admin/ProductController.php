@@ -17,7 +17,7 @@ class ProductController extends Controller
             Common::ToUrl("/admin/login");
         }
         $this->setLayout("app/Views/layouts/_adminLayout.php");
-        $this->setTitle("Tất cả Sản phẩm");
+        $this->setTitle("Danh sách sản phẩm");
     }
     public function index()
     {
@@ -102,6 +102,7 @@ class ProductController extends Controller
                 }
             }
         }
+        $this->setTitle("Thêm mới sản phẩm");
         $this->View($data);
     }
     public function edit()
@@ -193,6 +194,7 @@ class ProductController extends Controller
                 }
             }
         }
+        $this->setTitle("Chỉnh sửa sản phẩm");
         $this->View($data);
     }
     public function delete()

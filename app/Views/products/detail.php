@@ -30,7 +30,7 @@ $modelmg = new ImageVM();
 <section class="bg-light">
     <div class="container pb-5">
         <div class="row">
-            <div class="col-lg-6 mt-5">
+            <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
                     <a id="myImg"><img class="card-img img-fluid" style="max-height:350px;" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail"></a>
                 </div>
@@ -206,7 +206,7 @@ $modelmg = new ImageVM();
                 </div>
             </div>
             <!-- col end -->
-            <div class="col-lg-6 mt-5">
+            <div class="col-lg-7 mt-5">
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h2"><?php echo $model->ProductName; ?></h1>
@@ -223,14 +223,7 @@ $modelmg = new ImageVM();
                             ?>
                             <span class="list-inline-item text-dark"></span>
                         </p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <h6>Chất liệu:</h6>
-                            </li>
-                            <li class="list-inline-item">
-                                <p class="text-muted"><strong><?php echo $model->Material; ?></strong></p>
-                            </li>
-                        </ul>
+
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Đơn vị:</h6>
@@ -239,7 +232,6 @@ $modelmg = new ImageVM();
                                 <p class="text-muted"><strong><?php echo $model->Unit; ?></strong></p>
                             </li>
                         </ul>
-
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Kích thước:</h6>
@@ -248,19 +240,6 @@ $modelmg = new ImageVM();
                                 <p class="text-muted"><strong><?php echo $model->Size; ?></strong></p>
                             </li>
                         </ul>
-                        <h6>Mô tả:</h6>
-                        <p><?php echo $model->Description; ?></p>
-                        <!-- <h6>Specification:</h6>
-                        <ul class="list-unstyled pb-3">
-                            <li>Lorem ipsum dolor sit</li>
-                            <li>Amet, consectetur</li>
-                            <li>Adipiscing elit,set</li>
-                            <li>Duis aute irure</li>
-                            <li>Ut enim ad minim</li>
-                            <li>Dolore magna aliqua</li>
-                            <li>Excepteur sint</li>
-                        </ul> -->
-
                         <form action="" method="POST">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
@@ -298,10 +277,28 @@ $modelmg = new ImageVM();
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-lg-12 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="h2 text-center mt-5"><strong><?php echo $model->ProductName; ?></strong></div>
+                        <div class="text-center mt-5">
+                            <img class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" style="width: 80%;" alt="Card image cap">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1 col-md-1 col-lg-1">
+                            </div>
+                            <div class="col-xs-10 col-sm-1 col-md-10 col-lg-10">
+                                <p class="mt-5"><i>Chi tiết sản phẩm:</i> </p>
+                                <?php echo $model->Description; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>
 <!-- Close Content -->
-
 <!-- Start Article -->
 <section class="py-5">
     <div class="container">
@@ -353,7 +350,6 @@ $modelmg = new ImageVM();
                                             for ($i = 1; $i <= 5; $i++) {
                                                 $star = $i <= $item->Rating ? "warning" : "muted";
                                             ?>
-
                                                 <i class="text-<?php echo $star; ?> fa fa-star"></i>
                                             <?php
                                             }

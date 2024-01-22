@@ -91,13 +91,33 @@ $modelP = new ProductVM(App::$__params[0]);
                             <div class="form-group row">
                                 <div class="col-sm-12 mb-12 mb-sm-0">
                                     <label for="">Mô tả</label><br />
-                                    <textarea rows="4" style="resize: none;" class="form-control" id="editor1" placeholder="Mô tả" name="product[Description]" required><?php echo $modelP->Description; ?></textarea>
+                                    <textarea rows="5" style="resize: none;" class="form-control" id="editor1" placeholder="Mô tả" name="product[Description]" required><?php echo $modelP->Description; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                </div>
+                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                    <button name="btnEdit" type="submit" class="btn btn-primary btn-user btn-block">
+                                        Xác nhận
+                                    </button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <a href="/admin/product" class="btn btn-google btn-user btn-block">
+                                        <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group row text-center">
+                                <div class="col-sm-12 mb-12 mb-sm-0">
+                                    <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
+                                    <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-6 mb-sm-0 text-center">
                                     <label for="">Ảnh chính (Tối đa 01 ảnh)</label><br />
-                                    <input type="file" class="btn btn-light btn-icon-split" name="fileToUpload" id="fileToUpload" multiple>
+                                    <input type="file" class="btn btn-light btn-icon-split" name="fileToUpload" id="fileToUpload">
                                     <img src="/public/uploads/<?php echo $modelP->Image; ?>" width="500" style="border-radius:5px;"><br />
                                     <?php echo $modelP->Image; ?><br />
                                 </div>
@@ -114,7 +134,7 @@ $modelP = new ProductVM(App::$__params[0]);
                                                 if ($itemimg->IdProd == $modelP->Id) {
                                         ?>
                                                     <tr>
-                                                        <td> <img src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" width="250px" style="border-radius:5px;"></td>
+                                                        <td> <img src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" height="160px" style="border-radius:5px;"></td>
                                                         <td class="text-center" style="width: 150px;">
                                                             <a onclick="return confirm('Xoá ảnh này?')" href="/admin/product/deleteImg/<?php echo $itemimg->Id ?>" class="btn btn-danger"><i class='fas fa-trash'></i></a>
                                                         </td>
@@ -127,25 +147,6 @@ $modelP = new ProductVM(App::$__params[0]);
                                     </table>
 
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-
-                                </div>
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button name="btnEdit" type="submit" class="btn btn-primary btn-user btn-block">
-                                        Xác nhận
-                                    </button>
-                                </div>
-                                <div class="col-sm-3">
-                                    <a href="/admin/product" class="btn btn-google btn-user btn-block">
-                                        <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="form-group text-center">
-                                <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
-                                <p style="color:blue;"><?php echo isset($mess) ? $mess : null ?></p>
                             </div>
                         </form>
                     </div>
