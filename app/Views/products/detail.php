@@ -3,11 +3,13 @@
 use app\App;
 use app\ViewModels\ProductVM;
 use app\ViewModels\ImageVM;
+use app\ViewModels\SizeVM;
 
 $idProd = App::$__params[0];
 $idProd = str_replace("product=", "", $idProd);
 $model = new ProductVM($idProd);
 $modelmg = new ImageVM();
+$modelSize = new SizeVM();
 ?>
 <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -237,7 +239,17 @@ $modelmg = new ImageVM();
                                 <h6>Kích thước:</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong><?php echo $model->Size; ?></strong></p>
+                                <?php
+                                $prodSize1 = $modelSize->GetDataTable("`IdProd` = " . $model->Id);
+                                if (!empty($prodSize1)) {
+                                    while ($it1 = $prodSize1->fetch_array()) {
+                                        $itm1 = new SizeVM($it1);
+                                ?>
+                                        <button class="btn"><?php echo $itm1->SizeName; ?></button>
+                                <?php
+                                    }
+                                }
+                                ?>
                             </li>
                         </ul>
                         <form action="" method="POST">

@@ -55,6 +55,12 @@
                       </div>
                   </div>
               </li>
+              <li class="nav-item">
+                  <a class="nav-link collapsed" href="/admin/size" aria-labelledby="headingUtilities">
+                      <i class="fas fa-fw fa-table"></i>
+                      <span>Size & Giá</span>
+                  </a>
+              </li>
               <!-- Nav Item - Pages Collapse Menu -->
               <li class="nav-item">
                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">

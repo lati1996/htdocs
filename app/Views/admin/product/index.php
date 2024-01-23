@@ -121,6 +121,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                 </td>
                                 <td style="width:200px;">
                                     <img src="/public/uploads/<?php echo $_item->Image; ?>" style="width:100%;border-radius:5px;"><br />
+                                </td>
                                 <td class="text-center">
                                     <a href="/admin/product/edit/<?php echo $_item->Id ?>" class="btn btn-primary">Sửa</a>
                                     <a onclick="return confirm('Xoá mặt hàng này?')" href="/admin/product/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Xoá</a>

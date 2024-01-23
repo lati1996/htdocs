@@ -20,3 +20,9 @@ function DeleteImg(id) {
         }
     });
 }
+function btnUnread(id) {
+    document.getElementById('input1_' + id).removeAttribute('readonly');
+    document.getElementById('input2_' + id).removeAttribute('readonly');
+    document.getElementById('btnUnread_' + id).style.display = 'none';
+    document.getElementById('btnUpdate_' + id).style.display = 'block';
+}

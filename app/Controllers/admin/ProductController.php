@@ -5,6 +5,7 @@ namespace app\Controllers\admin;
 use app\App;
 use app\ViewModels\ImageVM;
 use app\ViewModels\ProductVM;
+use app\ViewModels\SizeVM;
 use core\Controller;
 use core\Common;
 use Exception;
