@@ -34,7 +34,7 @@ $modelSize = new SizeVM();
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
-                    <a id="myImg"><img class="card-img img-fluid" style="max-height:350px;" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail"></a>
+                    <a id="myImg"><img class="card-img img-fluid" style="max-height:300px;" src="/public/uploads/<?php echo $model->Image; ?>" alt="Card image cap" id="product-detail"></a>
                 </div>
                 <div id="myModal" class="modalDetail">
                     <span class="closeDetail"><i class="fa fa-window-close"></i></span>
@@ -78,7 +78,7 @@ $modelSize = new SizeVM();
                                 <div class="row">
                                     <div class="col-4">
                                         <a href="#">
-                                            <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="">
+                                            <img style="max-height:81px;" class="card-img img-fluid" src="/public/uploads/<?php echo $model->Image; ?>" alt="">
                                         </a>
                                     </div>
                                     <?php
@@ -89,7 +89,7 @@ $modelSize = new SizeVM();
                                     ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:81px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                     <?php
@@ -111,7 +111,7 @@ $modelSize = new SizeVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:81px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -134,7 +134,7 @@ $modelSize = new SizeVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:81px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -157,7 +157,7 @@ $modelSize = new SizeVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:81px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -181,7 +181,7 @@ $modelSize = new SizeVM();
                                         ?>
                                             <div class="col-4">
                                                 <a href="#">
-                                                    <img style="max-height:85px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
+                                                    <img style="max-height:81px;" class="card-img img-fluid" src="/public/uploads/bonus/<?php echo $itemimg->Image; ?>" alt="">
                                                 </a>
                                             </div>
                                         <?php
@@ -212,7 +212,7 @@ $modelSize = new SizeVM();
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h2"><?php echo $model->ProductName; ?></h1>
-                        <p class="h3 py-2"><?php echo $model->toPrice(); ?></p>
+                        <input class="h3 py-2" id="showPrice" style="border:none;" value="<?php echo $model->toPrice(); ?>" readonly>
                         <p class="py-2">
                             <?php
                             for ($i = 1; $i <= 5; $i++) {
@@ -236,16 +236,20 @@ $modelSize = new SizeVM();
                         </ul>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <h6>Kích thước:</h6>
+                                <h6>Chọn kích thước:</h6>
                             </li>
-                            <li class="list-inline-item">
+                            <li style="display: inline-flex;">
                                 <?php
                                 $prodSize1 = $modelSize->GetDataTable("`IdProd` = " . $model->Id);
                                 if (!empty($prodSize1)) {
                                     while ($it1 = $prodSize1->fetch_array()) {
                                         $itm1 = new SizeVM($it1);
                                 ?>
-                                        <button class="btn"><?php echo $itm1->SizeName; ?></button>
+                                        <div class="contentSize">
+                                            <span id="mark_<?php echo $itm1->Id; ?>" class="mark"></span>
+                                            <button class="btnCustom" id="btnSize_<?php echo $itm1->Id; ?>" onclick="selectButton(<?php echo $itm1->Id; ?>)" style="color: #000;background-color: #f3f1eb;"><?php echo $itm1->SizeName; ?></button>
+
+                                        </div>
                                 <?php
                                     }
                                 }
@@ -253,6 +257,7 @@ $modelSize = new SizeVM();
                             </li>
                         </ul>
                         <form action="" method="POST">
+                            <input id="fillIdSize" type="hidden" name="item[IdSize]" value="">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-auto">
@@ -268,21 +273,20 @@ $modelSize = new SizeVM();
                                 </div>
                             </div>
                             <div class="row pb-3">
-                                <div class="col-sm-1"></div>
                                 <div class="col-sm-5">
                                     <input id="number" name=item[Quanity] hidden value="1">
                                     <input id="id-prod" name=item[Id] value="<?php echo $model->Id; ?>" hidden>
-                                    <button class="btn btn-lg" name="btnAddCart" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1.25rem;">
+                                    <button class="btn btn-lg" name="btnAddCart" style="color: #000;background-color: #f3f1eb;border-color: #f3f1eb;font-size:1rem;">
                                         <i class='fas fa-cart-plus'></i> Thêm vào giỏ hàng
                                     </button>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button class="btn btn-success btn-lg" name="btnBuy">Mua ngay</button>
+                                    <button class="btn btn-success btn-lg" name="btnBuy" style="font-size: 1rem;">Mua ngay</button>
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <p style="color:#64647d;"><?php echo isset($error) ? $error : null ?></p>
-                                <p style="color:#64647d;"><?php echo isset($mess) ? $mess : null ?></p>
+                                <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
+                                <p style="color:#64647d;"><i><?php echo isset($mess) ? $mess : null ?></i></p>
                             </div>
                         </form>
                     </div>
@@ -345,7 +349,7 @@ $modelSize = new SizeVM();
                                 </div>
                                 <div class="card-body">
                                     <p class="text-center mb-0"><a href="/products/detail/product=<?php echo $item->Id; ?>" class="h3 text-decoration-none"><?php echo $item->ProductName; ?></a></p>
-                                    <p class="text-center mb-0">Kích thước: <?php echo $item->Size; ?></p>
+
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                         <li class="pt-2">
                                             <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>

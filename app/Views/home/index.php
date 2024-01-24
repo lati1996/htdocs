@@ -103,7 +103,7 @@
                          <span class="popuptext" id="myPopup-<?php echo $item->Id; ?>">Đã thêm vào giỏ hàng</span>
                      </div>
                  </ul>
-                 <p class="text-center"><button onclick="AddCart(<?php echo $item->Id; ?>,1)" class="btn btn-success"><i class='fas fa-cart-plus' style='font-size:18px'></i></button></p>
+
              </div>
          <?php
             }

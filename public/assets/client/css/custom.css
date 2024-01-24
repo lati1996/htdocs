@@ -198,6 +198,7 @@ body {
 #ProdName a:hover {
     color: #747474;
 }
+
 .show {
     display: block;
 }
@@ -306,4 +307,75 @@ body {
 #loadproduct {
     /* overflow: hidden; */
     display: none;
+}
+
+.contentSize {
+    position: relative;
+    overflow: hidden;
+}
+
+.btnCustom {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 2px solid #fff;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    z-index: 1;
+}
+
+.btnCustom:focus {
+    outline: none;
+}
+
+#showPrice:focus {
+    outline: none;
+}
+
+.mark {
+    display: none;
+    background-color: #56ae6c;
+    width: 30px;
+    height: 10px;
+    padding: 3px;
+    top: -1px;
+    left: -7px;
+    position: absolute;
+    z-index: 2;
+    transform: rotate(320deg);
+}
+
+.form-control-custom:focus {
+    color: #212529;
+    background-color: #fff;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
+
+.form-control-custom {
+    border: 1px solid #e8e8e8;
+}
+
+.form-control-custom {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0px solid #ced4da;
+    border-radius: 0.5rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }

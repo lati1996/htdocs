@@ -117,7 +117,6 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                                 </script>
                                 <div class="card-body">
                                     <p id="ProdName" class="text-center mb-0"> <a href="/products/detail/product=<?php echo $_item->Id; ?>" class="h3 text-decoration-none"><?php echo $_item->ProductName; ?></a></p>
-                                    <p class="text-center mb-0">Kích thước: <?php echo $_item->Size; ?></p>
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                         <li class="pt-2">
                                             <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>

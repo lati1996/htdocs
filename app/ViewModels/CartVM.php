@@ -5,6 +5,7 @@ namespace app\ViewModels;
 use core\Common;
 use core\Model;
 
+
 class CartVM extends Model
 {
     public $Id;
@@ -13,6 +14,7 @@ class CartVM extends Model
     public $Quanity;
     public $Status;
     public $IdOrder;
+    public $IdSize;
 
     const tableName = "tbl_cart";
     function __construct($cart = null)
@@ -28,6 +30,7 @@ class CartVM extends Model
         $this->Quanity = isset($cart["Quanity"]) ? $cart["Quanity"] : null;
         $this->Status = isset($cart["Status"]) ? $cart["Status"] : null;
         $this->IdOrder = isset($cart["IdOrder"]) ? $cart["IdOrder"] : null;
+        $this->IdSize = isset($cart["IdSize"]) ? $cart["IdSize"] : null;
     }
     function Post($item)
     {
@@ -70,14 +73,14 @@ class CartVM extends Model
     }
     function TotalPrice()
     {
-        $prod = new ProductVM($this->IdProd);
-        $price = $prod->Price;
+        $size = new SizeVM($this->IdSize);
+        $price = $size->SizePrice;
         $total = $this->Quanity * $price;
         return $total;
     }
     function CheckCart($data)
     {
-        $where = $this->WhereEq("IdUser", $data["IdUser"]) . $this->WhereAnd($this->WhereEq("IdProd", $data["IdProd"])) . $this->WhereAnd($this->WhereEq("Status", $data["Status"]));
+        $where = $this->WhereEq("IdUser", $data["IdUser"]) . $this->WhereAnd($this->WhereEq("IdProd", $data["IdProd"])) . $this->WhereAnd($this->WhereEq("Status", $data["Status"])) . $this->WhereAnd($this->WhereEq("IdSize", $data["IdSize"]));
         return $this->SELECTROW(CartVM::tableName, $where);
     }
 }

@@ -4,6 +4,7 @@
             <?php
 
             use app\ViewModels\CartVM;
+            use app\ViewModels\SizeVM;
             use app\ViewModels\ProductVM;
             use core\Common;
 
@@ -16,11 +17,11 @@
                 <thead>
                     <tr style="background-color: #68CF82">
                         <th>Thứ tự</th>
-                        <th colspan="2">Sản phẩm</th>
-                        <th>Quy cách</th>
+                        <th>Sản phẩm</th>
+                        <th>Kích thước</th>
                         <th>Số lượng</th>
                         <th>Đơn giá</th>
-                        <th>Thành tiền</th>
+                        <th>Số tiền</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,9 +35,25 @@
                     ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
-                                <td><a href="/products/detail/product=<?php echo $_prod->Id; ?>"><img class="rounded-0" src="/public/uploads/<?php echo $_prod->Image; ?>" height="100"></a></td>
-                                <td> <?php echo $_prod->ProductName; ?> </td>
-                                <td><?php echo $_prod->Size; ?></td>
+                                <td id="ProdName"><a class="text-decoration-none" href="/products/detail/product=<?php echo $_prod->Id; ?>"><img class="rounded-0" src="/public/uploads/<?php echo $_prod->Image; ?>" height="100"></br><?php echo $_prod->ProductName; ?></a></td>
+                                <td style="max-width:190px;">
+                                    <input type="hidden" id="idCart" value="<?php echo $_item->Id; ?>">
+                                    <select class="form-control-custom" id="slSize" onchange="sizechange()">
+                                        <?php
+                                        $sizeModel = new SizeVM($_item->IdSize);
+                                        $listSize = $sizeModel->GetDataTable("`IdProd` = " . $sizeModel->IdProd);
+                                        if (!empty($listSize)) {
+                                            while ($rowListSize = $listSize->fetch_array()) {
+                                                $itemlistsize = new SizeVM($rowListSize);
+                                        ?>
+                                                <option value="<?php echo $itemlistsize->Id; ?>" <?php if ($sizeModel->Id == $itemlistsize->Id)
+                                                                                                        echo "selected"; ?>><?php echo $itemlistsize->SizeName; ?></option>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
                                 <td style="width: 170px;">
                                     <li class="list-inline-item text-right">
                                         <input type="hidden" name="product-quanity-<?php echo $_item->Id; ?>" id="product-quanity" value="<?php echo $_item->Quanity; ?>">
@@ -46,7 +63,7 @@
                                     <li class="list-inline-item"><a href="/cart/plus/<?php echo $_item->Id; ?>" class="btn btn-success">+</a></li>
                                     <a class="btn" href="/cart/delete/<?php echo $_item->Id; ?>" style="height: 35px; margin-top: 5px;"><i class='fas fa-trash'></i></a>
                                 </td>
-                                <td><?php echo $_prod->toPrice(); ?></td>
+                                <td><?php echo $sizeModel->SizetoPrice(); ?></td>
                                 <td><?php echo Common::ViewMoney($_item->TotalPrice()); ?></td>
                             </tr>
                     <?php
@@ -60,7 +77,7 @@
                 </tbody>
                 <tfoot>
                     <tr style="background-color:#F5F5F5">
-                        <th colspan="6">Tổng cộng đơn hàng</th>
+                        <th colspan="5">Tổng cộng đơn hàng</th>
                         <th>
                             <?php
                             echo Common::ViewMoney($totalCart);

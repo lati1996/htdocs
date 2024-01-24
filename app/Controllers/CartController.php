@@ -84,6 +84,23 @@ class CartController extends Controller
         $data["Id"] = $cartNow->Id;
         $data["IdUser"] = $cartNow->IdUser;
         $data["IdProd"] = $cartNow->IdProd;
+        $data["IdSize"] = $cartNow->IdSize;
+        $data["Quanity"] = $cartNow->Quanity;
+        $cartModel = new CartVM();
+        $cartModel->Put($data);
+        Common::ToUrl($_SERVER["HTTP_REFERER"]);
+    }
+    public function sizechange()
+    {
+        $id = App::$__params[0];
+        $idSize = App::$__params[1];
+        // echo $id;
+        // echo $idSize;
+        $cartNow = new CartVM($id);
+        $data["Id"] = $cartNow->Id;
+        $data["IdUser"] = $cartNow->IdUser;
+        $data["IdProd"] = $cartNow->IdProd;
+        $data["IdSize"] = $idSize;
         $data["Quanity"] = $cartNow->Quanity;
         $cartModel = new CartVM();
         $cartModel->Put($data);
@@ -98,6 +115,7 @@ class CartController extends Controller
         $data["Id"] = $cartNow->Id;
         $data["IdUser"] = $cartNow->IdUser;
         $data["IdProd"] = $cartNow->IdProd;
+        $data["IdSize"] = $cartNow->IdSize;
         $data["Quanity"] = $cartNow->Quanity;
         $cartModel = new CartVM();
         $cartModel->Put($data);

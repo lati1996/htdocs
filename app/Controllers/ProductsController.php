@@ -39,23 +39,26 @@ class ProductsController extends Controller
         if (isset($_POST["btnAddCart"])) {
             if (isset($_SESSION["user"])) {
                 $item = $_POST["item"];
-                $idProd = $item["Id"];
-                $idUser = $_SESSION["user"]["Id"];
-                $cartModel = new CartVM();
-                $data["IdUser"] = $idUser;
-                $data["IdProd"] = $idProd;
-                $data["Status"] = '0';
-                $check = $cartModel->CheckCart($data);
-                if (empty($check)) {
-                    $data["Quanity"] =  $item["Quanity"];
-                    $cartModel->Post($data);
-                    unset($_POST["item"]);
-                    $data["mess"] = "Đã thêm vào giỏ hàng";
+                if (empty($item["IdSize"])) {
+                    $data["error"] = "Vui lòng chọn kích thước sản phẩm";
                 } else {
-                    $check["Quanity"] += $item["Quanity"];
-                    $cartModel->Put($check);
-                    unset($_POST["item"]);
-                    $data["mess"] = "Đã thêm vào giỏ hàng";
+                    $cartModel = new CartVM();
+                    $data["IdUser"] = $_SESSION["user"]["Id"];
+                    $data["IdProd"] = $item["Id"];
+                    $data["IdSize"] = $item["IdSize"];
+                    $data["Status"] = '0';
+                    $check = $cartModel->CheckCart($data);
+                    if (empty($check)) {
+                        $data["Quanity"] = $item["Quanity"];
+                        $cartModel->Post($data);
+                        unset($_POST["item"]);
+                        $data["mess"] = "Đã thêm vào giỏ hàng";
+                    } else {
+                        $check["Quanity"] += $item["Quanity"];
+                        $cartModel->Put($check);
+                        unset($_POST["item"]);
+                        $data["mess"] = "Đã thêm vào giỏ hàng";
+                    }
                 }
             } else {
                 Common::ToUrl("/signin");
@@ -63,11 +66,10 @@ class ProductsController extends Controller
         }
         if (isset($_POST["btnBuy"])) {
             $item = $_POST["item"];
-            $idProd = $item["Id"];
-            $idUser = $_SESSION["user"]["Id"];
             $cartModel = new CartVM();
-            $data["IdUser"] = $idUser;
-            $data["IdProd"] = $idProd;
+            $data["IdUser"] = $_SESSION["user"]["Id"];
+            $data["IdProd"] = $item["Id"];
+            $data["IdSize"] = $item["IdSize"];
             $data["Status"] = '0';
             $check = $cartModel->CheckCart($data);
             if (empty($check)) {

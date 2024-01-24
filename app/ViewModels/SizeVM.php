@@ -3,6 +3,7 @@
 namespace app\ViewModels;
 
 use core\Model;
+use core\Common;
 
 class SizeVM extends Model
 {
@@ -44,5 +45,9 @@ class SizeVM extends Model
     function Put($item)
     {
         return $this->UPDATE(SizeVM::tableName, $item, $this->WhereEq("Id", $item["Id"]));
+    }
+    function SizetoPrice()
+    {
+        return Common::ViewMoney($this->SizePrice);
     }
 }

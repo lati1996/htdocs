@@ -62,18 +62,11 @@ class SizeController extends Controller
             echo $ex->getMessage();
         }
     }
-    public function deleteImg()
+
+    public function getPrice()
     {
         $id = App::$__params[0];
-        $modeldb = new ImageVM();
-        $data = new ImageVM($id);
-        try {
-            unlink("public/uploads/bonus/" . $data->Image);
-            $modeldb->Delete($id);
-            //header("Location: " . $_SERVER['REQUEST_URI']);
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
+        $modeldb = new SizeVM($id);
+        echo $modeldb->SizetoPrice();
     }
 }

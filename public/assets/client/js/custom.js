@@ -140,3 +140,41 @@ $(window).on('load', function (event) {
     }, 900);
 
 });
+
+function selectButton(id) {
+    var collection = document.getElementsByClassName('btnCustom');
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].style.borderColor = "#fff";
+    }
+    var mark = document.getElementsByClassName('mark');
+    for (let i = 0; i < mark.length; i++) {
+        mark[i].style.display = 'none';
+    }
+    document.getElementById('btnSize_' + id).style.borderColor = '#56ae6c';
+    document.getElementById('mark_' + id).style.display = 'block';
+    document.getElementById('fillIdSize').value = id;
+    $.ajax({
+        type: "get",
+        url: `/admin/size/getprice/${id}}`,
+        dataType: "html",
+        success: function (response) {
+            if (response != "") {
+                document.getElementById('showPrice').value = response;
+            }
+        },
+    });
+}
+
+function sizechange() {
+    var idpd = document.getElementById('idCart').value;
+    var idsi = document.getElementById('slSize').value;
+    $.ajax({
+        type: "get",
+        url: `/cart/sizechange/${idpd}/${idsi}`,
+        dataType: "html",
+        success: function (response) {
+            //alert(response);
+            window.location.reload();
+        },
+    });
+}
