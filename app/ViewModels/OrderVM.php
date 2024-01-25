@@ -14,6 +14,7 @@ class OrderVM extends Model
     public $DeliveryAddress;
     public $DateCreate;
     public $PaymentMethod;
+    public $OrderStatus;
 
     const tableName = "tbl_order";
     function __construct($item = null)
@@ -30,6 +31,7 @@ class OrderVM extends Model
         $this->DeliveryAddress = isset($item["DeliveryAddress"]) ? $item["DeliveryAddress"] : null;
         $this->DateCreate = isset($item["DateCreate"]) ? $item["DateCreate"] : null;
         $this->PaymentMethod = isset($item["PaymentMethod"]) ? $item["PaymentMethod"] : null;
+        $this->OrderStatus = isset($item["OrderStatus"]) ? $item["OrderStatus"] : null;
     }
     function Post($item)
     {
@@ -45,7 +47,7 @@ class OrderVM extends Model
             $where .= $this->WhereOr($this->WhereLike("Address", $keyword));
             $where .= $this->WhereOr($this->WhereLike("Phone", $keyword));
         } else {
-            $where = "1=1";
+            $where = "1 ORDER BY `Id` DESC";
         }
         //echo $where;
         return $this->QueryPaging(OrderVM::tableName, $where, $pageIndex, $pageNumber, $totalRows);

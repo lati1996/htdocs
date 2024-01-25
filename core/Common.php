@@ -7,7 +7,7 @@ class Common
 {
     public static function ViewMoney($price)
     {
-        return number_format($price, 0, ".", ",") . " đ";
+        return number_format($price, 0, ".", ",") . "đ";
     }
     public static function ToUrl($path)
     {

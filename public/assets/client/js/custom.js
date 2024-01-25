@@ -165,12 +165,12 @@ function selectButton(id) {
     });
 }
 
-function sizechange() {
-    var idpd = document.getElementById('idCart').value;
-    var idsi = document.getElementById('slSize').value;
+function sizechange(id) {
+    var id = document.getElementById('idCart_' + id).value;
+    var idsi = document.getElementById('slSize_' + id).value;
     $.ajax({
         type: "get",
-        url: `/cart/sizechange/${idpd}/${idsi}`,
+        url: `/cart/sizechange/${id}/${idsi}`,
         dataType: "html",
         success: function (response) {
             //alert(response);

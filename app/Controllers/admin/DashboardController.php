@@ -19,7 +19,8 @@ class DashboardController extends Controller
     }
     public function index()
     {
-        $this->View();
+        Common::ToUrl("/admin/order");
+        //$this->View();
     }
     public function logout()
     {

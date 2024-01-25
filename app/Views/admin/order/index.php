@@ -35,10 +35,11 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                 <thead>
                     <tr>
                         <th>Mã đơn hàng</th>
-                        <th>Tổng hàng (món)</th>
+                        <th>Số lượng</th>
                         <th>Ngày tạo đơn</th>
                         <th>Phương thức thanh toán</th>
-                        <th>Trạng thái</th>
+                        <th>Thanh toán</th>
+                        <th>Đơn hàng</th>
                         <th>Tổng giá</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
@@ -46,10 +47,11 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                 <tfoot>
                     <tr>
                         <th>Mã đơn hàng</th>
-                        <th>Tổng hàng (món)</th>
+                        <th>Số lượng</th>
                         <th>Ngày tạo đơn</th>
                         <th>Phương thức thanh toán</th>
-                        <th>Trạng thái</th>
+                        <th>Thanh toán</th>
+                        <th>Đơn hàng</th>
                         <th>Tổng giá</th>
                         <th>Tuỳ chỉnh</th>
                     </tr>
@@ -72,9 +74,9 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                 </td>
                                 <td>
                                     <?php if ($_item->PaymentMethod == 0) {
-                                        echo "COD";
-                                    } else {
                                         echo "Momo";
+                                    } else {
+                                        echo "COD";
                                     } ?>
                                 </td>
                                 <td>
@@ -85,11 +87,17 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
                                     } ?>
                                 </td>
                                 <td>
+                                    <?php echo $_item->OrderStatus; ?>
+                                </td>
+                                <td>
                                     <?php echo Common::ViewMoney($_item->TotalPrice); ?>
                                 </td>
+
                                 <td class="text-center">
-                                    <a href="/admin/order/detail/<?php echo $_item->Id ?>" class="btn btn-primary">Chi tiết</a>
-                                    <a onclick="return confirm('Huỷ đơn hàng này?')" href="/admin/order/delete/<?php echo $_item->Id ?>" class="btn btn-danger">Huỷ</a>
+                                    <a href="/admin/order/detail/<?php echo $_item->Id ?>" class="btn btn-warning">Chi tiết</a>
+                                    <?php if ($_item->OrderStatus == "")
+                                        echo '<a href="/admin/order/compl/' . $_item->Id . '" class="btn btn-primary">Đã xử lý</a>';
+                                    ?>
 
                                 </td>
                             </tr>

@@ -63,6 +63,7 @@ class CartController extends Controller
             $cartModel = new CartVM();
             $data["IdUser"] = $idUser;
             $data["IdProd"] = $idProd;
+            $data["IdSize"] = '0';
             $data["Status"] = '0';
             $check = $cartModel->CheckCart($data);
             //var_dump($check);
@@ -96,6 +97,9 @@ class CartController extends Controller
         $idSize = App::$__params[1];
         // echo $id;
         // echo $idSize;
+        // unset($id);
+        // unset($idSize);
+
         $cartNow = new CartVM($id);
         $data["Id"] = $cartNow->Id;
         $data["IdUser"] = $cartNow->IdUser;

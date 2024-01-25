@@ -6,6 +6,7 @@ use app\App;
 use app\ViewModels\OrderVM;
 use core\Controller;
 use core\Common;
+use core\Database;
 use Exception;
 
 class OrderController extends Controller
@@ -35,6 +36,19 @@ class OrderController extends Controller
         $modeldb = new OrderVM();
         try {
             $modeldb->Delete($idor);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+    public function compl()
+    {
+        $idor = App::$__params[0];
+        $modeldb = new OrderVM();
+        $item["Id"] = $idor;
+        $item["OrderStatus"] = "Đã xử lý";
+        try {
+            $modeldb->Put($item);
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         } catch (Exception $ex) {
             echo $ex->getMessage();

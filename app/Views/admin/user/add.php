@@ -45,7 +45,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="/admin/user/" class="btn btn-google btn-user btn-block">
+                                    <a href="javascript:history.back()" class="btn btn-google btn-user btn-block">
                                         <!-- <i class="fab fa-google fa-fw"></i>  -->Trở về
                                     </a>
                                 </div>

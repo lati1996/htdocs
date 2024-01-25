@@ -334,7 +334,7 @@ th,
 thead,
 tr {
     border-color: inherit;
-    border-style: solid;
+    border-style: none;
     border-width: 0
 }
 

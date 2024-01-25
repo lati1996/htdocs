@@ -41,12 +41,19 @@ class CartVM extends Model
         $keyword = $params["keyword"] ?? "";
         if (!empty($keyword)) {
             $where = $this->WhereLike("Id", $keyword);
-            $where .= $this->WhereOr($this->WhereLike("Name", $keyword));
-            $where .= $this->WhereOr($this->WhereLike("Email", $keyword));
-            $where .= $this->WhereOr($this->WhereLike("Address", $keyword));
-            $where .= $this->WhereOr($this->WhereLike("Phone", $keyword));
         } else {
-            $where = "1=1";
+            $where = "1";
+        }
+        //echo $where;
+        return $this->QueryPaging(CartVM::tableName, $where, $pageIndex, $pageNumber, $totalRows);
+    }
+    function GetPagingWithIdOrder($params, $pageIndex, $pageNumber, &$totalRows, $idOrder)
+    {
+        $keyword = $params["keyword"] ?? "";
+        if (!empty($keyword)) {
+            $where = $this->WhereLike("Id", $keyword);
+        } else {
+            $where = "`IdOrder` = '" . $idOrder . "'";
         }
         //echo $where;
         return $this->QueryPaging(CartVM::tableName, $where, $pageIndex, $pageNumber, $totalRows);
@@ -54,6 +61,10 @@ class CartVM extends Model
     function GetDataTableWhere($idUser)
     {
         return $this->SELECTROWS(CartVM::tableName, $this->WhereEq("IdUser", $idUser));
+    }
+    function GetDataTable($where)
+    {
+        return $this->SELECTROWS(CartVM::tableName, $where);
     }
     function GetCart($idUser)
     {
