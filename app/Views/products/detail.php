@@ -234,11 +234,11 @@ $modelSize = new SizeVM();
                                 <p class="text-muted"><strong><?php echo $model->Unit; ?></strong></p>
                             </li>
                         </ul>
-                        <ul class="list-inline">
+                        <ul class="list-inline" style="min-height:100px;">
                             <li class="list-inline-item">
                                 <h6>Chọn kích thước:</h6>
                             </li>
-                            <li style="display: inline-flex;">
+                            <li>
                                 <?php
                                 $prodSize1 = $modelSize->GetDataTable("`IdProd` = " . $model->Id);
                                 if (!empty($prodSize1)) {
@@ -256,23 +256,20 @@ $modelSize = new SizeVM();
                                 ?>
                             </li>
                         </ul>
+
                         <form action="" method="POST">
+                            <ul class="list-inline pb-3">
+                                <li class="list-inline-item text-right">
+                                    <h6>Số lượng:</h6>
+                                    <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                </li>
+                                <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                                <li class="list-inline-item"><span class="badge bg-secondary" name="item[Quanity]" id="var-value">1</span></li>
+                                <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                            </ul>
                             <input id="fillIdSize" type="hidden" name="item[IdSize]" value="">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
-                                <div class="col-auto">
-                                    <ul class="list-inline pb-3">
-                                        <li class="list-inline-item text-right">
-                                            <h6>Số lượng:</h6>
-                                            <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                                        <li class="list-inline-item"><span class="badge bg-secondary" name="item[Quanity]" id="var-value">1</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row pb-3">
                                 <div class="col-sm-5">
                                     <input id="number" name=item[Quanity] hidden value="1">
                                     <input id="id-prod" name=item[Id] value="<?php echo $model->Id; ?>" hidden>

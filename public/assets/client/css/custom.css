@@ -313,6 +313,7 @@ body {
     position: relative;
     overflow: hidden;
     max-width: 200px;
+    float: left;
 }
 
 .btnCustom {
