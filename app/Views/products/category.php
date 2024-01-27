@@ -30,11 +30,14 @@ $listProd = $modelProd->GetPagingByCategory(["keyword" => $keyword], $indexPage,
                             $item = new CategoryVM($row);
                             $textgreen = $item->Id == $idCate ? "text-success" : "";
                             $h4 = $item->Id == $idCate ? "h4" : "";
+                            $arrowgreen = $item->Id == $idCate ? '<i class="pull-right fas fa-caret-right"></i>' : '';
                             //$icon = $item->Id == $idCate ? "fas fa-caret-square-right" : "fas fa-caret-right";
                     ?>
                             <a class="collapsed d-flex justify-content-between text-decoration-none <?php echo $textgreen; ?> <?php echo $h4; ?>" href="/products/category/tag=<?php echo $item->Id; ?>">
-                                <?php echo $item->CategoryName; ?>
-                                <i class="pull-right fas fa-caret-right mt-1" mt-1"></i>
+                                <?php
+                                echo $item->CategoryName;
+                                echo $arrowgreen;
+                                ?>
                             </a>
                             <br />
                     <?php

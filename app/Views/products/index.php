@@ -27,7 +27,6 @@ $listProd = $modelProd->GetPaging(["keyword" => $keyword], $indexPage, $pageNumb
                     ?>
                             <a class="collapsed d-flex justify-content-between text-decoration-none" href="/products/category/tag=<?php echo $item->Id; ?>">
                                 <?php echo $item->CategoryName; ?>
-                                <i class="pull-right fas fa-caret-right mt-1"></i>
                             </a>
                             <br />
                     <?php

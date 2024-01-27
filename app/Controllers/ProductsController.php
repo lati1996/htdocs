@@ -66,22 +66,26 @@ class ProductsController extends Controller
         }
         if (isset($_POST["btnBuy"])) {
             $item = $_POST["item"];
-            $cartModel = new CartVM();
-            $data["IdUser"] = $_SESSION["user"]["Id"];
-            $data["IdProd"] = $item["Id"];
-            $data["IdSize"] = $item["IdSize"];
-            $data["Status"] = '0';
-            $check = $cartModel->CheckCart($data);
-            if (empty($check)) {
-                $data["Quanity"] =  $item["Quanity"];
-                $cartModel->Post($data);
-                unset($_POST["item"]);
-                Common::ToUrl("/Cart");
+            if (empty($item["IdSize"])) {
+                $data["error"] = "Vui lòng chọn kích thước sản phẩm";
             } else {
-                $check["Quanity"] += $item["Quanity"];
-                $cartModel->Put($check);
-                unset($_POST["item"]);
-                Common::ToUrl("/Cart");
+                $cartModel = new CartVM();
+                $data["IdUser"] = $_SESSION["user"]["Id"];
+                $data["IdProd"] = $item["Id"];
+                $data["IdSize"] = $item["IdSize"];
+                $data["Status"] = '0';
+                $check = $cartModel->CheckCart($data);
+                if (empty($check)) {
+                    $data["Quanity"] = $item["Quanity"];
+                    $cartModel->Post($data);
+                    unset($_POST["item"]);
+                    Common::ToUrl("/Cart");
+                } else {
+                    $check["Quanity"] += $item["Quanity"];
+                    $cartModel->Put($check);
+                    unset($_POST["item"]);
+                    Common::ToUrl("/Cart");
+                }
             }
         }
         $this->View($data);

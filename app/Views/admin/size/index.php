@@ -9,7 +9,7 @@ $model = new ProductVM();
 $modelSize = new SizeVM();
 $totalRow = 0;
 $indexPage = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
-$pageNumber = isset($_GET["number"]) ? intval($_GET["number"]) : 50;
+$pageNumber = isset($_GET["number"]) ? intval($_GET["number"]) : 10;
 $keyword = isset($_GET["keyword"]) ? $_GET["keyword"] : "";
 $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $totalRow);
 ?>
@@ -37,13 +37,6 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
             </div>
         </form>
         <hr>
-        <?php
-        $_GET["page"] = isset($_GET["page"]) ? $_GET["page"] : "1";
-        $trangHienTai = intval($_GET["page"]);
-        $trangHienTai = max(1, $trangHienTai);
-        $soTrang = ceil($totalRow / $pageNumber);
-        Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/product/index/?page=[i]&number={$pageNumber}");
-        ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -129,7 +122,7 @@ $data = $model->GetPaging(["keyword" => $keyword], $indexPage, $pageNumber, $tot
             $trangHienTai = intval($_GET["page"]);
             $trangHienTai = max(1, $trangHienTai);
             $soTrang = ceil($totalRow / $pageNumber);
-            Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/product/index/?page=[i]&number={$pageNumber}");
+            Common::Paging($soTrang, $trangHienTai, $totalRow, "/admin/size/index/?page=[i]&number={$pageNumber}");
             ?>
         </div>
     </div>

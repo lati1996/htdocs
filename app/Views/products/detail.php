@@ -282,8 +282,8 @@ $modelSize = new SizeVM();
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <p style="color:red;"><?php echo isset($error) ? $error : null ?></p>
-                                <p style="color:#64647d;"><i><?php echo isset($mess) ? $mess : null ?></i></p>
+                                <p style="color:red;font-style:italic;"><?php echo isset($error) ? $error : null ?></p>
+                                <p style="color:#64647d;font-style:italic;"><i><?php echo isset($mess) ? $mess : null ?></i></p>
                             </div>
                         </form>
                     </div>

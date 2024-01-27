@@ -4,6 +4,7 @@
  */
 
 CKEDITOR.editorConfig = function (config) {
+
   config.skin = "office2013";
   config.filebrowserBrowseUrl = "/public/ckfinder/ckfinder.html";
   config.filebrowserImageBrowseUrl =
@@ -16,4 +17,6 @@ CKEDITOR.editorConfig = function (config) {
     "/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images";
   config.filebrowserFlashUploadUrl =
     "/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash";
+  config.font_names = 'Arial;Times New Roman;Verdana;Roboto;"Roboto",sans-serif';
+  config.extraPlugins = 'fontweight';
 };

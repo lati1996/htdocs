@@ -14,9 +14,6 @@ class SizeController extends Controller
 {
     function __construct()
     {
-        if (isset($_SESSION["admin"]) == false) {
-            Common::ToUrl("/admin/login");
-        }
         $this->setLayout("app/Views/layouts/_adminLayout.php");
         $this->setTitle("Option & Giá thành sản phẩm");
     }
